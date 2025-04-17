@@ -1,0 +1,14 @@
+.badge-active {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.action-icon {
+    color: #6b7280;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.action-icon:hover {
+    color: #111827;
+}

@@ -1,0 +1,465 @@
+// import React from 'react';
+
+// const offers = [
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-002',
+//     candidate: 'Sandra Ornellas',
+//     job: 'App Developer',
+//     salary: '$85,000',
+//     offerDate: '24 Oct 2024',
+//     validUntil: '24 Nov 2024',
+//     status: 'Draft',
+//     documentLink: '#',
+//     createdBy: 'Recruiter A'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   },
+//   {
+//     id: 'Offer-001',
+//     candidate: 'Harold Gaynor',
+//     job: 'Accountant',
+//     salary: '$60,000',
+//     offerDate: '12 Sep 2024',
+//     validUntil: '12 Oct 2024',
+//     status: 'Sent',
+//     documentLink: '#',
+//     createdBy: 'Admin'
+//   }
+
+// ];
+
+// const statusClass = {
+//   Draft: 'badge bg-secondary',
+//   Sent: 'badge bg-info',
+//   Accepted: 'badge bg-success',
+//   Rejected: 'badge bg-danger'
+// };
+
+// export const OfferLetter = () => {
+//   return (
+//     <div className="container mt-4 ">
+//       <div className="d-flex justify-content-between align-items-center mb-3">
+//         <h4 className="mb-0">Offer Letters</h4>
+//         <div>
+//           <button className="btn btn-primary me-2">Create Offer</button>
+//           <button className="btn btn-outline-secondary me-2">Export</button>
+//           <button className="btn btn-outline-info">Notifications</button>
+//         </div>
+//       </div>
+
+//       <div className="table-responsive">
+//         <table className="table table-bordered table-hover align-middle text-center w-100">
+//           <thead className="table-light">
+//             <tr>
+//               <th scope="col">Offer ID</th>
+//               <th scope="col">Candidate</th>
+//               <th scope="col">Job Title</th>
+//               <th scope="col">Salary Offered</th>
+//               <th scope="col">Offer Date</th>
+//               <th scope="col">Valid Until</th>
+//               <th scope="col">Status</th>
+//               <th scope="col">Document</th>
+//               <th scope="col">Created By</th>
+//               <th scope="col">Actions</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {offers.map((offer, idx) => (
+//               <tr key={idx}>
+//                 <td>{offer.id}</td>
+//                 <td>{offer.candidate}</td>
+//                 <td>{offer.job}</td>
+//                 <td>{offer.salary}</td>
+//                 <td>{offer.offerDate}</td>
+//                 <td>{offer.validUntil}</td>
+//                 <td>
+//                   <span className={statusClass[offer.status]}>{offer.status}</span>
+//                 </td>
+//                 <td>
+//                   <a href={offer.documentLink} target="_blank" rel="noreferrer">
+//                     <i className="bi bi-file-earmark-pdf"></i>
+//                   </a>
+//                 </td>
+//                 <td>{offer.createdBy}</td>
+//                 <td>
+//                   <div className="d-flex justify-content-center">
+//                     <button className="btn btn-sm btn-outline-primary me-2">
+//                       <i className="bi bi-pencil"></i>
+//                     </button>
+//                     <button className="btn btn-sm btn-outline-danger">
+//                       <i className="bi bi-trash"></i>
+//                     </button>
+//                   </div>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default OfferLetter;
+
+
+import React from 'react';
+import { Form, Button } from 'react-bootstrap';
+// import 'bootstrap-icons/font/bootstrap-icons.css';
+import { BsPencilSquare, BsTrash } from 'react-icons/bs';
+
+
+const jobs = [
+  {
+    id: 'OFR-001',
+    title: 'John Doe',
+    job: 'Software Engineer',
+    offerDate: '12 Sep 2024',
+    status: 'Pending',
+  },
+  {
+    id: 'OFR-002',
+    title: 'Jane Smith',
+    job: 'UI/UX Designer',
+    offerDate: '14 Sep 2024',
+    status: 'Accepted',
+  },
+  {
+    id: 'OFR-003',
+    title: 'Mike Johnson',
+    job: 'Backend Developer',
+    offerDate: '16 Sep 2024',
+    status: 'Rejected',
+  },
+  {
+    id: 'OFR-004',
+    title: 'Emily Davis',
+    job: 'Frontend Developer',
+    offerDate: '18 Sep 2024',
+    status: 'Pending',
+  },
+  {
+    id: 'OFR-005',
+    title: 'Robert Wilson',
+    job: 'QA Analyst',
+    offerDate: '20 Sep 2024',
+    status: 'Accepted',
+  },
+  {
+    id: 'OFR-006',
+    title: 'Laura Lee',
+    job: 'Project Manager',
+    offerDate: '22 Sep 2024',
+    status: 'Pending',
+  },
+  {
+    id: 'OFR-007',
+    title: 'Chris Brown',
+    job: 'DevOps Engineer',
+    offerDate: '24 Sep 2024',
+    status: 'Rejected',
+  },
+  {
+    id: 'OFR-008',
+    title: 'Sophia White',
+    job: 'Graphic Designer',
+    offerDate: '26 Sep 2024',
+    status: 'Accepted',
+  },
+  {
+    id: 'OFR-009',
+    title: 'Daniel Miller',
+    job: 'Cloud Architect',
+    offerDate: '28 Sep 2024',
+    status: 'Pending',
+  },
+  {
+    id: 'OFR-010',
+    title: 'Olivia Clark',
+    job: 'HR Manager',
+    offerDate: '30 Sep 2024',
+    status: 'Accepted',
+  },
+  {
+    id: 'OFR-011',
+    title: 'Ethan Moore',
+    job: 'Android Developer',
+    offerDate: '02 Oct 2024',
+    status: 'Pending',
+  },
+  {
+    id: 'OFR-012',
+    title: 'Ava Scott',
+    job: 'Product Owner',
+    offerDate: '04 Oct 2024',
+    status: 'Rejected',
+  },
+  {
+    id: 'OFR-013',
+    title: 'Lucas Turner',
+    job: 'System Analyst',
+    offerDate: '06 Oct 2024',
+    status: 'Accepted',
+  },
+  {
+    id: 'OFR-014',
+    title: 'Mia Perez',
+    job: 'Marketing Specialist',
+    offerDate: '08 Oct 2024',
+    status: 'Pending',
+  },
+  {
+    id: 'OFR-015',
+    title: 'William Young',
+    job: 'Technical Support',
+    offerDate: '10 Oct 2024',
+    status: 'Accepted',
+  },
+];
+
+const OfferLetter = () => {
+  return (
+    <div className="container my-4">
+      {/* Header and Filters */}
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3 className="fw-bold mb-0">Offer Letter</h3>
+        <div className="d-flex flex-wrap gap-2">
+          {/* Status Dropdown */}
+          <div className="dropdown">
+            <button
+               className="btn btn-white border border-dark  px-4 py-2"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Status <i className="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul className="dropdown-menu">
+              <li><button className="dropdown-item">Accepted</button></li>
+              <li><button className="dropdown-item">Pending</button></li>
+              <li><button className="dropdown-item">Rejected</button></li>
+            </ul>
+          </div>
+
+          {/* Role Dropdown */}
+          <div className="dropdown">
+            <button
+              className="btn btn-white border border-dark px-4 py-2"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Role <i className="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul className="dropdown-menu">
+              <li><button className="dropdown-item">Software Engineer</button></li>
+              <li><button className="dropdown-item">Designer</button></li>
+              <li><button className="dropdown-item">Manager</button></li>
+              <li><button className="dropdown-item">QA</button></li>
+
+            </ul>
+          </div>
+        <div className="d-flex gap-2">
+          <button className="btn btn-outline-secondary">Create Offer</button>
+          <div className="dropdown">
+    <div className="d-flex gap-3">
+    </div>
+            <button
+              className="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Export
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton ">
+              <li><a className="dropdown-item" href="#">Export as PDF</a></li>
+              <li><a className="dropdown-item" href="#">Export as Excel</a></li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Table */}
+      <div className="table-responsive">
+        <table className="table table-hover align-middle border-0">
+          <thead className="table-light border-0">
+            <tr>
+              <th className="border-0"><Form.Check type="checkbox" /></th>
+              <th className="border-0">Offer ID</th>
+              <th className="border-0">Candidate</th>
+              <th className="border-0">Job</th>
+              <th className="border-0">Offer Date</th>
+              <th className="border-0">Status</th>
+              <th className="border-0">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {jobs.map((job, idx) => (
+              <tr key={idx}>
+                <td className="border-0"><Form.Check type="checkbox" /></td>
+                <td className="border-0">{job.id}</td>
+                <td className="border-0">{job.title}</td>
+                <td className="border-0">{job.job}</td>
+                <td className="border-0">{job.offerDate}</td>
+                <td className="border-0">{job.status}</td>
+                <td className="border-0">
+                  <Button variant="link" className="p-0 me-2 text-primary">
+                    <BsPencilSquare />
+                  </Button>
+                  <Button variant="link" className="p-0 text-danger">
+                    <BsTrash />
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default OfferLetter;

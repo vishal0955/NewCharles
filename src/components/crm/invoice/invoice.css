@@ -1,0 +1,379 @@
+/* Modern Invoice Dashboard Styles */
+.inv-dashboard-container {
+    background-color: #f8fafc;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.inv-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.inv-stat-box {
+    /* background: linear-gradient(145deg, #ffffff, #f5f7fa); */
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.inv-stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.inv-stat-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.inv-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.inv-stat-icon-primary {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+}
+
+.inv-stat-icon-warning {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    color: white;
+}
+
+.inv-stat-icon-neutral {
+    background: linear-gradient(135deg, #9ca3af, #6b7280);
+    color: white;
+}
+
+.inv-stat-icon-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.inv-stat-icon-success {
+    background: linear-gradient(135deg, #9beeb8, #dcfce7);
+    
+    color: white;
+}
+
+
+.inv-stat-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.375rem;
+    font-weight: 500;
+}
+
+.inv-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+   
+    margin: 0;
+}
+
+.inv-main-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.inv-card-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.inv-new-button {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    padding: 0.5rem 0.75rem;
+
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    height: 40px;
+    text-align: center;
+}
+
+.inv-new-button:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
+}
+
+.inv-search-wrapper {
+    position: relative;
+    max-width: 400px;
+   
+    
+}
+
+.inv-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.inv-search-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.inv-search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.inv-filter-button {
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    background: white;
+    color: #64748b;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+}
+
+.inv-filter-button:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.inv-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.inv-table th {
+    /* background-color: #f8fafc; */
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    /* color: #475569; */
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.inv-table td {
+    padding: 1.25rem 1.5rem;
+    vertical-align: middle;
+}
+
+.inv-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.inv-client-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inv-client-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.inv-client-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.inv-client-name {
+    font-weight: 600;
+    /* color: #1e293b; */
+    margin-bottom: 0.25rem;
+}
+
+.inv-client-email {
+    font-size: 0.875rem;
+    /* color: #64748b; */
+}
+
+.inv-status {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.inv-status-paid {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.inv-status-pending {
+    background-color: #fef9c3;
+    color: #ca8a04;
+}
+
+.inv-status-draft {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+.inv-action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.inv-action-button:hover {
+    background-color: #e2e8f0;
+    color: #1e293b;
+}
+
+.inv-checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #cbd5e1;
+    cursor: pointer;
+}
+
+.inv-checkbox:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+/* newpaymentsetting */
+/* Custom form switch styling */
+.ips-switch__input {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 2.5em !important;
+    height: 1.4em !important;
+}
+
+.ips-switch__input:checked {
+    background-color: #111827;
+    border-color: #111827;
+}
+
+.ips-switch__input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.25);
+}
+
+/* Payment method checkboxes */
+.ips-checkbox {
+    margin-bottom: 0.75rem;
+}
+
+.ips-checkbox__input {
+    width: 1.2em !important;
+    height: 1.2em !important;
+    margin-top: 0.15em;
+    cursor: pointer;
+}
+
+.ips-checkbox__label {
+    font-weight: 400;
+    transition: color 0.15s ease;
+    cursor: pointer;
+}
+
+.ips-checkbox_input:checked ~ .ips-checkbox_label {
+    color: #111827;
+}
+.ips-select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.25);
+}
+
+/* Custom accordion styling */
+.ips-accordion__button {
+    padding: 1rem 0;
+    border: none;
+    background: transparent;
+}
+
+.ips-accordion__button:not(.collapsed) {
+    background-color: transparent;
+    color: #111827;
+    box-shadow: none;
+}
+
+.ips-accordion__button:focus {
+    box-shadow: none;
+    border-color: #e5e7eb;
+}
+
+.ips-accordion__body {
+    padding: 1rem 0;
+}
+
+/* Summary section styling */
+.ips-summary {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.ips-summary__item {
+    padding: 8px 0;
+}
+
+.ips-summary__item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ips-summary__label {
+    color: #6b7280;
+}
+
+.ips-summary__value {
+    font-weight: 500;
+}
+
+/* Custom button styles */
+.ips-btn {
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.ips-btn--dark {
+    background-color: #111827;
+    border-color: #111827;
+    color: #ffffff;
+}
+
+.ips-btn--dark:hover {
+    background-color: #1f2937;
+    border-color: #1f2937;
+    color: white;
+}
+/* newpaymentsetting */

@@ -1,0 +1,986 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --border-color: #e1e8ed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin-bottom: 10px;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active a {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    width: 300px;
+}
+
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notifications {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Dashboard Content Styles */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+}
+
+/* Restaurant Grid Styles */
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.restaurant-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-5px);
+}
+
+.restaurant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.restaurant-info {
+    padding: 20px;
+}
+
+.restaurant-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.restaurant-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.star-rating {
+    color: #f1c40f;
+}
+
+.restaurant-address {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Reviews Section */
+.reviews-list {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.review-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.reviewer-name {
+    font-weight: bold;
+}
+
+.review-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-content {
+    line-height: 1.5;
+    color: #444;
+}
+
+.reviews-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.reviews-list th,
+.reviews-list td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.reviews-list th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.reviews-list tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rating-input {
+    display: flex;
+    gap: 10px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ddd;
+}
+
+.star-btn.active {
+    color: #f1c40f;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #357abd;
+}
+
+.recent-reviews {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.recent-reviews:hover {
+    transform: translateY(-5px);
+}
+
+.recent-reviews h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.recent-reviews h3 {
+    color: #666;
+    margin: 15px 0;
+}
+
+.reviews-list button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.reviews-list button:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.reviews-list div img {
+    max-width: 200px;
+    margin: 20px 0;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.reviews-list div img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reviews-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-list th {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.reviews-list td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.reviews-list tr:hover td {
+    background-color: #f9f9f9;
+}
+
+.reviews-list td:last-child {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.qr-code-img {
+    max-width: 200px;
+    margin: 20px 0;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.qr-code-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.generate-qr-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.generate-qr-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .reviews-list table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .reviews-list button {
+        width: 100%;
+    }
+    
+    .reviews-list div img {
+        max-width: 150px;
+    }
+}
+
+/* Additional Responsive Styles */
+@media (max-width: 1200px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links a {
+        padding: 5px;
+        font-size: 0.9rem;
+    }
+
+    .nav-links a i {
+        margin-right: 0;
+    }
+
+    .nav-links span {
+        display: none;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Enhanced UI Elements */
+.section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card h3 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-label {
+    min-width: 30px;
+}
+
+.bar-container {
+    flex: 1;
+    height: 20px;
+    background: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.bar-value {
+    min-width: 40px;
+    text-align: right;
+}
+
+/* User Profile Styles */
+.username {
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.login-btn,
+.logout-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.login-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+    opacity: 0.9;
+}
+
+.login-container, .register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.login-container h2, .register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-btn, .register-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn:hover, .register-btn:hover {
+    background-color: #0056b3;
+}
+
+.login-container p, .register-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-container p a, .register-container p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container p a:hover, .register-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Business Registration Page Styles */
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.registration-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.registration-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.registration-form .form-group {
+    margin-bottom: 15px;
+}
+
+.registration-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.registration-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.registration-form .form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.registration-form .form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.registration-form .form-group button:hover {
+    background-color: #0056b3;
+}
+
+/* New Card Styles */
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card ul li {
+    text-align: left;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Plan Requests Table Styles */
+.plan-requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.plan-requests-table th,
+.plan-requests-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.plan-requests-table th {
+    background: #4CAF50;
+    color: white;
+    font-weight: 500;
+}
+
+.plan-requests-table tr:hover td {
+    background-color: #f9f9f9;
+}
+
+.plan-requests-table td:last-child {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn {
+    background: #008CBA;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Order Plan Table Styles */
+.order-plan-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-plan-table th,
+.order-plan-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.order-plan-table th {
+    background: #4CAF50;
+    color: white;
+    font-weight: 500;
+}
+
+.order-plan-table tr:hover td {
+    background-color: #f9f9f9;
+}
+
+.refund-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Settings Page Styles */
+.settings-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.settings-form .form-group {
+    margin-bottom: 15px;
+}
+
+.settings-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.settings-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.settings-form .form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.settings-form .submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.settings-form .submit-btn:hover {
+    background-color: #357abd;
+}
+
+/* User Info Page Styles */
+.user-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-table th,
+.user-info-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.user-info-table th {
+    background: #4CAF50;
+    color: white;
+    font-weight: 500;
+}
+
+.user-info-table tr:hover td {
+    background-color: #f9f9f9;
+}

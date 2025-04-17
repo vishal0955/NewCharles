@@ -1,0 +1,286 @@
+/* Company Details Page Styles */
+.cd-page {
+    background-color: #fff;
+    min-height: 100vh;
+  }
+  
+  .cd-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .cd-logo-img {
+    height: 32px;
+  }
+  
+  .cd-new-contact-btn {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .cd-settings-btn {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #dee2e6;
+  }
+  
+  .cd-title-section {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+  }
+  
+  .cd-company-name {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .cd-company-desc {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  
+  .cd-quick-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .cd-action-btn {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .cd-main-content {
+    padding: 1.5rem;
+  }
+  
+  .cd-card {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cd-section-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+  
+  .cd-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 14px;
+    color: #495057;
+  }
+  
+  .cd-detail-item {
+    margin-bottom: 0.75rem;
+    font-size: 14px;
+  }
+  
+  .cd-detail-label {
+    color: #6c757d;
+    margin-right: 0.5rem;
+  }
+  
+  .cd-detail-value {
+    color: #212529;
+  }
+  
+  .cd-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cd-contact-avatar {
+    width: 36px;
+    height: 36px;
+    background: #e9ecef;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #495057;
+  }
+  
+  .cd-contact-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212529;
+  }
+  
+  .cd-contact-role {
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .cd-main-tabs {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .cd-main-tabs .nav-link {
+    color: #495057;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 14px;
+  }
+  
+  .cd-main-tabs .nav-link.active {
+    color: #000;
+    border-bottom: 2px solid #000;
+    background: none;
+  }
+  
+  .cd-stat-card {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 1.25rem;
+  }
+  
+  .cd-stat-header h6 {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cd-stat-value {
+    font-size: 24px;
+    font-weight: 500;
+    color: #212529;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cd-stat-growth, .cd-stat-note {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .cd-activities-list {
+    margin-top: 1rem;
+  }
+  
+  .cd-activity-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .cd-activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  
+  .cd-email-icon {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .cd-call-icon {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .cd-task-icon {
+    background: #fff3e0;
+    color: #f57c00;
+  }
+  
+  .cd-activity-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212529;
+  }
+  
+  .cd-activity-desc {
+    font-size: 13px;
+    color: #6c757d;
+    margin: 0.25rem 0;
+  }
+  
+  .cd-activity-time {
+    font-size: 12px;
+    color: #adb5bd;
+  }
+  
+  .cd-deals-list {
+    margin-top: 1rem;
+  }
+  
+  .cd-deal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .cd-deal-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212529;
+  }
+  
+  .cd-deal-amount {
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 0.25rem;
+  }
+  
+  .cd-deal-status {
+    font-size: 12px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+  }
+  
+  .cd-status-in-progress {
+    background: #fff8e1;
+    color: #f9a825;
+  }
+  
+  .cd-status-qualified {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  @media (max-width: 768px) {
+    .cd-quick-actions {
+      flex-wrap: wrap;
+    }
+    
+    .cd-action-btn {
+      width: calc(50% - 0.25rem);
+    }
+    
+    .cd-stat-card {
+      margin-bottom: 1rem;
+    }
+    
+    .cd-deal-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .cd-deal-status {
+      align-self: flex-start;
+    }
+  }
+  
