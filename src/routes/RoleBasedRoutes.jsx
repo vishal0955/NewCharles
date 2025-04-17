@@ -171,6 +171,7 @@ import ExpenseList from "../components/ChFinance/Expense/Expense";
 import SalaryDisbursement from "../components/ChFinance/salary/SalaryDisbursement";
 import SalaryDetails from "../components/ChFinance/salary/SalaryDetails";
 import ExpenseDetail from "../components/ChFinance/Expense/ExpenseDetails";
+import SharedNotesPage from "../components/Notes/ShareNotes";
 
 const RoleBasedRoutes = () => {
   return (
@@ -216,6 +217,8 @@ const RoleBasedRoutes = () => {
         <Route path="/notesgrid" element={<NotesGrid />} />
         <Route path="/noteslist" element={<NotesList />} />
         <Route path="/internalnotes" element={<NoteApp />} />
+
+        <Route path="/sharednotes" element={<SharedNotesPage />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
         <Route path="/tododetails" element={<TodoDetail />} />
@@ -502,6 +505,8 @@ const RoleBasedRoutes = () => {
 
         <Route path="/performance/managerfeedback" element={<ManagerFeedback />} />
         <Route path="/performance/reviewsummary" element={<ReviewSummary />} />
+
+        
 
         {/*  New finance Routes  */}
 

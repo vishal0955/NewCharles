@@ -31,17 +31,17 @@ const menuItems = [
     icon: <House size={16} />,
     subItems: [
       { name: "Dashboard", path: "/admin" },
-      { name: "Calendar", path: "/fullcalendar" },
-      {
-        name: "Todo",
-        path: "/todo",
-        // icon: <SquareCheckBig size={16} />,
-      },
-      {
-        name: "Notes",
-        path: "/notesgrid",
-        // icon: <ClipboardCheck size={16} />,
-      },
+      // { name: "Calendar", path: "/fullcalendar" },
+      // {
+      //   name: "Todo",
+      //   path: "/todo",
+      //   // icon: <SquareCheckBig size={16} />,
+      // },
+      // {
+      //   name: "Notes",
+      //   path: "/notesgrid",
+      //   // icon: <ClipboardCheck size={16} />,
+      // },
       
     ]
   },
@@ -158,6 +158,18 @@ const menuItems = [
     name: "Performance",
     path: "/performance",
     subItems: [
+      {
+        name: "Appraisal",
+        path: "/performance/appraisalpage",
+      },
+      {
+        name: "KPITable",
+        path: "/performance/kpitable",
+      },
+      {
+        name: "SelfAssessment",
+        path: "/performance/selfassessment",
+      },
       { name: "Manager Feedback", path: "/performance/managerfeedback" },
       {
         name: "Review Summary", path: "/performance/reviewsummary",
