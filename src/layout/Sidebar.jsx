@@ -53,6 +53,8 @@ const menuItems = [
     subItems: [
       { name: "Personal Notes", path: "/notes/personalnotes" },
       { name: "Shared Notes", path: "/notes/sharednotes" },
+      {name: "Reminders", path: "/notes/reminders"},
+      { name: "Quick Links" , path: "/notes/quicklinks"}
     ]
   },
 
@@ -163,11 +165,11 @@ const menuItems = [
         path: "/performance/appraisalpage",
       },
       {
-        name: "KPITable",
+        name: "KPI ",
         path: "/performance/kpitable",
       },
       {
-        name: "SelfAssessment",
+        name: "Self Assessment",
         path: "/performance/selfassessment",
       },
       { name: "Manager Feedback", path: "/performance/managerfeedback" },

@@ -172,6 +172,14 @@ import SalaryDisbursement from "../components/ChFinance/salary/SalaryDisbursemen
 import SalaryDetails from "../components/ChFinance/salary/SalaryDetails";
 import ExpenseDetail from "../components/ChFinance/Expense/ExpenseDetails";
 import SharedNotesPage from "../components/Notes/ShareNotes";
+import KPITable from "../components/AdminHRM/Performance/KPITable";
+import SelfAssessment from "../components/AdminHRM/Performance/SelfAssessment";
+import AppraisalDetailPage from "../components/AdminHRM/Performance/AppraisalDetailsPage";
+import KPIDetailPage from "../components/AdminHRM/Performance/KPIDetailPage";
+import AppraisalPage from "../components/AdminHRM/Performance/AppraisalPage";
+import Reminders from "../components/Notes/Reminders";
+import QuickLinks from "../components/Notes/QuickLinks";
+import Utilities from "../components/Notes/Utilities.jsx";
 
 const RoleBasedRoutes = () => {
   return (
@@ -219,6 +227,9 @@ const RoleBasedRoutes = () => {
         <Route path="/internalnotes" element={<NoteApp />} />
 
         <Route path="/sharednotes" element={<SharedNotesPage />} />
+        <Route path="/notes/reminders" element={<Reminders />} />
+        <Route path="/notes/quicklinks" element={<QuickLinks />} />
+        <Route path="/notes/utitlities" element={<Utilities />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
         <Route path="/tododetails" element={<TodoDetail />} />
@@ -505,6 +516,30 @@ const RoleBasedRoutes = () => {
 
         <Route path="/performance/managerfeedback" element={<ManagerFeedback />} />
         <Route path="/performance/reviewsummary" element={<ReviewSummary />} />
+
+
+        {
+          <Route
+            path="/performance/appraisalpage"
+            element={<AppraisalPage />}
+          />
+        }
+        {<Route path="/performance/kpitable" element={<KPITable />} />}
+        {
+          <Route
+            path="/performance/selfassessment"
+            element={<SelfAssessment />}
+          />
+        }
+
+        {/* AppraisePage */}
+
+        <Route
+          path="/appraisedetailpage/:id"
+          element={<AppraisalDetailPage />}
+        />
+
+        <Route path="/kpi/:id" element={<KPIDetailPage/>} />
 
         
 
