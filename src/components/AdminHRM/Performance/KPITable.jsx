@@ -256,7 +256,8 @@ const KPITable = () => {
   };
 
   return (
-    <Container fluid className={`${darkMode ? "bg-dark text-white" : ""} mt-4`}>
+    <Container fluid className={`${darkMode ? "bg-dark text-white" : ""} mt-4`} style={{height:"100vh"}}>
+    
       <Row>
         <Col xs={12} className="mb-4 text-start text-3xl font-bold">
           <h2 className="font-weight-bold mb-3">KPI Tracker</h2>

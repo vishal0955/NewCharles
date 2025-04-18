@@ -1,106 +1,266 @@
-import React from "react";
-import { FaCheck, FaTimes, FaClock, FaPlane } from "react-icons/fa";
-import { FaPenToSquare } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const HRMDashboard = () => {
+const AttendanceAdmin = () => {
+  // Sample data for the dashboard
+  const attendanceSummary = [
+    { title: "Present", count: 250, change: "+1.2%", changeType: "increase" },
+    { title: "Late Login", count: 45, change: "-3.1%", changeType: "decrease" },
+    { title: "Uninformed", count: 15, change: "-1.2%", changeType: "decrease" },
+    { title: "Permission", count: 3, change: "+1.1%", changeType: "increase" },
+    { title: "Absent", count: 12, change: "-1.9%", changeType: "decrease" }
+  ];
+
+  const employeeData = [
+    {
+      id: 1,
+      name: "Anthony Lewis",
+      department: "UI/UX Team",
+      status: "Present",
+      checkIn: "09:00 AM",
+      checkOut: "06:45 PM",
+      break: "30 Min",
+      late: "32 Min",
+      productionHours: "8.58 Hrs",
+    }
+  ];
+
+  const [dateRange] = useState("03/11/2025 - 03/17/2025");
+  const [department] = useState("Department");
+  const [status] = useState("Select Status");
+  const [sortBy] = useState("Last 7 Days");
+  const [rowsPerPage] = useState(10);
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col items-center p-6">
-      <div className="w-full max-w-7xl">
-        {/* Employee Profile Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6 hover:shadow-xl transition-shadow duration-300">
-          <div className="flex items-start">
-            <img
-              src="https://randomuser.me/api/portraits/men/1.jpg"
-              className="w-32 h-32 rounded-lg object-cover mr-8 shadow-lg ring-4 ring-gray-100"
-              alt="Employee"
+    <div className={`${darkMode ? "dark-mode" : null } bg-gray-50 min-h-screen p-4`}>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+        <div className="flex items-center gap-2 mb-4 md:mb-0">
+          <span className="text-gray-500">Employee</span>
+          <span className="text-gray-500">/</span>
+          <span className="font-medium">Attendance Admin</span>
+        </div>
+        <div className="flex flex-col md:flex-row gap-2">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="pl-10 pr-4 py-2 border rounded-md w-full md:w-64"
             />
-            <div className="flex-1">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-1">
-                    John Doe
-                  </h1>
-                  <p className="text-gray-600 text-lg mb-2">Senior Developer</p>
-                  <div className="flex items-center mt-2">
-                    <span className="px-4 py-1.5 text-sm font-medium text-green-800 bg-green-100 rounded-full shadow-sm">
-                      Active
-                    </span>
-                    <span className="ml-4 text-sm text-gray-500">#EMP001</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 absolute left-3 top-2.5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <button className="bg-white border rounded-md px-4 py-2 flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+            Export
+          </button>
+          {/* <button className="bg-black text-white rounded-md px-4 py-2 flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            Report
+          </button> */}
+        </div>
+      </div>
+
+      {/* Attendance Details Section */}
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold mb-1">Attendance Details Today</h2>
+        <p className="text-gray-500 text-sm mb-4">Data from the 800+ total no of employees</p>
+        
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {attendanceSummary.map((item, index) => (
+            <div key={index} className="bg-white p-4 rounded-lg shadow-sm border">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-500">{item.title}</span>
+                <span className={`text-sm ${item.changeType === 'increase' ? 'text-green-500' : 'text-red-500'}`}>
+                  {item.change}
+                </span>
+              </div>
+              <div className="text-3xl font-semibold">
+                {`tem.title === "Permission" ? 0${item.count} : item.count`}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div className="bg-white p-4 rounded-lg shadow-sm border mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+          <div className="relative">
+            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+              <option>{dateRange}</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+              <option>{department}</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+              <option>{status}</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+              <option>Sort By: {sortBy}</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full p-2 border rounded-md"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Table */}
+      <div className="bg-white rounded-lg shadow-sm border overflow-x-auto">
+        <table className="min-w-full">
+          <thead>
+            <tr className="bg-gray-50 border-b">
+              <th className="w-10 py-3 px-4 text-left">
+                <input type="checkbox" className="form-checkbox h-4 w-4" />
+              </th>
+              <th className="py-3 px-4 text-left">Employee</th>
+              <th className="py-3 px-4 text-left">Status</th>
+              <th className="py-3 px-4 text-left">Check In</th>
+              <th className="py-3 px-4 text-left">Check Out</th>
+              <th className="py-3 px-4 text-left">Break</th>
+              <th className="py-3 px-4 text-left">Late</th>
+              <th className="py-3 px-4 text-left">Production Hours</th>
+              <th className="py-3 px-4 text-left"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {employeeData.map((employee) => (
+              <tr key={employee.id} className="border-b hover:bg-gray-50">
+                <td className="py-4 px-4">
+                  <input type="checkbox" className="form-checkbox h-4 w-4" />
+                </td>
+                <td className="py-4 px-4">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
+                      <svg className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium">{employee.name}</div>
+                      <div className="text-sm text-gray-500">{employee.department}</div>
+                    </div>
                   </div>
-                </div>
-                <button className="px-4 py-2.5 text-white bg-gray-800 border border-black rounded-lg hover:bg-black transition-colors duration-200 font-medium">
-                  <FaPenToSquare className="mr-2 inline" />
-                  Edit Profile
-                </button>
+                </td>
+                <td className="py-4 px-4">
+                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded-md text-sm">
+                    {employee.status}
+                  </span>
+                </td>
+                <td className="py-4 px-4">{employee.checkIn}</td>
+                <td className="py-4 px-4">{employee.checkOut}</td>
+                <td className="py-4 px-4">{employee.break}</td>
+                <td className="py-4 px-4">{employee.late}</td>
+                <td className="py-4 px-4">
+                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded-md text-sm">
+                    {employee.productionHours}
+                  </span>
+                </td>
+                <td className="py-4 px-4">
+                  <button className="text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+        {/* Pagination */}
+        <div className="flex flex-col sm:flex-row justify-between items-center p-4 border-t">
+          <div className="flex items-center mb-4 sm:mb-0">
+            <span className="mr-2 text-sm text-gray-600">Rows per page:</span>
+            <div className="relative">
+              <select className="appearance-none bg-white border rounded-md py-1 pl-3 pr-8 text-sm">
+                <option>{rowsPerPage}</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 9l-7 7-7-7"></path>
+                </svg>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Tabs Section */}
-        <div className="bg-white rounded-xl shadow-lg">
-          <div className="border-b border-gray-200">
-            <nav className="flex -mb-px">
-              <Link
-                to={""}
-                className="px-6 py-4 text-gray-500 hover:text-gray-700"
-              >
-                Personal Details
-              </Link>
-              <Link
-                to={"/workdetails"}
-                className="px-6 py-4 text-gray-500 hover:text-gray-700"
-              >
-                Work Details
-              </Link>
-              <Link
-                to={"/document"}
-                className="px-6 py-4 text-gray-500 hover:text-gray-700"
-              >
-                Documents
-              </Link>
-              <Link
-                to={"/attendance"}
-                className="px-6 py-4 border-b-2 border-blue-500 text-blue-600 font-medium hover:bg-blue-50 transition-colors duration-200"
-              >
-                Attendance & Leave
-              </Link>
-            </nav>
-          </div>
-
-          {/* Attendance Cards */}
-          <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <AttendanceCard
-              title="Present Days"
-              count="21"
-              icon={<FaCheck />}
-              color="green"
-            />
-            <AttendanceCard
-              title="Absent Days"
-              count="2"
-              icon={<FaTimes />}
-              color="red"
-            />
-            <AttendanceCard
-              title="Late Coming"
-              count="3"
-              icon={<FaClock />}
-              color="yellow"
-            />
-            <AttendanceCard
-              title="Leaves Left"
-              count="12"
-              icon={<FaPlane />}
-              color="purple"
-            />
-          </div>
-
-          {/* Leave History & Attendance Overview */}
-          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <LeaveHistory />
-            <AttendanceOverview />
+          <div className="flex">
+            <button className="px-4 py-2 border rounded-md mr-2 text-sm">Previous</button>
+            <button className="px-4 py-2 border rounded-md text-sm">Next</button>
           </div>
         </div>
       </div>
@@ -108,102 +268,4 @@ const HRMDashboard = () => {
   );
 };
 
-// 🔹 **Tab Navigation Component**
-const TabLink = ({ title, isActive }) => (
-  <a
-    href="#"
-    className={`px-6 py-4 text-gray-500 hover:text-gray-700 ${
-      isActive ? "border-b-2 border-blue-500 text-blue-600 font-medium" : ""
-    }`}
-  >
-    {title}
-  </a>
-);
-
-// 🔹 **Attendance Cards Component**
-const AttendanceCard = ({ title, count, icon, color }) => {
-  const colors = {
-    green: "bg-green-50 border-green-200 text-green-600",
-    red: "bg-red-50 border-red-200 text-red-600",
-    yellow: "bg-yellow-50 border-yellow-200 text-yellow-600",
-    purple: "bg-purple-50 border-purple-200 text-purple-600",
-  };
-
-  return (
-    <div
-      className={`p-6 rounded-xl border shadow-sm hover:shadow-md transition duration-300 ${colors[color]}`}
-    >
-      <div className="flex items-center mb-4">
-        <div
-          className={`w-12 h-12 ${colors[color]} rounded-full flex items-center justify-center mr-4  border`}
-        >
-          <span className="text-2xl">{icon}</span>
-        </div>
-        <div>
-          <h3 className="text-lg font-medium">{title}</h3>
-          <p className="text-3xl font-semibold mt-1">{count}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// 🔹 **Leave History Component**
-const LeaveHistory = () => (
-  <div className="bg-white p-6 rounded-xl shadow-lg">
-    <h3 className="text-lg font-medium mb-4">Leave History</h3>
-    {["Annual Leave", "Sick Leave", "Personal Leave"].map((leave, index) => (
-      <div
-        key={index}
-        className={`flex items-center justify-between p-4 rounded-xl ${
-          index === 2
-            ? "bg-red-100 text-red-800"
-            : "bg-green-100 text-green-800"
-        } hover:bg-opacity-75 transition duration-300 mb-2`}
-      >
-        <p className="font-medium">{leave}</p>
-        <span className="text-sm">{index === 2 ? "Rejected" : "Approved"}</span>
-      </div>
-    ))}
-  </div>
-);
-
-// 🔹 **Attendance Overview Component**
-const AttendanceOverview = () => (
-  <div className="bg-white p-6 rounded-xl shadow-lg">
-    <h3 className="text-lg font-medium mb-4">Attendance Overview</h3>
-    <div className="grid grid-cols-7 gap-2">
-      {[...Array(7)].map((_, index) => (
-        <div key={index} className="text-center p-2">
-          <p className="text-sm text-gray-500 mb-1">Day {index + 1}</p>
-          <div
-            className={`w-10 h-10 rounded-full ${
-              index % 2 === 0 ? "bg-green-100" : "bg-red-100"
-            } flex items-center justify-center mx-auto`}
-          >
-            <span
-              className={index % 2 === 0 ? "text-green-600" : "text-red-600"}
-            >
-              {index + 1}
-            </span>
-          </div>
-        </div>
-      ))}
-    </div>
-    <div className="flex justify-center mt-4 space-x-4">
-      <LegendItem color="bg-green-100" text="Present" />
-      <LegendItem color="bg-red-100" text="Absent" />
-      <LegendItem color="bg-yellow-100" text="Late" />
-    </div>
-  </div>
-);
-
-// 🔹 **Legend Item Component**
-const LegendItem = ({ color, text }) => (
-  <div className="flex items-center">
-    <div className={`w-3 h-3 rounded-full ${color} mr-2`}></div>
-    <span className="text-sm text-gray-600">{text}</span>
-  </div>
-);
-
-export default HRMDashboard;
+export default AttendanceAdmin;

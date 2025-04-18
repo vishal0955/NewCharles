@@ -20,6 +20,7 @@ import {
   FaTh,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const EmployeeList = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -121,12 +122,15 @@ const EmployeeList = () => {
     setSearchTerm(e.target.value);
   };
 
+    const darkMode =useSelector((state)=>state.theme.isDarkMode)
+    console.log(darkMode);
+    
   return (
-    <div className=" bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden">
+    <div className={`${darkMode ? "dark-mode" : null }  bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden`}>
       <div className="w-full rounded-lg p-2 ">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800">
+            <h1 className="text-2xl font-semibold ">
               Employee List
             </h1>
             <p className="text-gray-500 text-sm">Employee &gt; Employee List</p>

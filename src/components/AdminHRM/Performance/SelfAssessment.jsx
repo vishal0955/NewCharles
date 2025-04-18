@@ -207,7 +207,7 @@ const SelfAssessment = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{height:"100vh"}}>
       <h2 className="mt-4">Self Assessment</h2>
       <div className="d-flex justify-content-between mb-3">
         <div>

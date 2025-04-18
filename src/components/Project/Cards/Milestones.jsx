@@ -92,17 +92,15 @@ const Milestones = () => {
         <Space>
           <Tooltip title="Edit">
             <Button 
-              icon={<EditOutlined />} 
-              onClick={() => handleEdit(record)}
+              icon={<EditOutlined />}
               type="text"
             />
           </Tooltip>
           <Tooltip title="View">
-            <Button 
+          <Link to={"/project/MilestonesDetails"}>  <Button 
               icon={<EyeOutlined />} 
-              onClick={() => handleView(record)}
               type="text"
-            />
+            /></Link>
           </Tooltip>
           <Tooltip title="Delete">
             <Button 
@@ -181,7 +179,7 @@ const Milestones = () => {
   const exportData = milestones.map(({ key, ...item }) => item);
 
   return (
-    <div className="milestones-container" style={{ padding: '24px' }}>
+    <div className="milestones-container" style={{ padding: '24px', height:"100vh"}}>
       <div className="header" style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Project Milestones</h2>
         <Space>
