@@ -270,7 +270,7 @@ const RoleBasedRoutes = () => {
 
         {/* PRoject New Routes  */}
 
-        <Route path="/project/Milestones" element={<Milestones />} />
+        <Route path="/project/Milestones" element={<Milestones/>} />
         <Route path="/project/MilestonesDetails" element={<MilestonesDetails />} />
         <Route path="/project/reports" element={<ProjectReports />} />
         <Route path="/project/reportsDetails" element={<ProjectReportsDetails />} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const contacts = Array(10).fill({
@@ -10,8 +11,11 @@ const contacts = Array(10).fill({
 });
 
 const FollowUp = () => {
+  const darkMode =useSelector((state)=>state.theme.isDarkMode)
+  console.log(darkMode);
+  
   return (
-    <div className="container-fluid p-4 bg-light" style={{ minHeight: '100vh' }}>
+    <div className={`${darkMode ? "dark-mode" : null } container-fluid p-4 bg-light`} style={{ minHeight: '100vh' }}>
       {/* Header Cards */}
       <div className="row mb-4">
         <div className="col-md-3 mb-2">

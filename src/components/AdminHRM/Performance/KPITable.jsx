@@ -701,7 +701,7 @@ const KPITable = () => {
   };
 
   return (
-    <Container fluid className="mt-4">
+    <Container fluid className="mt-4" style={{height:"100vh"}}>
       <Row>
         <Col xs={12} className="mb-4 text-center">
           <h2 className="font-weight-bold text-primary mb-3">KPI Tracker</h2>

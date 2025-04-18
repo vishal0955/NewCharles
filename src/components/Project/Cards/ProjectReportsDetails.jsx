@@ -4,7 +4,7 @@ import { AvatarGroup } from "primereact/avatargroup";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const ProjectReportsDetails = () => {
+const ReportsDetails = () => {
 
   const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
@@ -190,5 +190,5 @@ const ProjectReportsDetails = () => {
   );
 };
 
-export default ProjectReportsDetails;
+export default ReportsDetails;
 

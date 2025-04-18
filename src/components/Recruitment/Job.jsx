@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { List, Grid } from "lucide-react";
 import { FaPenToSquare, FaTrash } from "react-icons/fa6";
+import useSelection from "antd/es/table/hooks/useSelection";
 
 const Job = () => {
   const [view, setView] = useState("grid");
@@ -9,9 +10,11 @@ const Job = () => {
   const toggleView = (viewType) => {
     setView(viewType);
   };
+    const darkMode = useSelection((state) => state.theme.isDarkMode);
+  
   return (
     <>
-      <div className="bg-light min-vh-100 d-flex flex-column">
+      <div className={`${darkMode ? "dark-mode" : " bg-light" } min-vh-100 d-flex flex-column`} >
         {/* Header */}
         <header className="bg-white border-bottom">
           <div className="container-fluid">

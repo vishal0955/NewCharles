@@ -81,7 +81,7 @@ const ProjectReports = () => {
             icon={<DownloadOutlined />}
             onClick={() => handleView(record)}
           />
-       <Link to={"/project/reportsdetails"}>   <Button
+       <Link to={"/project/ReportsDetails"}>   <Button
             icon={<EyeOutlined />}
             // onClick={() => handleView(record)}
           /></Link>
@@ -197,7 +197,7 @@ const ProjectReports = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6" style={{height:"100vh"}}>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Project Reports</h1>
         <Space>
