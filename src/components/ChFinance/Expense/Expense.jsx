@@ -156,7 +156,6 @@ const ExpenseList = () => {
             <h1 className="text-2xl font-semibold ">
               Expense List
             </h1>
-        
           </div>
           <div className="d-flex gap-2 mt-3 mt-sm-0">
             {/* <Link to={"/expenselist"}>
