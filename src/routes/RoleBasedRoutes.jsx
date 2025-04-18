@@ -182,6 +182,8 @@ import QuickLinks from "../components/Notes/QuickLinks";
 import Utilities from "../components/Notes/Utilities.jsx";
 import UtilitiesPanel from "../components/Notes/Utilitieslist.jsx";
 import FeedbackPage from "../components/AdminHRM/Performance/Manager/FeedbackPage.jsx";
+import InterviewManagementSystem from "../components/Recruitment/AddInterview.jsx";
+import CreateOffer from "../components/Recruitment/CreateOffer.jsx";
 
 const RoleBasedRoutes = () => {
   return (
@@ -333,6 +335,9 @@ const RoleBasedRoutes = () => {
         <Route path="/recruitment/refferals" element={<Refferal />} />
         <Route path="/recruitment/interview" element={<InterviewList />} />
         <Route path="/recruitment/offerletter" element={<OfferLetter />} />
+        <Route path="/recruitment/createoffer" element={<CreateOffer />} />
+
+       
 
         <Route
           path="/recruitment/individualcandidatepage"

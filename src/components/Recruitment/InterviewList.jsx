@@ -1,6 +1,9 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
+import AddInterview from './AddInterview';
+import { useSelector } from 'react-redux';
+
 
 const interviews = [
   {
@@ -177,6 +180,18 @@ const statusBadge = {
 };
 
 const InterviewList = () => {
+  const [showAddInterview, setShowAddInterview] = useState(false);
+
+  const handleShowAddInterview = () => {
+    console.log("Adding new interview...");
+    setShowAddInterview(true);
+  };
+  const handleSaveInterview = () => {
+    
+    setShowAddInterview(false);
+    // In a real application, you would likely save this to a database
+  };
+  const darkMode =useSelector((state) => state.theme.isDarkMode);
   return (
     <div className="container-fluid my-4">
          <div className="d-flex justify-content-between align-items-center mb-3">
@@ -204,7 +219,7 @@ const InterviewList = () => {
                     </li>
                   </ul>
                 </div>
-                <button className="btn inv-new-button">Add Interview</button>
+                <button className="btn inv-new-button"   onClick={handleShowAddInterview}>Add Interview</button>
                 </div>
         </div>
 
@@ -284,6 +299,21 @@ const InterviewList = () => {
           </tbody>
         </table>
       </div>
+      {showAddInterview && (
+    <div className="modal fade show d-block" role="dialog">
+    <div className="modal-dialog modal-md" role="document">
+      <div className={`${darkMode ? "dark-mode" : "border-none" } modal-content`}>
+        <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
+       
+            <AddInterview 
+              onClose={() => setShowAddInterview(false)} 
+              onSave={handleSaveInterview} 
+            />
+            </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

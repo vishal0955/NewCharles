@@ -5,6 +5,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 // import 'bootstrap-icons/font/bootstrap-icons.css';
 import { BsPencilSquare, BsTrash } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 
 const jobs = [
@@ -142,8 +143,9 @@ const OfferLetter = () => {
               <li><a className="dropdown-item" href="#">Export as Excel</a></li>
             </ul>
             </div>
-          <button className="btn inv-new-button">Create Offer</button>
-         
+            <Link to="/recruitment/createoffer">
+          <button className="btn inv-new-button" >Create Offer</button>
+          </Link>
           </div>
         </div>
       </div>

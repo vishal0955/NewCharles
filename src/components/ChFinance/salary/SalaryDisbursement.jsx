@@ -177,6 +177,7 @@ const SalaryDisbursement = () => {
           <h4 className="mb-0 me-2">Salary Disbursement</h4>
         </div>
 
+<div className="d-flex gap-2">
         <div className="dropdown order-sm-1 d-flex gap-1">
           <button
             className="inv-filter-button dropdown-toggle w-100"
@@ -202,10 +203,12 @@ const SalaryDisbursement = () => {
               </a>
             </li>
           </ul>
-          <button className="inv-new-button order-sm-2 w-100" onClick={handleOpenModal}>
+         
+        </div>
+        <button className="btn inv-new-button order-sm-2" onClick={handleOpenModal}>
             + Add Salary
           </button>
-        </div>
+          </div>
       </div>
 
       {/* Metrics Cards */}

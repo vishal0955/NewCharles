@@ -262,7 +262,7 @@ const AddInterview = ({ onClose, onSave }) => {
               <Button variant="outline-secondary" onClick={onClose}>
                 Cancel
               </Button>
-              <Button variant="primary" type="submit">
+              <Button className='btn btn-primary' type="submit">
                 <Save size={16} className="me-1" /> Save Interview
               </Button>
             </div>
@@ -273,75 +273,77 @@ const AddInterview = ({ onClose, onSave }) => {
   );
 };
 
+export default AddInterview;
+
 // Example of the parent component that would use this component
 // This shows how you would integrate the AddInterview component
-const InterviewManagementSystem = () => {
-  const [showAddInterview, setShowAddInterview] = useState(false);
-  const [interviews, setInterviews] = useState([
-    {
-      interviewId: 'INT-001',
-      candidate: 'Harold Gaynor',
-      job: 'Accountant',
-      interviewer: 'Jane Doe',
-      type: 'phone',
-      date: '2024-09-12',
-      time: '10:00',
-      status: 'scheduled',
-      feedback: 'Creative writing skills.',
-      result: 'On Hold'
-    },
-    {
-      interviewId: 'INT-002',
-      candidate: 'Sandra Ornellas',
-      job: 'App Developer',
-      interviewer: 'John Smith',
-      type: 'video',
-      date: '2024-10-24',
-      time: '14:30',
-      status: 'completed',
-      feedback: 'Strong communication skills.',
-      result: 'Pass'
-    }
-  ]);
+// const InterviewManagementSystem = () => {
+//   const [showAddInterview, setShowAddInterview] = useState(false);
+//   const [interviews, setInterviews] = useState([
+//     {
+//       interviewId: 'INT-001',
+//       candidate: 'Harold Gaynor',
+//       job: 'Accountant',
+//       interviewer: 'Jane Doe',
+//       type: 'phone',
+//       date: '2024-09-12',
+//       time: '10:00',
+//       status: 'scheduled',
+//       feedback: 'Creative writing skills.',
+//       result: 'On Hold'
+//     },
+//     {
+//       interviewId: 'INT-002',
+//       candidate: 'Sandra Ornellas',
+//       job: 'App Developer',
+//       interviewer: 'John Smith',
+//       type: 'video',
+//       date: '2024-10-24',
+//       time: '14:30',
+//       status: 'completed',
+//       feedback: 'Strong communication skills.',
+//       result: 'Pass'
+//     }
+//   ]);
 
-  const handleSaveInterview = (newInterview) => {
-    setInterviews([...interviews, newInterview]);
-    setShowAddInterview(false);
-    // In a real application, you would likely save this to a database
-  };
+  // const handleSaveInterview = (newInterview) => {
+  //   setInterviews([...interviews, newInterview]);
+  //   setShowAddInterview(false);
+  //   // In a real application, you would likely save this to a database
+  // };
 
-  return (
-    <Container fluid className="p-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Interview List</h2>
-        <div>
-          <Button variant="outline-secondary" className="me-2">
-            Export <span className="ms-1">▼</span>
-          </Button>
-          <Button 
-            variant="primary" 
-            onClick={() => setShowAddInterview(true)}
-          >
-            Add Interview
-          </Button>
-        </div>
-      </div>
+//   return (
+//     <Container fluid className="p-4">
+//       <div className="d-flex justify-content-between align-items-center mb-4">
+//         <h2>Interview List</h2>
+//         <div>
+//           <Button variant="outline-secondary" className="me-2">
+//             Export <span className="ms-1">▼</span>
+//           </Button>
+//           <Button 
+//             variant="primary" 
+//           
+//           >
+//             Add Interview
+//           </Button>
+//         </div>
+//       </div>
       
-      {/* Interview List Table would go here */}
+//       {/* Interview List Table would go here */}
       
-      {/* Modal for adding new interview */}
-      {showAddInterview && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <AddInterview 
-              onClose={() => setShowAddInterview(false)} 
-              onSave={handleSaveInterview} 
-            />
-          </div>
-        </div>
-      )}
-    </Container>
-  );
-};
+//       {/* Modal for adding new interview */}
+//       {showAddInterview && (
+//         <div className="modal-overlay">
+//           <div className="modal-content">
+//             <AddInterview 
+//               onClose={() => setShowAddInterview(false)} 
+//               onSave={handleSaveInterview} 
+//             />
+//           </div>
+//         </div>
+//       )}
+//     </Container>
+//   );
+// };
 
-export default InterviewManagementSystem;
+// export default InterviewManagementSystem;

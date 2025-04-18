@@ -1,11 +1,9 @@
-import { Search, Pencil, Trash2 } from "lucide-react";
+import { Search } from "lucide-react";
 import {
   FaPlus,
-  FaFileExport,
-  FaCog,
+ 
   FaTrash,
-  FaEdit,
-  FaTimes,
+ 
 } from "react-icons/fa";
 import {
   FaPenToSquare,
