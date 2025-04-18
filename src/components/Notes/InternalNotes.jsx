@@ -2,6 +2,7 @@
 
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const InternalNotes = () => {
   const initialNotes = [
@@ -25,7 +26,7 @@ const InternalNotes = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
 
- 
+  const darkMode = useSelector((state) => state.theme.isDarkMode)
   
   const handleSaveNote = () => {
     if (title.trim() === '' && content.trim() === '') {
@@ -307,7 +308,7 @@ const InternalNotes = () => {
           ) : (
             <div className="space-y-4">
               {notes.map(note => (
-                <div key={note.id} className=" rounded-lg p-4 bg-gray-50 shadow-md">
+                <div key={note.id} className={`${darkMode ? "card-dark": ""} rounded-lg p-4 bg-gray-50 shadow-md`}>
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-lg font-medium">{note.title || 'Untitled'}</h3>
                     <div className="flex space-x-2">
@@ -372,7 +373,7 @@ const InternalNotes = () => {
   };
 
   return (
-    <div className="flex flex-col text-gray-600">
+    <div className="flex flex-col text-gray-600 " style={{height:"100vh"}}>
       {/* Header */}
       <div className="flex items-center p-4 ">
         <button 

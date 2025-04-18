@@ -221,7 +221,7 @@ const EmployeeList = () => {
         </div> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : "bg-white" } shadow rounded-md p-4 flex items-center space-x-4 `}>
             <div className="text-blue-600 text-xl">
               <FaUsers />
             </div>
@@ -230,7 +230,7 @@ const EmployeeList = () => {
               <p className="text-lg font-semibold">1007</p>
             </div>
           </div>
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white shadow rounded-md p-4 flex items-center space-x-4 `}>
             <div className="text-yellow-600 text-xl">
               <FaUserCheck />
             </div>
@@ -239,7 +239,7 @@ const EmployeeList = () => {
               <p className="text-lg font-semibold">800</p>
             </div>
           </div>
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }  shadow rounded-md p-4 flex items-center space-x-4`}>
             <div className="text-red-600 text-xl">
               <FaUserTimes />
             </div>
@@ -248,7 +248,7 @@ const EmployeeList = () => {
               <p className="text-lg font-semibold">150</p>
             </div>
           </div>
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white shadow rounded-md p-4 flex items-center space-x-4`}>
             <div className="text-gray-600 text-xl">
               <FaUserPlus />
             </div>
@@ -282,9 +282,9 @@ const EmployeeList = () => {
                 </button>
               </div>
             </div>
-            <div className="overflow-x-auto w-full">
-              <table className="min-w-full text-sm text-left whitespace-nowrap">
-                <thead>
+            <div className={`${darkMode ? "dark-mode" : "" } overflow-x-auto w-full`}>
+              <table className={`${darkMode ? "dark-mode" : "" } min-w-full text-sm text-left whitespace-nowrap`}>
+                <thead className={`${darkMode ? "dark-mode" : null }`}>
                   <tr className="bg-gray-50 text-left text-sm font-medium text-gray-600">
                     <th className="px-4 py-3">Employee</th>
                     <th className="px-4 py-3">Designation</th>

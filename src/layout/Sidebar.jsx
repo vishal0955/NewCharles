@@ -18,6 +18,9 @@ import {
   File,
   HelpingHandIcon,
   HelpCircle,
+  GaugeCircle,
+  Activity,
+  ActivityIcon,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
@@ -162,6 +165,7 @@ const menuItems = [
   {
     name: "Performance",
     path: "/performance",
+    icon: <ActivityIcon />,
     subItems: [
       {
         name: "Appraisal",

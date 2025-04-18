@@ -10,6 +10,7 @@ import {
   Bell, Calendar, Pencil, Eye, FileDown, Plus, MoreVertical, 
   CheckCircle, XCircle, AlertTriangle, Clock, Archive, Filter
 } from 'lucide-react';
+import { useSelector } from 'react-redux';
 
 const Reminders = () => {
   // State management
@@ -204,9 +205,10 @@ const Reminders = () => {
     const due = new Date(dueDate);
     return due < now;
   };
+  const darkMode = useSelector((state) => state.theme.isDarkMode)
 
   return (
-    <Container fluid className="p-4">
+    <Container fluid className="p-4" style={{height:"100vh"}}>
       {/* Real-time notification toast */}
       {/* <ToastContainer position="top-end" className="p-3">
         <Toast 
@@ -303,10 +305,11 @@ const Reminders = () => {
       </Card>
 
       {/* Reminders Table */}
+
       <Card className="border-0 shadow-sm">
         <Card.Body className="p-0">
-          <Table responsive hover className="mb-0">
-            <thead className="bg-light">
+          <Table responsive hover className={`${darkMode ? "table-dark" : null } mb-0`}>
+            <thead className="">
               <tr>
                 <th>Title</th>
                 <th>Due Date</th>
