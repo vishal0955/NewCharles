@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import AddExpenseModal from "./AddExpenseModal"; // You'll need to create this component
+import { useSelector } from "react-redux";
 
 const ExpenseList = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -143,12 +144,16 @@ const ExpenseList = () => {
   const paidExpenses = expenses.filter(exp => exp.status === "Paid").reduce((sum, exp) => sum + exp.amount, 0);
   const unpaidExpenses = expenses.filter(exp => exp.status === "Unpaid").reduce((sum, exp) => sum + exp.amount, 0);
 
+
+    const darkMode = useSelector((state) => state.theme.isDarkMode);
+    console.log(darkMode);
+  
   return (
-    <div className="bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden">
-      <div className="container rounded-lg p-2 mx-auto">
+    <div className={`${darkMode ? "dark-mode" : null }bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden`}>
+    <div className="container rounded-lg p-2 mx-auto">
         <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800">
+            <h1 className="text-2xl font-semibold ">
               Expense List
             </h1>
             <p className="text-gray-500 text-sm">Finance &gt; Expense List</p>
