@@ -49,10 +49,10 @@ const TaskList = () => {
 
   return (
     <>
-      <h5 className="mb-4">
+      {/* <h2 className="mb-4">
       
-        Showing {priorityFromRoute === 'All' ? 'All Tasks' : `${priorityFromRoute} Priority Tasks`}
-      </h5>
+ {priorityFromRoute === 'All' ? 'All Tasks' : `${priorityFromRoute} Priority Tasks`}
+      </h2> */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="search-container">
           <input
@@ -106,7 +106,7 @@ const TaskList = () => {
                   </div>
                 </td>
                 <td>{task.dueDate}</td>
-                <td className="d-flex gap-2">
+                <td>
                   <button className="action-btn text-info" onClick={() => handleRowClick(task.id)}>
                     <FaEye />
                   </button>

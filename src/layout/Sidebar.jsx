@@ -26,11 +26,14 @@ import { toggleTheme } from "../redux/slices/ThemeSlice";
 
 const menuItems = [
   {
-    name: "Home",
+    name: "Dashboard",
     path: "/admin",
     icon: <House size={16} />,
     subItems: [
       { name: "Dashboard", path: "/admin" },
+      { name: "Analytics", path: "/analytics" },
+      {name: "HR ", path: "/hr/company"},
+      {name: "Sales", path: "/sales/dashboard"},
       // { name: "Calendar", path: "/fullcalendar" },
       // {
       //   name: "Todo",
@@ -120,7 +123,7 @@ const menuItems = [
       { name: "Invoices", path: "/crm/invoices" },
       { name: "Payment", path: "/crm/Payment" },
   
-
+{ name: "Follow Up", path: "/crm/followup" },
       { name: "Analytics", path: "/crm/analytics" },
 
     ],
@@ -202,7 +205,7 @@ const menuItems = [
       { name: "Invoice Tracker", path: "/finance/invoiceslist" },
       { name: "Expense Tracker", path: "/finance/expenselist" },
       { name: "Payout ", path: "/finance/payout" },
-      { name: "Payment", path: "/finance/payment" },
+      // { name: "Payment", path: "/finance/payment" },
       { name: "salary Disbursment", path: "/finance/salarydisbursement" },
  
       // { name: "Salary Disbursment", path: "/finance/salary" },

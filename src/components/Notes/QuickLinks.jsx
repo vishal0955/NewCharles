@@ -20,7 +20,7 @@ const QuickLinks = () => {
   const [currentLink, setCurrentLink] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState('list'); // 'grid' or 'list'
   const [formData, setFormData] = useState({
     title: '',
     url: '',
@@ -228,10 +228,10 @@ const QuickLinks = () => {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div>
           <h2 className="mb-1">
-            <Link size={24} className="me-2 text-primary" />
+            {/* <Link size={24} className="me-2 text-primary" /> */}
             Quick Links
           </h2>
-          <p className="text-muted">Access your frequently used resources in one place</p>
+         
         </div>
         <div className="d-flex gap-2">
           <DropdownButton 
@@ -247,7 +247,7 @@ const QuickLinks = () => {
             </Dropdown.Item>
           </DropdownButton>
           <Button variant="primary" onClick={() => setShowAddModal(true)}>
-            <Plus size={16} className="me-1" /> Add Link
+            + Add Link
           </Button>
         </div>
       </div>
@@ -287,7 +287,7 @@ const QuickLinks = () => {
                 </Form.Select>
               </InputGroup>
             </Col>
-            <Col lg={4} className="d-flex justify-content-lg-end">
+            {/* <Col lg={4} className="d-flex justify-content-lg-end">
               <div className="btn-group">
                 <Button 
                   variant={viewMode === 'grid' ? 'primary' : 'outline-primary'}
@@ -302,7 +302,7 @@ const QuickLinks = () => {
                   <List size={18} />
                 </Button>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Card.Body>
       </Card>
@@ -604,7 +604,7 @@ const QuickLinks = () => {
             </Form.Group>
 
             <Row>
-              <Col md={6}>
+              <Col md={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Category</Form.Label>
                   <Form.Select
@@ -621,30 +621,10 @@ const QuickLinks = () => {
                   </Form.Select>
                 </Form.Group>
               </Col>
-              <Col md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Color Label</Form.Label>
-                  <Form.Control
-                    type="color"
-                    name="color"
-                    value={formData.color}
-                    onChange={handleInputChange}
-                    title="Choose a color for the link"
-                    className="w-100"
-                  />
-                </Form.Group>
-              </Col>
+              
             </Row>
 
-            <Form.Group className="mb-3">
-              <Form.Check
-                type="checkbox"
-                label="Mark as favorite"
-                name="favorite"
-                checked={formData.favorite}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
+            
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -652,7 +632,7 @@ const QuickLinks = () => {
             Cancel
           </Button>
           <Button variant="primary" onClick={handleAddLink}>
-            <Plus size={16} className="me-1" /> Add Link
+         Add
           </Button>
         </Modal.Footer>
       </Modal>

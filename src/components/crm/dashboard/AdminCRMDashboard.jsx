@@ -138,7 +138,7 @@ const AdminCRMDashboard = () => {
 
   return (
     <div className="container-fluid  p-3 p-md-4">
-      <h1 className="mb-3">CRM Dashboard</h1>
+      <h1 className="mb-3">Sales Overview</h1>
       
       {/* Stats Section - Responsive Grid */}
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-4">

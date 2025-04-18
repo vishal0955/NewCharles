@@ -124,6 +124,7 @@ const AdminDashboard = () => {
               icon: "fas fa-users",
               bg: "bg-indigo-100",
               textColor: "text-indigo-600",
+              path: "/hr/company",
             },
             {
               title: "Active Projects",
@@ -131,6 +132,7 @@ const AdminDashboard = () => {
               icon: "fas fa-project-diagram",
               bg: "bg-green-100",
               textColor: "text-green-600",
+              path: "/project",
             },
             {
               title: "Monthly Payroll",
@@ -138,6 +140,8 @@ const AdminDashboard = () => {
               icon: "fas fa-dollar-sign",
               bg: "bg-yellow-100",
               textColor: "text-yellow-600",
+              path: "/finance/salarydisbursement",
+
             },
             {
               title: "Attendance Rate",
@@ -145,6 +149,7 @@ const AdminDashboard = () => {
               icon: "fas fa-clock",
               bg: "bg-red-100",
               textColor: "text-red-600",
+              path: "/hr/company",
             },
             {
               title: "Open Positions",
@@ -152,6 +157,7 @@ const AdminDashboard = () => {
               icon: "fas fa-file-invoice",
               bg: "bg-purple-100",
               textColor: "text-purple-600",
+              path: "/hr/company",
             },
           ].map((item, index) => (
             <div key={index} className={`${darkMode ? "card-dark text-[#E0E0E0]" : "bg-white" } rounded-lg shadow p-6`}>

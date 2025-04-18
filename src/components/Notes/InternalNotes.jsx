@@ -157,7 +157,7 @@ const InternalNotes = () => {
         
         {/* Options Panel */}
         {showOptions && (
-          <div className="relative bottom-16 left-4 bg-gray-100  text-black rounded-lg p-4 w-48 z-300">
+          <div className="relative bottom-2 left-4 bg-gray-100  text-black rounded-lg p-4 w-48 z-300">
             <div className="mb-2">
               <select
                 
@@ -292,7 +292,7 @@ const InternalNotes = () => {
     return (
       <>
         <div className="flex-grow p-4 min-h-screen overflow-y-auto">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-3">
             <h1 className="text-xl font-bold">My Notes</h1>
             <button
               onClick={handleNewNote}
@@ -307,7 +307,7 @@ const InternalNotes = () => {
           ) : (
             <div className="space-y-4">
               {notes.map(note => (
-                <div key={note.id} className=" rounded-lg p-4">
+                <div key={note.id} className=" rounded-lg p-4 bg-gray-50 shadow-md">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-lg font-medium">{note.title || 'Untitled'}</h3>
                     <div className="flex space-x-2">
@@ -372,7 +372,7 @@ const InternalNotes = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen  text-gray-600">
+    <div className="flex flex-col text-gray-600">
       {/* Header */}
       <div className="flex items-center p-4 ">
         <button 

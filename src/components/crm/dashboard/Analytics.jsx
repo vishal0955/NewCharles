@@ -17,7 +17,7 @@ const Analytics = () => {
 
   return (
     <div className= "p-6  min-h-screen">
-      <h2 className="text-xl font-semibold mb-4">Sales</h2>
+      <h2 className="text-xl font-semibold mb-4">Analytics</h2>
 
       <div className=" grid md:grid-cols-2 gap-6">
         {/* Forecast Won This Month */}

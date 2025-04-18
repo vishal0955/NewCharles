@@ -29,35 +29,10 @@ const Task = () => {
         {/* Header */}
         <div className="d-flex justify-content-between align-items-center mb-4">
           
-          <h4 className="mb-0"></h4>
+          <h2 className="mb-0 font-bold size-{21px}"> Task</h2>
           <div className="add-toggle d-flex">
             {/* View Toggle */}
-            <div className="d-flex align-items-center gap-3 mb-4">
-              <div className="view-toggle">
-                {/* Grid/List View Buttons */}
-                <div className="mr-2 flex border border-gray-300 rounded">
-                  {/* <button
-                    className={`p-2 ${view === 'list' ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
-                    onClick={() => toggleView("list")}
-                  >
-                    <List size={18} />
-                  </button> */}
-                  {/* <button
-                    className={`p-2 ${view === 'grid' ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
-                    onClick={() => toggleView("grid")}
-                  >
-                    <Grid size={18} />
-                  </button> */}
-                </div>
-                {/* Task Board Button */}
-                {/* <button
-                  className={`p-2 ${view === "taskbord" ? "bg-black text-white" : "bg-white text-gray-700"}`}
-                  onClick={() => toggleView("taskbord")}
-                >
-                  Task Board
-                </button> */}
-              </div>
-            </div>
+          
             {/* New Task Button */}
             <button
               className="btn new-task-btn me-3"

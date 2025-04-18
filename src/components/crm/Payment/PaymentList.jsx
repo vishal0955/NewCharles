@@ -211,7 +211,7 @@ const PaymentList = () => {
           <div className="inv-main-card">
             <div className={`${darkMode ? "dark-mode" : null} border inv-card-header`}>
               <div className="d-flex justify-content-between align-items-center">
-                <h5 className="mb-0">Payment List</h5>
+           
               </div>
 
               {/* Search and Filter - Improved responsive layout */}

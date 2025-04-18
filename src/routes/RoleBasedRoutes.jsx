@@ -180,6 +180,8 @@ import AppraisalPage from "../components/AdminHRM/Performance/AppraisalPage";
 import Reminders from "../components/Notes/Reminders";
 import QuickLinks from "../components/Notes/QuickLinks";
 import Utilities from "../components/Notes/Utilities.jsx";
+import UtilitiesPanel from "../components/Notes/Utilitieslist.jsx";
+import FeedbackPage from "../components/AdminHRM/Performance/Manager/FeedbackPage.jsx";
 
 const RoleBasedRoutes = () => {
   return (
@@ -209,6 +211,12 @@ const RoleBasedRoutes = () => {
           }
         />
 
+        {/* New Dashboard Routes */}
+        <Route  path="/analytics" element={<Analytics />} />
+        <Route path="/hr/dashboard" element={<HRAnalyticsDashboard />} />
+
+        <Route path="/sales/dashboard" element={<AdminCRMDashboard />} />
+
         {/* calendar */}
 
         <Route path="/homecalendar" element={<FunctionalCalendar />} />
@@ -219,17 +227,18 @@ const RoleBasedRoutes = () => {
 
         {/*  New Notes  */}
         <Route path="/notes/personalnotes" element={<InternalNotes />} />
-        <Route path="/notes/sharednotes" element={<NotesGrid />} />
+        <Route path="/notes/sharednotes" element={<SharedNotesPage />} />
 
         {/* Notes Route  */}
         <Route path="/notesgrid" element={<NotesGrid />} />
         <Route path="/noteslist" element={<NotesList />} />
         <Route path="/internalnotes" element={<NoteApp />} />
 
-        <Route path="/sharednotes" element={<SharedNotesPage />} />
+        {/* <Route path="/sharednotes" element={<SharedNotesPage />} /> */}
         <Route path="/notes/reminders" element={<Reminders />} />
         <Route path="/notes/quicklinks" element={<QuickLinks />} />
-        <Route path="/notes/utitlities" element={<Utilities />} />
+        {/* <Route path="/notes/utitlities" element={<Utilities />} /> */}
+        {/* <Route path="/notes/utitlities" element={<UtilitiesPanel />} /> */}
 
         <Route path="/todoapp" element={<TodoApp />} />
         <Route path="/tododetails" element={<TodoDetail />} />
@@ -314,6 +323,8 @@ const RoleBasedRoutes = () => {
 
         {/* <Route path="/crm/dashboard" element={<CRMDashboard />} /> */}
         <Route path="/crm/dashboard" element={<AdminCRMDashboard />} />
+
+        
 
         {/* crm-section */}
         {/* recruitment */}
@@ -515,16 +526,15 @@ const RoleBasedRoutes = () => {
         {/* New Performance Route */}
 
         <Route path="/performance/managerfeedback" element={<ManagerFeedback />} />
+        <Route path="/feedbackdetails" element={<FeedbackPage />} />
         <Route path="/performance/reviewsummary" element={<ReviewSummary />} />
-
-
-        {
+        
           <Route
             path="/performance/appraisalpage"
             element={<AppraisalPage />}
           />
-        }
-        {<Route path="/performance/kpitable" element={<KPITable />} />}
+        
+        <Route path="/performance/kpitable" element={<KPITable />} />
         {
           <Route
             path="/performance/selfassessment"

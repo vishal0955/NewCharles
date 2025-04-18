@@ -25,7 +25,7 @@ const Layout = () => {
         //     </div>
         // </div>
         <>
-        <div className="main-content-nav">
+        <div className={` ${darkMode ? "dark-mode" : null } main-content-nav`}>
         <Navbar toggleSidebar={toggleSidebar} className="" />
             <div className="flex">
             <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>

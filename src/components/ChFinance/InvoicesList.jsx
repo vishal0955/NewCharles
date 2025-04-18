@@ -1,5 +1,19 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { 
+  FaPlus, 
+  FaFilter, 
+  FaDownload, 
+  FaPen, 
+  FaTrash, 
+  FaRegEye,
+  FaMoneyBill,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaCalendarAlt,
+  FaBars,
+  FaTh
+} from "react-icons/fa";
 
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -50,16 +64,16 @@ const navigate = useNavigate();
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h3 className="fw-bold mb-0">Invoices</h3>
         <div className="d-flex flex-wrap gap-2">
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <button className="btn btn-white border border-dark px-4 py-2" type="button" data-bs-toggle="dropdown">
               Recurring Invoice <i className="bi ms-2"></i>
             </button>
-          </div>
-          <div className="dropdown">
+          </div> */}
+          {/* <div className="dropdown">
             <button className="btn btn-white border border-dark px-4 py-2" type="button" data-bs-toggle="dropdown">
               Create TimeLog Invoice <i className="bi ms-2"></i>
             </button>
-          </div>
+          </div> */}
           <div className="d-flex gap-2">
             <Link to="/finance/invoiceform" >
             <button className="btn btn-outline-secondary" >Create Invoice</button>
@@ -76,6 +90,63 @@ const navigate = useNavigate();
           </div>
         </div>
       </div>
+
+      <div className="row g-3 mb-4">
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className="card shadow-sm h-100">
+              <div className="card-body d-flex align-items-center">
+                <div className="text-primary fs-4 me-3">
+                  <FaMoneyBill />
+                </div>
+                <div>
+                  <div className="text-muted small">Total Invoices</div>
+                  <p className="fs-5 fw-semibold mb-0">23</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className="card shadow-sm h-100">
+              <div className="card-body d-flex align-items-center">
+                <div className="text-success fs-4 me-3">
+                <FaCalendarAlt />
+                </div>
+                <div>
+                  <div className="text-muted small">Pending</div>
+                  <p className="fs-5 fw-semibold mb-0">10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className="card shadow-sm h-100">
+              <div className="card-body d-flex align-items-center">
+                <div className="text-danger fs-4 me-3">
+                 
+                  <FaCheckCircle />
+                </div>
+                <div>
+                  <div className="text-muted small">Accepted</div>
+                  <p className="fs-5 fw-semibold mb-0">6</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className="card shadow-sm h-100">
+              <div className="card-body d-flex align-items-center">
+                <div className="text-warning fs-4 me-3">
+                 
+                  <FaTimesCircle />
+                </div>
+                <div>
+                  <div className="text-muted small">Rejected</div>
+                  <p className="fs-5 fw-semibold mb-0">2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       <div className="table-responsive">
         <table className="table table-hover align-middle border-0">
