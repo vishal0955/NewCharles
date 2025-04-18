@@ -199,8 +199,8 @@ const PayoutSettings = () => {
         <div className="align-items-center">
           <h4 className="mb-0 me-2">Payout Settings</h4>
         </div>
-
-        <div className="dropdown order-sm-1 d-flex gap-1">
+<div className="d-flex flex-wrap gap-2">  
+        <div className="dropdown ">
           <button
             className="inv-filter-button dropdown-toggle w-100"
             type="button"
@@ -225,14 +225,17 @@ const PayoutSettings = () => {
               </a>
             </li>
           </ul>
-          <button
-            className="btn btn-primary rounded-3 px-3 px-sm-4 "
+   
+        </div>
+        <button
+            className="btn inv-new-button"
             onClick={handleOpenModal}
           >
             + Add Payout
           </button>
         </div>
       </div>
+
 
       {/* Metrics Cards */}
       <div className="row g-3 mb-4">
@@ -595,7 +598,7 @@ const PayoutSettings = () => {
                   <h5 className="modal-title">Add New Payout</h5>
                   <button
                     type="button"
-                    className="btn-close"
+                    className={`${darkMode ? "btn-close-white" : ""}  btn-close`}
                     aria-label="Close"
                     onClick={handleCloseModal}
                   />

@@ -1,248 +1,4 @@
-// import React from 'react';
 
-// const offers = [
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-002',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     salary: '$85,000',
-//     offerDate: '24 Oct 2024',
-//     validUntil: '24 Nov 2024',
-//     status: 'Draft',
-//     documentLink: '#',
-//     createdBy: 'Recruiter A'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   },
-//   {
-//     id: 'Offer-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     salary: '$60,000',
-//     offerDate: '12 Sep 2024',
-//     validUntil: '12 Oct 2024',
-//     status: 'Sent',
-//     documentLink: '#',
-//     createdBy: 'Admin'
-//   }
-
-// ];
-
-// const statusClass = {
-//   Draft: 'badge bg-secondary',
-//   Sent: 'badge bg-info',
-//   Accepted: 'badge bg-success',
-//   Rejected: 'badge bg-danger'
-// };
-
-// export const OfferLetter = () => {
-//   return (
-//     <div className="container mt-4 ">
-//       <div className="d-flex justify-content-between align-items-center mb-3">
-//         <h4 className="mb-0">Offer Letters</h4>
-//         <div>
-//           <button className="btn btn-primary me-2">Create Offer</button>
-//           <button className="btn btn-outline-secondary me-2">Export</button>
-//           <button className="btn btn-outline-info">Notifications</button>
-//         </div>
-//       </div>
-
-//       <div className="table-responsive">
-//         <table className="table table-bordered table-hover align-middle text-center w-100">
-//           <thead className="table-light">
-//             <tr>
-//               <th scope="col">Offer ID</th>
-//               <th scope="col">Candidate</th>
-//               <th scope="col">Job Title</th>
-//               <th scope="col">Salary Offered</th>
-//               <th scope="col">Offer Date</th>
-//               <th scope="col">Valid Until</th>
-//               <th scope="col">Status</th>
-//               <th scope="col">Document</th>
-//               <th scope="col">Created By</th>
-//               <th scope="col">Actions</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {offers.map((offer, idx) => (
-//               <tr key={idx}>
-//                 <td>{offer.id}</td>
-//                 <td>{offer.candidate}</td>
-//                 <td>{offer.job}</td>
-//                 <td>{offer.salary}</td>
-//                 <td>{offer.offerDate}</td>
-//                 <td>{offer.validUntil}</td>
-//                 <td>
-//                   <span className={statusClass[offer.status]}>{offer.status}</span>
-//                 </td>
-//                 <td>
-//                   <a href={offer.documentLink} target="_blank" rel="noreferrer">
-//                     <i className="bi bi-file-earmark-pdf"></i>
-//                   </a>
-//                 </td>
-//                 <td>{offer.createdBy}</td>
-//                 <td>
-//                   <div className="d-flex justify-content-center">
-//                     <button className="btn btn-sm btn-outline-primary me-2">
-//                       <i className="bi bi-pencil"></i>
-//                     </button>
-//                     <button className="btn btn-sm btn-outline-danger">
-//                       <i className="bi bi-trash"></i>
-//                     </button>
-//                   </div>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default OfferLetter;
 
 
 import React from 'react';
@@ -367,41 +123,9 @@ const OfferLetter = () => {
         <h3 className="fw-bold mb-0">Offer Letter</h3>
         <div className="d-flex flex-wrap gap-2">
           {/* Status Dropdown */}
-          <div className="dropdown">
-            <button
-               className="btn btn-white border border-dark  px-4 py-2"
-              type="button"
-              data-bs-toggle="dropdown"
-            >
-              Status <i className="bi bi-chevron-down ms-2"></i>
-            </button>
-            <ul className="dropdown-menu">
-              <li><button className="dropdown-item">Accepted</button></li>
-              <li><button className="dropdown-item">Pending</button></li>
-              <li><button className="dropdown-item">Rejected</button></li>
-            </ul>
-          </div>
-
-          {/* Role Dropdown */}
-          <div className="dropdown">
-            <button
-              className="btn btn-white border border-dark px-4 py-2"
-              type="button"
-              data-bs-toggle="dropdown"
-            >
-              Role <i className="bi bi-chevron-down ms-2"></i>
-            </button>
-            <ul className="dropdown-menu">
-              <li><button className="dropdown-item">Software Engineer</button></li>
-              <li><button className="dropdown-item">Designer</button></li>
-              <li><button className="dropdown-item">Manager</button></li>
-              <li><button className="dropdown-item">QA</button></li>
-
-            </ul>
-          </div>
+          
         <div className="d-flex gap-2">
-          <button className="btn btn-outline-secondary">Create Offer</button>
-          <div className="dropdown">
+        <div className="dropdown">
     <div className="d-flex gap-3">
     </div>
             <button
@@ -418,9 +142,41 @@ const OfferLetter = () => {
               <li><a className="dropdown-item" href="#">Export as Excel</a></li>
             </ul>
             </div>
+          <button className="btn inv-new-button">Create Offer</button>
+         
           </div>
         </div>
       </div>
+
+      <div className="d-flex justify-content-between align-items-center my-3 flex-wrap">
+          <div className="mb-2">
+           <input type="text" className="form-control d-inline-block w-auto me-2" placeholder="Search by name" />
+         
+          </div>
+          <div className="mb-2">
+           
+            <select className="form-select d-inline-block w-auto me-2">
+              <option>Role</option>
+              <option>Accountant</option>
+              <option>App Developer</option>
+              <option>Technician</option>
+              <option>Web Developer</option>
+            </select>
+            <select className="form-select d-inline-block w-auto me-2">
+              <option>Select Status</option>
+          
+              <option>Accepted</option>
+              <option>Pending</option>
+              <option>Hired</option>
+             
+            </select>
+            <select className="form-select d-inline-block w-auto">
+              <option>Sort By: Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>Last 60 Days</option>
+            </select>
+          </div>
+        </div>
 
       {/* Table */}
       <div className="table-responsive">

@@ -11,11 +11,9 @@ const contacts = Array(10).fill({
 });
 
 const FollowUp = () => {
-  const darkMode =useSelector((state)=>state.theme.isDarkMode)
-  console.log(darkMode);
-  
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
-    <div className={`${darkMode ? "dark-mode" : null } container-fluid p-4 bg-light`} style={{ minHeight: '100vh' }}>
+    <div className={`${darkMode ? "dark-mode" : null } container-fluid p-4 bg-light`} style={{ minHeight: '100vh' }}>
       {/* Header Cards */}
       <div className="row mb-4">
         <div className="col-md-3 mb-2">
@@ -91,7 +89,7 @@ const FollowUp = () => {
 
       {/* Table */}
       <div className="table-responsive">
-        <table className="table table-bordered table-hover bg-white">
+        <table className={`${darkMode ? "table-dark" : null } table table-bordered table-hover bg-white`}>
           <thead className="table-light">
             <tr>
               <th scope="col"><input type="checkbox" /></th>

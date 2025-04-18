@@ -1,242 +1,4 @@
-// import React from 'react';
 
-// const interviews = [
-//   {
-//     id: 'INT-001',
-//     candidate: 'Harold Gaynor',
-//     job: 'Accountant',
-//     interviewer: 'Jane Doe',
-//     type: 'Phone',
-//     date: '2024-09-12 10:00 AM',
-//     status: 'Scheduled',
-//     feedback: 'Strong communication skills.',
-//     result: 'On Hold'
-//   },
-//   {
-//     id: 'INT-002',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-003',
-//     candidate: 'John Harris',
-//     job: 'Technician',
-//     interviewer: 'Mark Lee',
-//     type: 'In-person',
-//     date: '2024-02-18 09:00 AM',
-//     status: 'Cancelled',
-//     feedback: 'Strong communication skills.',
-//     result: 'Fail'
-//   },
-//   {
-//     id: 'INT-004',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-005',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-006',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-007',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-008',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-009',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-010',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-011',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-012',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-013',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-014',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-//   {
-//     id: 'INT-015',
-//     candidate: 'Sandra Ornellas',
-//     job: 'App Developer',
-//     interviewer: 'John Smith',
-//     type: 'Video',
-//     date: '2024-10-24 02:30 PM',
-//     status: 'Completed',
-//     feedback: 'Strong communication skills.',
-//     result: 'Pass'
-//   },
-  
-// ];
-
-// const statusBadge = {
-//   'Scheduled': 'badge bg-info',
-//   'Completed': 'badge bg-success',
-//   'Cancelled': 'badge bg-danger'
-// };
-
-// const InterviewList = () => {
-//   return (
-//     <div>
-//       <div className="container mt-4" style={{ maxWidth: '1200px', width: '100%' }}>
-//         <div className="d-flex justify-content-between align-items-center mb-3">
-//           <h4 className="text-center">Interview List</h4>
-//           <div>
-//             <button className="btn btn-primary me-2">Add Interview</button>
-//             <button className="btn btn-outline-secondary me-2">Export</button>
-//             <button className="btn btn-outline-info">Notifications</button>
-//           </div>
-//         </div>
-
-//         <div className="table-responsive">
-//           <table className="table table-bordered table-hover align-middle text-center w-100">
-//             <thead className="table-light">
-//               <tr>
-//                 <th>Interview ID</th>
-//                 <th>Candidate</th>
-//                 <th>Job</th>
-//                 <th>Interviewer</th>
-//                 <th>Type</th>
-//                 <th>Date & Time</th>
-//                 <th>Status</th>
-//                 <th>Feedback</th>
-//                 <th>Result</th>
-//                 <th>Actions</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {interviews.map((i, idx) => (
-//                 <tr key={idx}>
-//                   <td>{i.id}</td>
-//                   <td>{i.candidate}</td>
-//                   <td>{i.job}</td>
-//                   <td>{i.interviewer}</td>
-//                   <td>{i.type}</td>
-//                   <td>{i.date}</td>
-//                   <td><span className={statusBadge[i.status]}>{i.status}</span></td>
-//                   <td>{i.feedback || '-'}</td>
-//                   <td>{i.result}</td>
-//                   <td>
-//                     <div className="d-flex justify-content-center">
-//                       <button className="btn btn-sm btn-outline-primary me-2">
-//                         <i className="bi bi-pencil"></i>
-//                       </button>
-//                       <button className="btn btn-sm btn-outline-danger">
-//                         <i className="bi bi-trash"></i>
-//                       </button>
-//                     </div>
-//                   </td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default InterviewList;
 
 import React from 'react';
 
@@ -417,57 +179,65 @@ const statusBadge = {
 const InterviewList = () => {
   return (
     <div className="container-fluid my-4">
-      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-        <h2 className="fw-bold">Interview List</h2>
-
-        <div className="d-flex flex-wrap gap-2">
-          {/* Status Dropdown */}
+         <div className="d-flex justify-content-between align-items-center mb-3">
+         <h2 className="fw-bold">Interview List</h2>
+        <div className="d-flex gap-2">
           <div className="dropdown">
-            <button
-              className="btn btn-white border border-dark  px-4 py-2"
-              type="button"
-              data-bs-toggle="dropdown"
-            >
-              Interview Status <i className="bi bi-chevron-down ms-2"></i>
-            </button>
-            <ul className="dropdown-menu">
-              <li><button className="dropdown-item">Completed</button></li>
-              <li><button className="dropdown-item">Pending</button></li>
-              <li><button className="dropdown-item">No Interview yet</button></li>
-            </ul>
+                  <button
+                    className="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                  >
+                    <i className="fas fa-file-export me-2"></i>Export
+                  </button>
+                  <ul className="dropdown-menu">
+                
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Export as PDF
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Export as Excel
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <button className="btn inv-new-button">Add Interview</button>
+                </div>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center my-3 flex-wrap">
+          <div className="mb-2">
+           <input type="text" className="form-control d-inline-block w-auto me-2" placeholder="Search by name" />
+         
           </div>
-
-          {/* Role Dropdown */}
-          <div className="dropdown">
-            <button
-              className="btn btn-white border border-dark px-4 py-2"
-              type="button"
-              data-bs-toggle="dropdown"
-            >
-              Role <i className="bi bi-chevron-down ms-2"></i>
-            </button>
-            <ul className="dropdown-menu">
-              <li><button className="dropdown-item">Student</button></li>
-              <li><button className="dropdown-item">Employe</button></li>
-              <li><button className="dropdown-item">Other</button></li>
-            </ul>
-          </div>
-
-          {/* Add Interview Button */}
-          <button className="btn border-dark">Add Interview</button>
-
-          {/* Export Dropdown */}
-          <div className="dropdown">
-            <button className="btn btn-outline-secondary dropdown-toggle border border-dark" data-bs-toggle="dropdown">
-              Export
-            </button>
-            <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="#">Export as PDF</a></li>
-              <li><a className="dropdown-item" href="#">Export as Excel</a></li>
-            </ul>
+          <div className="mb-2">
+           
+            <select className="form-select d-inline-block w-auto me-2">
+              <option>Role</option>
+              <option>Accountant</option>
+              <option>App Developer</option>
+              <option>Technician</option>
+              <option>Web Developer</option>
+            </select>
+            <select className="form-select d-inline-block w-auto me-2">
+              <option>Select Status</option>
+          
+              <option>Scheduled</option>
+              <option>Cancelled</option>
+              <option>Completed</option>
+            
+            </select>
+            <select className="form-select d-inline-block w-auto">
+              <option>Sort By: Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>Last 60 Days</option>
+            </select>
           </div>
         </div>
-      </div>
+    
 
       <div className="table-responsive">
         <table className="table table-hover align-middle text-start w-100">

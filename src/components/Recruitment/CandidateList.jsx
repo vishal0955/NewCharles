@@ -29,26 +29,62 @@ const CandidateList = () => {
   return (
     <div>
       <div className="container mt-4 " >
-        <h4 className="text-center">Candidates List</h4>
+
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3 className="font-bold">Candidates</h3>
+       
+          <div className="dropdown">
+                  <button
+                    className="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                  >
+                    <i className="fas fa-file-export me-2"></i>Export
+                  </button>
+                  <ul className="dropdown-menu">
+                
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Export as PDF
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Export as Excel
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+        </div>
+
+        
+
         <div className="d-flex justify-content-between align-items-center my-3 flex-wrap">
           <div className="mb-2">
-            <label className="me-2">Row Per Page</label>
-            <select className="form-select d-inline-block w-auto">
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
-            </select>
+           <input type="text" className="form-control d-inline-block w-auto me-2" placeholder="Search by name" />
+         
           </div>
           <div className="mb-2">
-            <input type="date" className="form-control d-inline-block w-auto me-2" />
+           
             <select className="form-select d-inline-block w-auto me-2">
               <option>Role</option>
+              <option>Accountant</option>
+              <option>App Developer</option>
+              <option>Technician</option>
+              <option>Web Developer</option>
             </select>
             <select className="form-select d-inline-block w-auto me-2">
               <option>Select Status</option>
+          
+              <option>Scheduled</option>
+              <option>Interviewed</option>
+              <option>Offered</option>
+              <option>Hired</option>
             </select>
             <select className="form-select d-inline-block w-auto">
               <option>Sort By: Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>Last 60 Days</option>
             </select>
           </div>
         </div>

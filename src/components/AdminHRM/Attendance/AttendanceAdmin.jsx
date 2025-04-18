@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const AttendanceAdmin = () => {
   // Sample data for the dashboard
@@ -29,9 +30,10 @@ const AttendanceAdmin = () => {
   const [status] = useState("Select Status");
   const [sortBy] = useState("Last 7 Days");
   const [rowsPerPage] = useState(10);
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className="bg-gray-50 min-h-screen p-4">
+    <div className={`${darkMode ? "dark-mode" : null } bg-gray-50 min-h-screen p-4`}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div className="flex items-center gap-2 mb-4 md:mb-0">

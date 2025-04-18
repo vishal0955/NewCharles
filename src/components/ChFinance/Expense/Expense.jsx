@@ -156,7 +156,7 @@ const ExpenseList = () => {
             <h1 className="text-2xl font-semibold ">
               Expense List
             </h1>
-            <p className="text-gray-500 text-sm">Finance &gt; Expense List</p>
+        
           </div>
           <div className="d-flex gap-2 mt-3 mt-sm-0">
             {/* <Link to={"/expenselist"}>
@@ -192,6 +192,15 @@ const ExpenseList = () => {
             >
               <FaPlus className="me-2" /> Add Expense
             </button>
+            <div className="dropdown">
+              <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Export
+              </button>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" href="#">Export as PDF</a></li>
+                <li><a className="dropdown-item" href="#">Export as Excel</a></li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -269,12 +278,16 @@ const ExpenseList = () => {
                 </div>
               </div>
               <div className="col-md-6 d-flex justify-content-md-end gap-2 flex-wrap">
-                <button className="btn btn-outline-secondary d-flex align-items-center">
-                  <FaFilter className="me-2" /> Filter
-                </button>
-                <button className="btn btn-outline-secondary d-flex align-items-center">
-                  <FaDownload className="me-2" /> Export
-                </button>
+              <div className="dropdown">
+              <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Status
+              </button>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" href="#">Unpaid</a></li>
+                <li><a className="dropdown-item" href="#">Paid</a></li>
+              </ul>
+            </div>
+                
               </div>
             </div>
 

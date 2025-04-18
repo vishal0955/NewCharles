@@ -75,10 +75,7 @@ const navigate = useNavigate();
             </button>
           </div> */}
           <div className="d-flex gap-2">
-            <Link to="/finance/invoiceform" >
-            <button className="btn btn-outline-secondary" >Create Invoice</button>
-            </Link>
-            <div className="dropdown">
+          <div className="dropdown">
               <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 Export
               </button>
@@ -87,6 +84,10 @@ const navigate = useNavigate();
                 <li><a className="dropdown-item" href="#">Export as Excel</a></li>
               </ul>
             </div>
+            <Link to="/finance/invoiceform" >
+            <button className="btn inv-new-button" >Create Invoice</button>
+            </Link>
+           
           </div>
         </div>
       </div>

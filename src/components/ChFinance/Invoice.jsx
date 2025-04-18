@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Invoice() {
+  const navigate = useNavigate();
   // Dummy data to replace what's in the image
   const invoiceData = {
     company: {
@@ -39,7 +41,12 @@ export default function Invoice() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-2">
+      <div className="">
+        <button className="btn btn-outline-secondary" type="button" onClick={() =>  navigate("/finance/invoiceslist")}>
+          <i className="bi bi-arrow-left" aria-hidden="true"></i> Back
+        </button>
+      </div>
       <div className="card border-0 shadow">
         <div className="card-body">
           <div className="row mb-4">
