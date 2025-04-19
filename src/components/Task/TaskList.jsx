@@ -1,8 +1,11 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaPenToSquare, FaTrash, FaEye } from 'react-icons/fa6';
+import { useSelector } from 'react-redux';
 
 const TaskList = () => {
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,21 +57,21 @@ const TaskList = () => {
  {priorityFromRoute === 'All' ? 'All Tasks' : `${priorityFromRoute} Priority Tasks`}
       </h2> */}
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <div className="search-container">
+        <div className={`${darkMode ? "dark-mode" : "" } search-container `}>
           <input
             type="text"
-            className="search-box"
+            className = {`${darkMode ? "dark-mode" : "" } search-box `}
             placeholder="Search tasks..."
           />
         </div>
         <div className="d-flex gap-2">
-          <select className="form-select filter-select">
+          <select className={`${darkMode ? "dark-mode" : "" } form-select filter-select `}>
             <option>All Status</option>
             <option>In Progress</option>
             <option>Completed</option>
             <option>Pending</option>
           </select>
-          <select className="form-select filter-select">
+          <select className={`${darkMode ? "dark-mode" : "" } form-select filter-select `}>
             <option>All Priority</option>
             <option>High</option>
             <option>Medium</option>
@@ -78,7 +81,7 @@ const TaskList = () => {
       </div>
 
       <div className="table-responsive">
-        <table className="table align-middle">
+        <table className={`${darkMode ? "table-dark border border-1" : "bg-gray-50" } table align-middle`}>
           <thead>
             <tr>
               <th><input type="checkbox" className="form-check-input" /></th>

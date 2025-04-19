@@ -7,8 +7,10 @@ import {
   Link, BookOpen, Star, Folder, ExternalLink, Plus, Edit2, Trash2, 
   Search, Tag, Grid, List, FileDown, Copy, Eye, X, Check, Share2
 } from 'lucide-react';
+import { useSelector } from 'react-redux';
 
 const QuickLinks = () => {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   // State management
   const [links, setLinks] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -253,15 +255,16 @@ const QuickLinks = () => {
       </div>
 
       {/* Filters and Search */}
-      <Card className="mb-4 border-0 shadow-sm">
+      <Card className={`${darkMode ? "dark-mode" : "" } mb-4 border shadow-sm `}>
         <Card.Body>
           <Row className="g-3">
             <Col lg={4} md={6}>
               <InputGroup>
-                <InputGroup.Text className="bg-white">
+                <InputGroup.Text className="">
                   <Search size={18} />
                 </InputGroup.Text>
                 <Form.Control
+                className={`${darkMode ? "card-dark" : "" }`}
                   type="text"
                   placeholder="Search quick links..."
                   value={searchQuery}
@@ -271,12 +274,13 @@ const QuickLinks = () => {
             </Col>
             <Col lg={4} md={6}>
               <InputGroup>
-                <InputGroup.Text className="bg-white">
+                <InputGroup.Text className={`${darkMode ? "card-dark" : "" }`}>
                   <Tag size={18} />
                 </InputGroup.Text>
                 <Form.Select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
+                  className={`${darkMode ? "card-dark" : "" }`}
                 >
                   <option value="all">All Categories</option>
                   {categories.map((category, index) => (
@@ -436,8 +440,8 @@ const QuickLinks = () => {
           <Card.Body className="p-0">
             {sortedLinks.length > 0 ? (
               <div className="table-responsive">
-                <table className="table table-hover mb-0">
-                  <thead className="bg-light">
+                <table className={`${darkMode ? "table-dark border" : "" } table table-hover mb-0 `}>
+                  <thead className={`${darkMode ? "card-dark" : "" }`}>
                     <tr>
                       <th>Title</th>
                       <th>URL</th>
@@ -551,8 +555,8 @@ const QuickLinks = () => {
       )}
 
       {/* Add Link Modal */}
-      <Modal show={showAddModal} onHide={() => setShowAddModal(false)} centered>
-        <Modal.Header closeButton>
+      <Modal show={showAddModal} onHide={() => setShowAddModal(false)} centered  >
+        <Modal.Header closeButton className={`${darkMode ? "dark-mode" : "" }`}>
           <Modal.Title>
             <div className="d-flex align-items-center">
               <Plus size={20} className="me-2 text-primary" />
@@ -560,7 +564,7 @@ const QuickLinks = () => {
             </div>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={`${darkMode ? "card-dark" : "" }`}>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Title</Form.Label>
@@ -577,7 +581,7 @@ const QuickLinks = () => {
             <Form.Group className="mb-3">
               <Form.Label>URL</Form.Label>
               <InputGroup>
-                <InputGroup.Text className="bg-white">
+                <InputGroup.Text className="">
                   <ExternalLink size={16} />
                 </InputGroup.Text>
                 <Form.Control

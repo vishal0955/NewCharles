@@ -37,6 +37,7 @@ const menuItems = [
       { name: "Analytics", path: "/analytics" },
       {name: "HR ", path: "/hr/company"},
       {name: "Sales", path: "/sales/dashboard"},
+      { name: "Performance", path: "/performance/dashboard"},
       // { name: "Calendar", path: "/fullcalendar" },
       // {
       //   name: "Todo",

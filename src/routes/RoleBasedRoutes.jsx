@@ -185,6 +185,7 @@ import FeedbackPage from "../components/AdminHRM/Performance/Manager/FeedbackPag
 import InterviewManagementSystem from "../components/Recruitment/AddInterview.jsx";
 import CreateOffer from "../components/Recruitment/CreateOffer.jsx";
 import KPIForm from "../components/AdminHRM/Performance/KPIForm.jsx";
+import PerformanceDashboard from "../components/dashboard/PerformanceOverview.jsx";
 
 const RoleBasedRoutes = () => {
   return (
@@ -219,6 +220,8 @@ const RoleBasedRoutes = () => {
         <Route path="/hr/dashboard" element={<HRAnalyticsDashboard />} />
 
         <Route path="/sales/dashboard" element={<AdminCRMDashboard />} />
+
+        <Route path="/performance/dashboard" element={<PerformanceDashboard />} />
 
         {/* calendar */}
 

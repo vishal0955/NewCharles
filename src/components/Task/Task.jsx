@@ -5,11 +5,13 @@ import TaskBoard from "./TaskBoard";
 import TaskList from "./TaskList";
 import TaskGrid from "./TaskGrid";
 import { List, Grid } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Task = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const [view, setView] = useState("list");
-
+ 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const toggleView = (selectedView) => {
     setView(selectedView);
   };
@@ -35,7 +37,7 @@ const Task = () => {
           
             {/* New Task Button */}
             <button
-              className="btn new-task-btn me-3"
+              className="btn inv-new-button me-3"
               style={{ height: "fit-content", marginLeft: "15px" }}
               onClick={handleOpenModal}
             >
@@ -65,15 +67,15 @@ const Task = () => {
       {isModalOpen && (
         <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
+            <div className={`${darkMode ? "dark-mode" : "" } modal-content `} >
+              <div className={`${darkMode ? "dark-mode" : "" }  modal-header`}>
                 <h5 className="modal-title">Add Task</h5>
                 <button type="button" className="close" onClick={handleCloseModal}>
                   <span>&times;</span>
                 </button>
               </div>
-              <div className="modal-body">
-                <AddTask />
+              <div className={`${darkMode ? "dark-mode" : "" }  modal-body `}>
+                <AddTask handleCloseModal={handleCloseModal} />
               </div>
             </div>
           </div>

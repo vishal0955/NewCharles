@@ -259,12 +259,12 @@ const Reminders = () => {
       </div>
 
       {/* Filters and Search */}
-      <Card className="mb-4 border-0 shadow-sm">
+      <Card className={`${darkMode ? "card-dark border border-white" : "" } mb-4  shadow-sm `}>
         <Card.Body>
           <Row>
             <Col md={6} lg={4} className="mb-3 mb-md-0">
               <div className="input-group">
-                <span className="input-group-text bg-white">
+                <span className="input-group-text ">
                   <Filter size={16} />
                 </span>
                 <Form.Control
@@ -289,14 +289,14 @@ const Reminders = () => {
                   onClick={() => setFilterStatus('pending')}
                   className="flex-grow-1"
                 >
-                  <Clock size={16} className="me-1" /> Pending
+                 Pending
                 </Button>
                 <Button 
                   variant={filterStatus === 'completed' ? 'success' : 'outline-success'}
                   onClick={() => setFilterStatus('completed')}
                   className="flex-grow-1"
                 >
-                  <CheckCircle size={16} className="me-1" /> Completed
+                  Completed
                 </Button>
               </div>
             </Col>
@@ -306,7 +306,7 @@ const Reminders = () => {
 
       {/* Reminders Table */}
 
-      <Card className="border-0 shadow-sm">
+      <Card className="border shadow-sm">
         <Card.Body className="p-0">
           <Table responsive hover className={`${darkMode ? "table-dark" : null } mb-0`}>
             <thead className="">
