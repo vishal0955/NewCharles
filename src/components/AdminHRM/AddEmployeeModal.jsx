@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const departments = [
   "IT Department",
@@ -25,6 +26,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
     department: "",
     designation: "",
   });
+  const darkMode = useSelector((state) => state.theme.isDarkMode); 
 
   useEffect(() => {
     if (editData) {
@@ -46,7 +48,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white w-[800px] max-w-full p-6 rounded-lg shadow-lg relative max-h-[90vh] overflow-y-auto">
+      <div className={`${darkMode ? "dark-mode" : null }  w-[800px] max-w-full p-6 rounded-lg shadow-lg relative max-h-[90vh] overflow-y-auto`}>
         {/* Header */}
         <div className="flex justify-between items-center border-b pb-2">
           <h2 className="text-xl font-semibold">
@@ -106,7 +108,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
               </div>
 
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="text"
                 placeholder="First Name *"
                 value={formData.firstName}
@@ -115,7 +117,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
                 }
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="text"
                 placeholder="Last Name"
                 value={formData.lastName}
@@ -124,22 +126,22 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
                 }
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="text"
                 placeholder="Employee ID *"
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="date"
                 placeholder="Joining Date *"
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="text"
                 placeholder="Username *"
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="email"
                 placeholder="Email *"
                 value={formData.email}
@@ -148,17 +150,17 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
                 }
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="password"
                 placeholder="Password *"
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="password"
                 placeholder="Confirm Password *"
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="text"
                 placeholder="Phone Number *"
                 value={formData.phone}
@@ -167,14 +169,14 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
                 }
               />
               <input
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 type="text"
                 placeholder="Company *"
               />
 
               {/* Department Dropdown */}
               <select
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 value={formData.department}
                 onChange={(e) =>
                   setFormData({ ...formData, department: e.target.value })
@@ -190,7 +192,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
 
               {/* Designation Dropdown */}
               <select
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 value={formData.designation}
                 onChange={(e) =>
                   setFormData({ ...formData, designation: e.target.value })
@@ -205,7 +207,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
               </select>
 
               <select
-                className="border p-2 rounded-md"
+                className={`${darkMode ? "card-dark" : null } border p-2 rounded-md `}
                 name="status"
                 value={formData.status}
                 onChange={(e) =>
@@ -218,7 +220,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
               </select>
 
               <textarea
-                className="border p-2 rounded-md col-span-2"
+                className= {`${darkMode ? "card-dark" : null } border p-2 rounded-md col-span-2`}
                 placeholder="About *"
               ></textarea>
             </div>

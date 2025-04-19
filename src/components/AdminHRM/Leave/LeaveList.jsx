@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React, { useState ,useRef, useEffect } from "react";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css'
 import {
@@ -18,7 +17,20 @@ import { useSelector } from "react-redux";
 const LeavePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLeave, setSelectedLeave] = useState(null);
-  const [modalMode, setModalMode] = useState('add'); // 'add', 'edit', or 'view'
+  const [modalMode, setModalMode] = useState("add"); // 'add', 'edit', or 'view'
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleEdit = (entry) => {
     const formattedData = {
@@ -27,12 +39,12 @@ const LeavePage = () => {
       fromDate: entry.from,
       toDate: entry.to,
       noOfDays: entry.days,
-      reason: entry.reason || '',
+      reason: entry.reason || "",
       approvedStatus: entry.status,
-      paidStatus: entry.paidStatus
+      paidStatus: entry.paidStatus,
     };
     setSelectedLeave(formattedData);
-    setModalMode('edit');
+    setModalMode("edit");
     setIsModalOpen(true);
   };
 
@@ -43,36 +55,32 @@ const LeavePage = () => {
       fromDate: entry.from,
       toDate: entry.to,
       noOfDays: entry.days,
-      reason: entry.reason || '',
+      reason: entry.reason || "",
       approvedStatus: entry.status,
-      paidStatus: entry.paidStatus
+      paidStatus: entry.paidStatus,
     };
     setSelectedLeave(formattedData);
-    setModalMode('view');
+    setModalMode("view");
     setIsModalOpen(true);
   };
 
   const handleAdd = () => {
     setSelectedLeave(null);
-    setModalMode('add');
+    setModalMode("add");
     setIsModalOpen(true);
   };
 
   const handleClose = (updatedData) => {
     if (updatedData) {
-      
-      if (modalMode === 'edit') {
-        
-        console.log('Updated leave:', updatedData);
-      } else if (modalMode === 'add') {
-   
-        
-        console.log('New leave:', updatedData);
+      if (modalMode === "edit") {
+        console.log("Updated leave:", updatedData);
+      } else if (modalMode === "add") {
+        console.log("New leave:", updatedData);
       }
     }
     setIsModalOpen(false);
     setSelectedLeave(null);
-    setModalMode('add');
+    setModalMode("add");
   };
 
    const darkMode =useSelector((state)=>state.theme.isDarkMode)
@@ -83,7 +91,8 @@ const LeavePage = () => {
       employee: {
         name: "Anthony Lewis",
         department: "Finance",
-        avatar: "https://ui-avatars.com/api/?name=Anthony+Lewis&background=0D8ABC&color=fff",
+        avatar:
+          "https://ui-avatars.com/api/?name=Anthony+Lewis&background=0D8ABC&color=fff",
       },
       leaveType: "Medical Leave",
       from: "2024-01-14", // Updated date format to match input type="date"
@@ -91,14 +100,15 @@ const LeavePage = () => {
       days: 2,
       reason: "Medical appointment",
       status: "Pending",
-      paidStatus: "Paid"
+      paidStatus: "Paid",
     },
     {
       id: 2,
       employee: {
         name: "Sarah Wilson",
         department: "HR",
-        avatar: "https://ui-avatars.com/api/?name=Sarah+Wilson&background=0D8ABC&color=fff",
+        avatar:
+          "https://ui-avatars.com/api/?name=Sarah+Wilson&background=0D8ABC&color=fff",
       },
       leaveType: "Vacation",
       from: "20 Jan 2024",
@@ -106,7 +116,7 @@ const LeavePage = () => {
       days: 5,
       reason: "trip ",
       status: "Approved",
-      paidStatus: "Unpaid"
+      paidStatus: "Unpaid",
     },
     // ...existing entries
   ]);
@@ -120,18 +130,33 @@ const LeavePage = () => {
           <span className="mx-2">/</span>
           <span className="text-gray-800">Leaves</span>
         </div>
-        <div className="flex gap-3">
-          <button className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-400 hover:bg-gray-50">
+     
+
+        <div className="relative">
+          <button
+            className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
             <FaFileExport className="mr-2" />
             Export
           </button>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className=" flex inv-new-button align-items-center"
-          >
-            <FaPlus className="mr-2" />
-            Add Leave
-          </button>
+
+          {showDropdown && (
+            <div className="absolute mt-2 w-28 bg-white border border-gray-200 rounded-md shadow z-10">
+              <button
+                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                onClick={() => console.log("Export PDF")}
+              >
+                Export as PDF
+              </button>
+              <button
+                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                onClick={() => console.log("Export Excel")}
+              >
+                Export as Excel
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -204,14 +229,30 @@ const LeavePage = () => {
               <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
                 <input type="checkbox" className="rounded border-gray-300" />
               </th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Employee</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Leave Type</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">From</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">To</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Days</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Leave Status</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Paid Status</th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                Employee
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                Leave Type
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                From
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                To
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                Days
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                Leave Status
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                Paid Status
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -228,8 +269,12 @@ const LeavePage = () => {
                       className="h-8 w-8 rounded-full mr-3"
                     />
                     <div>
-                      <div className="font-medium text-gray-900">{entry.employee.name}</div>
-                      <div className="text-sm text-gray-500">{entry.employee.department}</div>
+                      <div className="font-medium text-gray-900">
+                        {entry.employee.name}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {entry.employee.department}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -239,50 +284,73 @@ const LeavePage = () => {
                   </span>
                 </td> */}
 
-<td className="px-6 py-4">
-      <div className="flex items-center">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-          {entry.leaveType}
-        </span>
-        {entry.reason && (
-          <>
-            <button
-              data-tooltip-id={`reason-tooltip-${entry.id}`}
-              data-tooltip-content={entry.reason}
-              className="ml-2 text-gray-400 hover:text-gray-600"
-            >
-              <FaInfoCircle size={14} />
-            </button>
-            <Tooltip id={`reason-tooltip-${entry.id}`} />
-          </>
-        )}
-      </div>
-    </td>
-
-
-                <td className="px-6 py-4 text-sm text-gray-500">{entry.from}</td>
-                <td className="px-6 py-4 text-sm text-gray-500">{entry.to}</td>
-                <td className="px-6 py-4 text-sm text-gray-500">{entry.days} Days</td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                    ${entry.status === 'Approved' ? 'bg-green-100 text-green-800' : ''}
-                    ${entry.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : ''}
-                    ${entry.status === 'Rejected' ? 'bg-red-100 text-red-800' : ''}
-                  `}>
+                  <div className="flex items-center">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      {entry.leaveType}
+                    </span>
+                    {entry.reason && (
+                      <>
+                        <button
+                          data-tooltip-id={`reason-tooltip-${entry.id}`}
+                          data-tooltip-content={entry.reason}
+                          className="ml-2 text-gray-400 hover:text-gray-600"
+                        >
+                          <FaInfoCircle size={14} />
+                        </button>
+                        <Tooltip id={`reason-tooltip-${entry.id}`} />
+                      </>
+                    )}
+                  </div>
+                </td>
+
+                <td className="px-6 py-4 text-sm text-gray-500">
+                  {entry.from}
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-500">{entry.to}</td>
+                <td className="px-6 py-4 text-sm text-gray-500">
+                  {entry.days} Days
+                </td>
+                <td className="px-6 py-4">
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                    ${
+                      entry.status === "Approved"
+                        ? "bg-green-100 text-green-800"
+                        : ""
+                    }
+                    ${
+                      entry.status === "Pending"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : ""
+                    }
+                    ${
+                      entry.status === "Rejected"
+                        ? "bg-red-100 text-red-800"
+                        : ""
+                    }
+                  `}
+                  >
                     {entry.status}
                   </span>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                    ${entry.paidStatus === 'Paid' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}
-                  `}>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                    ${
+                      entry.paidStatus === "Paid"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                    }
+                  `}
+                  >
                     {entry.paidStatus}
                   </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex space-x-3">
-                    <button 
-                      className="text-blue-600 hover:text-blue-900" 
+                    <button
+                      className="text-blue-600 hover:text-blue-900"
                       onClick={() => handleEdit(entry)}
                     >
                       <FaPenToSquare />
@@ -329,8 +397,13 @@ const LeavePage = () => {
         </div>
       )} */}
 
-{isModalOpen && (
-        <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog">
+      {isModalOpen && (
+        <div
+          className="modal fade show"
+          style={{ display: "block" }}
+          tabIndex="-1"
+          role="dialog"
+        >
           <div className="modal-dialog modal-lg" role="document">
           <div className={`${darkMode ? "dark-mode" : "border-none" } modal-content`}>
           <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
@@ -350,8 +423,6 @@ const LeavePage = () => {
           </div>
         </div>
       )}
-
-
     </div>
   );
 };

@@ -4,10 +4,7 @@ import {
   FaPlus,
   FaFilter,
   FaDownload,
-  FaPenToSquare,
-  FaTrash,
-  FaUser,
-  FaXmark,
+
 } from "react-icons/fa6";
 import {
   FaUsers,
@@ -20,6 +17,8 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AddEmployeeModal from "./AddEmployeeModal";
+import { use } from "react";
+import { useSelector } from "react-redux";
 
 const departments = [
   "IT Department",
@@ -129,7 +128,8 @@ const EmployeeGrid = () => {
     const { name, value } = e.target;
     setNewEmployee({ ...newEmployee, [name]: value });
   };
-
+ 
+  const  darkMode = useSelector((state) => state.theme.isDarkMode); 
   const handleSaveEmployee = (e) => {
     e.preventDefault();
     if (editingEmployee) {
@@ -179,14 +179,14 @@ const EmployeeGrid = () => {
   );
 
   return (
-    <div className=" bg-gray-50 font-sans flex flex-col items-center">
+    <div className={`${darkMode ? "dark-mode" : null } bg-gray-50 font-sans flex flex-col items-center `}>
       <div className="w-full rounded-lg p-2">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800">
+            <h1 className="text-2xl font-semibold text-gray-00">
               Employee Grid
             </h1>
-            <p className="text-gray-500 text-sm">Employee &gt; Employee Grid</p>
+       
           </div>
           <div className="flex space-x-2 sm:space-x-4 mt-4 sm:mt-0 flex-wrap">
             <Link to={"/employeelist"}>
@@ -229,39 +229,39 @@ const EmployeeGrid = () => {
 
         {/* Stats Cards Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : null } bg-white shadow rounded-md p-4 flex items-center space-x-4 `}>
             <div className="text-blue-600 text-xl">
               <FaUsers />
             </div>
             <div>
-              <div className="text-sm text-gray-500">Total...</div>
+              <div className="text-sm ">Total Employees</div>
               <p className="text-lg font-semibold">1007</p>
             </div>
           </div>
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : null } bg-white shadow rounded-md p-4 flex items-center space-x-4 `}>
             <div className="text-yellow-600 text-xl">
               <FaUserCheck />
             </div>
             <div>
-              <div className="text-sm text-gray-500">Active</div>
+              <div className="text-sm ">Active</div>
               <p className="text-lg font-semibold">800</p>
             </div>
           </div>
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : null } bg-white shadow rounded-md p-4 flex items-center space-x-4 `}>
             <div className="text-red-600 text-xl">
               <FaUserTimes />
             </div>
             <div>
-              <div className="text-sm text-gray-500">Inactive</div>
+              <div className="text-sm ">Inactive</div>
               <p className="text-lg font-semibold">150</p>
             </div>
           </div>
-          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+          <div className={`${darkMode ? "card-dark" : null } bg-white shadow rounded-md p-4 flex items-center space-x-4 `}>
             <div className="text-gray-600 text-xl">
               <FaUserPlus />
             </div>
             <div>
-              <div className="text-sm text-gray-500">New...</div>
+              <div className="text-sm ">New...</div>
               <p className="text-lg font-semibold">57</p>
             </div>
           </div>
@@ -303,7 +303,7 @@ const EmployeeGrid = () => {
                   />
 
                   {/* Three-dot menu
-                  <button className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                  <button className="absolute top-4 right-4  hover:text-gray-700">
                     <FaEllipsisV />
                   </button> */}
 
@@ -384,7 +384,7 @@ const EmployeeGrid = () => {
               />
 
               {/* Three-dot menu */}
-              {/* <button className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+              {/* <button className="absolute top-4 right-4  hover:text-gray-700">
                 <FaEllipsisV />
               </button> */}
 
