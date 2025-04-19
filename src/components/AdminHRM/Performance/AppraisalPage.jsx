@@ -186,8 +186,11 @@ import {
 } from "react-bootstrap";
 import { FaFileExcel, FaFilePdf, FaEye, FaEdit, FaTrash } from "react-icons/fa"; // Added icons
 import { useSelector } from "react-redux"; // Import useSelector for Redux state
+import AppraisalForm from "./AppraisalForm";
 
 const AppraisalPage = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Fetching darkMode from the Redux store
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
@@ -211,6 +214,14 @@ const AppraisalPage = () => {
   const [filteredAppraisals, setFilteredAppraisals] = useState(appraisals);
   const [searchQuery, setSearchQuery] = useState("");
 
+   const handleCloseModal = () => {
+    setIsModalOpen(false);
+    }
+    const handleOpenModal = () => {
+      setIsModalOpen(true);
+      }
+
+ 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
     const filtered = appraisals.filter((appraisal) =>
@@ -228,12 +239,33 @@ const AppraisalPage = () => {
   return (
     <Container
       fluid
-      className={`${darkMode ? "bg-dark text-white" : ""} mt-4`} // Conditional classes based on darkMode
+      className={`${darkMode ? "bg-dark text-white" : ""} mt-4`}
     >
       <Row>
-        <Col xs={12} className="mb-4 font-bold text-3xl">
+        <Col xs={8} className="mb-4 font-bold text-3xl">
           <h2 className="text-start mb-3">Employee Appraisals</h2>
         </Col>
+        <Col xs={4} className="d-flex justify-content-end">
+    
+
+          <DropdownButton
+            variant="secondary"
+            title="Export"
+            id="export-dropdown"
+            className="mr-2"
+          >
+            <Dropdown.Item onClick={() => handleExport("PDF")}>
+              <FaFilePdf /> Export to PDF
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleExport("Excel")}>
+              <FaFileExcel /> Export to Excel
+            </Dropdown.Item>
+          </DropdownButton>
+          <Button variant="btn inv-new-button" className="mr-2" onClick={handleOpenModal}>
+            Add New Appraisal
+          </Button>
+        </Col>
+
       </Row>
 
       {/* Search and Export Section */}
@@ -285,23 +317,7 @@ const AppraisalPage = () => {
             </Dropdown.Item>
           </DropdownButton>
 
-          <Button variant="primary" className="mr-2">
-            Add New Appraisal
-          </Button>
-
-          <DropdownButton
-            variant="secondary"
-            title="Export"
-            id="export-dropdown"
-            className="mr-2"
-          >
-            <Dropdown.Item onClick={() => handleExport("PDF")}>
-              <FaFilePdf /> Export to PDF
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleExport("Excel")}>
-              <FaFileExcel /> Export to Excel
-            </Dropdown.Item>
-          </DropdownButton>
+      
         </Col>
       </Row>
 
@@ -379,6 +395,36 @@ const AppraisalPage = () => {
           </Pagination>
         </Col>
       </Row>
+
+
+        {isModalOpen && (
+              <>
+                <div className="modal fade show d-block" role="dialog">
+                  <div className="modal-dialog modal-lg" role="document">
+                    <div className={`${darkMode ? "dark-mode" : "border-none" } modal-content`}>
+                      <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
+                        <h5 className="modal-title">Add Appraisal</h5>
+
+                        <button
+                          type="button"
+                          className="btn-close"
+                          aria-label="Close"
+                          onClick={handleCloseModal}
+                        />
+                      </div>
+                      <div className={`${darkMode ? "dark-mode" : null } modal-body`}>
+                        <AppraisalForm handleclose={handleCloseModal} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+   
+                <div
+                  className="modal-backdrop fade show"
+                  onClick={handleCloseModal}
+                ></div>
+              </>
+            )}
     </Container>
   );
 };

@@ -214,11 +214,16 @@ import {
   FaEdit,
   FaTrashAlt,
 } from "react-icons/fa"; // Importing icons
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import KPIForm from "./KPIForm";
 
 const KPITable = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
   const [kpis, setKpis] = useState([
     {
       id: 1,
@@ -243,6 +248,10 @@ const KPITable = () => {
   const [filteredKpis, setFilteredKpis] = useState(kpis);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
     const filtered = kpis.filter((kpi) =>
@@ -259,9 +268,29 @@ const KPITable = () => {
     <Container fluid className={`${darkMode ? "bg-dark text-white" : ""} mt-4`} style={{height:"100vh"}}>
     
       <Row>
-        <Col xs={12} className="mb-4 text-start text-3xl font-bold">
+        <Col xs={8} className="mb-4 text-start text-3xl font-bold">
           <h2 className="font-weight-bold mb-3">KPI Tracker</h2>
         </Col>
+        <Col xs={4} className="mb-4 d-flex justify-content-end">
+
+
+          <DropdownButton
+            variant="secondary"
+            title="Export"
+            id="export-dropdown"
+            className="mr-2"
+          >
+            <Dropdown.Item onClick={() => handleExport("PDF")}>
+              <FaFilePdf /> Export to PDF
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleExport("Excel")}>
+              <FaFileExcel /> Export to Excel
+            </Dropdown.Item>
+          </DropdownButton>
+          <Button className="btn inv-new-button mr-2 text-overflow-hidden"onClick={() => navigate("/performance/kpiform")} >
+            Add New KPI
+          </Button>
+          </Col>
       </Row>
 
       {/* Search and Filter Section */}
@@ -313,23 +342,7 @@ const KPITable = () => {
             </Dropdown.Item>
           </DropdownButton>
 
-          <Button variant="primary" className="mr-2">
-            Add New KPI
-          </Button>
-
-          <DropdownButton
-            variant="secondary"
-            title="Export"
-            id="export-dropdown"
-            className="mr-2"
-          >
-            <Dropdown.Item onClick={() => handleExport("PDF")}>
-              <FaFilePdf /> Export to PDF
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleExport("Excel")}>
-              <FaFileExcel /> Export to Excel
-            </Dropdown.Item>
-          </DropdownButton>
+         
         </Col>
       </Row>
 
@@ -417,6 +430,8 @@ const KPITable = () => {
           </Pagination>
         </Col>
       </Row>
+
+       
     </Container>
   );
 };

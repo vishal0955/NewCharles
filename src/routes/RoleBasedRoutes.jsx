@@ -184,6 +184,7 @@ import UtilitiesPanel from "../components/Notes/Utilitieslist.jsx";
 import FeedbackPage from "../components/AdminHRM/Performance/Manager/FeedbackPage.jsx";
 import InterviewManagementSystem from "../components/Recruitment/AddInterview.jsx";
 import CreateOffer from "../components/Recruitment/CreateOffer.jsx";
+import KPIForm from "../components/AdminHRM/Performance/KPIForm.jsx";
 
 const RoleBasedRoutes = () => {
   return (
@@ -540,6 +541,8 @@ const RoleBasedRoutes = () => {
           />
         
         <Route path="/performance/kpitable" element={<KPITable />} />
+
+        <Route path="/performance/kpiform" element={<KPIForm />} />
         {
           <Route
             path="/performance/selfassessment"
