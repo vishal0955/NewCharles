@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Table, Button, Form, Row, Col, Modal } from "react-bootstrap";
 import { FaEye, FaTrashAlt, FaEdit } from "react-icons/fa"; // Import icons for View, Edit, and Delete
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ManagerFeedback = () => {
@@ -10,6 +11,8 @@ const ManagerFeedback = () => {
   const [showModal, setShowModal] = useState(false);
   const [viewFeedback, setViewFeedback] = useState(null); // State to store the feedback to view
   const [searchTerm, setSearchTerm] = useState("");
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   const feedbackData = [
     {
@@ -201,7 +204,7 @@ const ManagerFeedback = () => {
 
   return (
     <div className="container py-4">
-      
+
       <h2 className="text-start">Manager Feedback</h2>
 
       {/* Header Cards */}
@@ -248,22 +251,23 @@ const ManagerFeedback = () => {
           <Form.Control
             type="text"
             placeholder="Search Employee..."
+            className= {`${darkMode ? "card-dark" : null }  `}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </Col>
         <Col md={2}>
-          <Form.Select>
+          <Form.Select  className= {`${darkMode ? "card-dark" : null }  `}>
             <option>Rating</option>
           </Form.Select>
         </Col>
         <Col md={2}>
-          <Form.Select>
+          <Form.Select  className= {`${darkMode ? "card-dark" : null }  `}>
             <option>Status</option>
           </Form.Select>
         </Col>
         <Col md={2}>
-          <Form.Select>
+          <Form.Select  className= {`${darkMode ? "card-dark" : null }  `}>
             <option>Date</option>
           </Form.Select>
         </Col>
@@ -273,7 +277,7 @@ const ManagerFeedback = () => {
       </Row>
 
       {/* Feedback Table */}
-      <Table bordered hover responsive className="shadow-sm">
+      <Table bordered hover responsive className={`${darkMode ? "table-dark" : null } shadow-sm `}>
         <thead className="table-light">
           <tr>
             <th>

@@ -12,6 +12,7 @@ export default function AppraisalForm({ handleclose }) {
     appraisalScore: '',
   });
 
+   const darkMode = useSelector((state) => state.theme.isDarkMode);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {

@@ -33,7 +33,7 @@ const AttendanceAdmin = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className={`${darkMode ? "dark-mode" : null } bg-gray-50 min-h-screen p-4`}>
+    <div className={`${darkMode ? "dark-mode" : null }  min-h-screen p-4`}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div className="flex items-center gap-2 mb-4 md:mb-0">
@@ -63,7 +63,7 @@ const AttendanceAdmin = () => {
               />
             </svg>
           </div>
-          <button className="bg-white border rounded-md px-4 py-2 flex items-center gap-2">
+          <button className=" border rounded-md px-4 py-2 flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -108,7 +108,7 @@ const AttendanceAdmin = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {attendanceSummary.map((item, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-sm border">
+            <div key={index} className=" p-4 rounded-lg shadow-sm border">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-gray-500">{item.title}</span>
                 <span className={`text-sm ${item.changeType === 'increase' ? 'text-green-500' : 'text-red-500'}`}>
@@ -124,10 +124,10 @@ const AttendanceAdmin = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-white p-4 rounded-lg shadow-sm border mb-6">
+      <div className=" p-4 rounded-lg shadow-sm border mb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
           <div className="relative">
-            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+            <select className={`${darkMode ? "dark-mode" : "" } w-full p-2 border rounded-md appearance-none  pr-8 `}>
               <option>{dateRange}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -138,7 +138,7 @@ const AttendanceAdmin = () => {
           </div>
           
           <div className="relative">
-            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+            <select className={`${darkMode ? "dark-mode" : "" }  w-full p-2 border rounded-md appearance-none pr-8 `}>
               <option>{department}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -149,7 +149,7 @@ const AttendanceAdmin = () => {
           </div>
           
           <div className="relative">
-            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+            <select className={`${darkMode ? "dark-mode" : "" }  w-full p-2 border rounded-md appearance-none bg-white pr-8`}>
               <option>{status}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -160,7 +160,7 @@ const AttendanceAdmin = () => {
           </div>
           
           <div className="relative">
-            <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
+            <select className={`${darkMode ? "dark-mode" : "" }  w-full p-2 border rounded-md appearance-none bg-white pr-8`}>
               <option>Sort By: {sortBy}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -174,17 +174,17 @@ const AttendanceAdmin = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="w-full p-2 border rounded-md"
+              className= {`${darkMode ? "dark-mode" : "" }  w-full p-2 border rounded-md `}
             />
           </div>
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-lg shadow-sm border overflow-x-auto">
-        <table className="min-w-full">
+      <div className=" rounded-lg shadow-sm border overflow-x-auto">
+        <table className={`${darkMode ? "table-dark" : "" }  min-w-full `}>
           <thead>
-            <tr className="bg-gray-50 border-b">
+            <tr className=" border-b">
               <th className="w-10 py-3 px-4 text-left">
                 <input type="checkbox" className="form-checkbox h-4 w-4" />
               </th>
@@ -200,7 +200,7 @@ const AttendanceAdmin = () => {
           </thead>
           <tbody>
             {employeeData.map((employee) => (
-              <tr key={employee.id} className="border-b hover:bg-gray-50">
+              <tr key={employee.id} className="">
                 <td className="py-4 px-4">
                   <input type="checkbox" className="form-checkbox h-4 w-4" />
                 </td>
@@ -246,9 +246,9 @@ const AttendanceAdmin = () => {
         {/* Pagination */}
         <div className="flex flex-col sm:flex-row justify-between items-center p-4 border-t">
           <div className="flex items-center mb-4 sm:mb-0">
-            <span className="mr-2 text-sm text-gray-600">Rows per page:</span>
+            <span className="mr-2 text-sm ">Rows per page:</span>
             <div className="relative">
-              <select className="appearance-none bg-white border rounded-md py-1 pl-3 pr-8 text-sm">
+              <select className="appearance-none border rounded-md py-1 pl-3 pr-8 text-sm">
                 <option>{rowsPerPage}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">

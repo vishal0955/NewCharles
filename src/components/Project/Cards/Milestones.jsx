@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Table, Button, Modal, Form, Input, DatePicker, message, Space, Tag, Tooltip } from 'antd';
+import { Table, Button, Modal, Form, Input,  Dropdown, Menu, DatePicker, message, Space, Tag, Tooltip } from 'antd';
 import { EditOutlined, EyeOutlined, DeleteOutlined, ExportOutlined, PlusOutlined, BellOutlined } from '@ant-design/icons';
 import { CSVLink } from 'react-csv';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const Milestones = () => {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const [milestones, setMilestones] = useState([
     {
       key: '1',
@@ -190,19 +193,28 @@ const Milestones = () => {
           >
             Add Milestone
           </Button>
-          <CSVLink 
-            data={exportData} 
-            filename="milestones.csv"
-          >
-            <Button icon={<ExportOutlined />}>Export</Button>
-          </CSVLink>
+              <Dropdown
+                      overlay={
+                        <Menu>
+                          <Menu.Item key="excel" >
+                            Export to Excel
+                          </Menu.Item>
+                          <Menu.Item key="pdf" >
+                            Export to PDF
+                          </Menu.Item>
+                        </Menu>
+                      }
+                    >
+                      <Button icon={<ExportOutlined />}>Export</Button>
+                    </Dropdown>
+          
           <Tooltip title="Notifications">
             <Button icon={<BellOutlined />} />
           </Tooltip>
         </Space>
       </div>
 
-      <Table 
+      <Table  className={`${darkMode ? "table-dark" : "" } `}
         columns={columns} 
         dataSource={milestones}
         pagination={false}

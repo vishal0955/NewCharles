@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
   const [formData, setFormData] = useState({
@@ -47,6 +48,7 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
     console.log(formData);
     onClose(formData); // Pass back the updated data
   };
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   const isViewOnly = mode === 'view';
   const isEditing = mode === 'edit';
@@ -60,11 +62,11 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
       <form onSubmit={handleSubmit}>
         {/* Leave Type */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
             Leave Type
           </label>
           <select
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+            className={`${darkMode ? "card-dark" : "" } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
             value={formData.leaveType}
             onChange={(e) => setFormData({...formData, leaveType: e.target.value})}
             required
@@ -80,11 +82,11 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
 
         {/* Employee */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
             Employee
           </label>
           <select
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+            className={`${darkMode ? "card-dark" : "bg-gray-50" } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
             value={formData.employee}
             onChange={(e) => setFormData({...formData, employee: e.target.value})}
             required
@@ -101,13 +103,13 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
         {/* Date Range */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
               From Date
             </label>
             <input
               type="date"
               name="fromDate"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+              className= {`${darkMode ? "card-dark" : "" } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
               value={formData.fromDate}
               onChange={handleDateChange}
               required
@@ -115,13 +117,13 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
               To Date
             </label>
             <input
               type="date"
               name="toDate"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+              className={`${darkMode ? "card-dark" : "" } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
               value={formData.toDate}
               onChange={handleDateChange}
               min={formData.fromDate}
@@ -133,12 +135,12 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
 
         {/* Number of Days */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
             Number of Days
           </label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-gray-50"
+            className={`${darkMode ? "card-dark" : null } w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-gray-50`}
             value={formData.noOfDays}
             readOnly
           />
@@ -146,11 +148,11 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
 
         {/* Leave Reason */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
             Leave Reason
           </label>
           <textarea
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+            className= {`${darkMode ? "card-dark" : "bg-gray-50" } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
             rows="3"
             value={formData.reason}
             onChange={(e) => setFormData({...formData, reason: e.target.value})}
@@ -162,11 +164,11 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
         {/* Status Dropdowns - Always editable for admin */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
               Approved Status
             </label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+              className={`${darkMode ? "card-dark" : null } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
               value={formData.approvedStatus}
               onChange={(e) => setFormData({...formData, approvedStatus: e.target.value})}
             >
@@ -176,11 +178,11 @@ const AddLeaveForm = ({ onClose, initialData = null, mode = 'add' }) => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className={`${darkMode ? "dark-mode" : null } block text-sm font-medium text-gray-700 mb-1`}>
               Paid Status
             </label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+              className={`${darkMode ? "card-dark" : null } w-full px-3 py-2 border border-gray-300 rounded-md text-sm `}
               value={formData.paidStatus}
               onChange={(e) => setFormData({...formData, paidStatus: e.target.value})}
             >

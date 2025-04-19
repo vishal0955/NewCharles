@@ -225,19 +225,19 @@ const InterviewList = () => {
 
         <div className="d-flex justify-content-between align-items-center my-3 flex-wrap">
           <div className="mb-2">
-           <input type="text" className="form-control d-inline-block w-auto me-2" placeholder="Search by name" />
+           <input type="text" className={`${darkMode ? "card-dark" : null } form-control d-inline-block w-auto me-2`} placeholder="Search by name" />
          
           </div>
           <div className="mb-2">
            
-            <select className="form-select d-inline-block w-auto me-2">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto me-2`}>
               <option>Role</option>
               <option>Accountant</option>
               <option>App Developer</option>
               <option>Technician</option>
               <option>Web Developer</option>
             </select>
-            <select className="form-select d-inline-block w-auto me-2">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto me-2`}>
               <option>Select Status</option>
           
               <option>Scheduled</option>
@@ -245,7 +245,7 @@ const InterviewList = () => {
               <option>Completed</option>
             
             </select>
-            <select className="form-select d-inline-block w-auto">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto `}>
               <option>Sort By: Last 7 Days</option>
               <option>Last 30 Days</option>
               <option>Last 60 Days</option>
@@ -255,8 +255,8 @@ const InterviewList = () => {
     
 
       <div className="table-responsive">
-        <table className="table table-hover align-middle text-start w-100">
-          <thead className="table-light">
+        <table className={`${darkMode ? "table-dark border" : null }  table table-hover align-middle text-start w-100 `}>
+          <thead className="">
             <tr>
               <th scope="col" className="text-nowrap">
               <input type="checkbox" className="form-check-input " />
@@ -301,11 +301,12 @@ const InterviewList = () => {
       </div>
       {showAddInterview && (
     <div className="modal fade show d-block" role="dialog">
-    <div className="modal-dialog modal-md" role="document">
+    <div className="modal-dialog modal-lg" role="document">
       <div className={`${darkMode ? "dark-mode" : "border-none" } modal-content`}>
         <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
        
             <AddInterview 
+            darkMode={darkMode}
               onClose={() => setShowAddInterview(false)} 
               onSave={handleSaveInterview} 
             />

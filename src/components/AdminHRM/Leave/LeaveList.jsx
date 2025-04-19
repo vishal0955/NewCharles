@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { FaEye, FaPenToSquare, FaTrash } from "react-icons/fa6";
 import AddLeaveForm from "./AddLeaveForm";
+import { useSelector } from "react-redux";
 
 const LeavePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,6 +75,8 @@ const LeavePage = () => {
     setModalMode('add');
   };
 
+   const darkMode =useSelector((state)=>state.theme.isDarkMode)
+
   const [entries] = useState([
     {
       id: 1,
@@ -109,7 +112,7 @@ const LeavePage = () => {
   ]);
 
   return (
-    <div className="bg-gray-50 min-h-screen p-6">
+    <div className={`${darkMode ? "dark-mode" : "bg-gray-50" }  min-h-screen p-6 `}>
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div className="text-gray-500 text-sm">
@@ -118,7 +121,7 @@ const LeavePage = () => {
           <span className="text-gray-800">Leaves</span>
         </div>
         <div className="flex gap-3">
-          <button className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+          <button className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-400 hover:bg-gray-50">
             <FaFileExport className="mr-2" />
             Export
           </button>
@@ -133,30 +136,34 @@ const LeavePage = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+      <div className="  grid grid-cols-1 md:grid-cols-4 gap-6 mb-6 ">
         <StatCard
           icon={<FaUsers className="text-green-600" size={24} />}
           title="Total Present"
           value="180/200"
           bgColor="bg-green-50"
+          darkMode={darkMode}
         />
         <StatCard
           icon={<FaCalendarCheck className="text-blue-600" size={24} />}
           title="Planned Leaves"
           value="10"
           bgColor="bg-blue-50"
+          darkMode={darkMode}
         />
         <StatCard
           icon={<FaCalendarTimes className="text-yellow-600" size={24} />}
           title="Unplanned Leaves"
           value="10"
           bgColor="bg-yellow-50"
+          darkMode={darkMode}
         />
         <StatCard
           icon={<FaClock className="text-purple-600" size={24} />}
           title="Pending Requests"
           value="15"
           bgColor="bg-purple-50"
+          darkMode={darkMode}
         />
       </div>
 
@@ -170,19 +177,19 @@ const LeavePage = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+          className={`${darkMode ? "dark-mode" : "" } px-3 py-2 border border-gray-300 rounded-md text-sm `}
         />
         <input
           type="date"
-          className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+          className={`${darkMode ? "dark-mode" : "" } px-3 py-2 border border-gray-300 rounded-md text-sm `}
         />
-        <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+        <select className= {`${darkMode ? "dark-mode" : "" } px-3 py-2 border border-gray-300 rounded-md text-sm `}>
           <option>All Leave Types</option>
           <option>Medical Leave</option>
           <option>Vacation</option>
           <option>Personal Leave</option>
         </select>
-        <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+        <select className= {`${darkMode ? "dark-mode" : "bg-gray-50" } px-3 py-2 border border-gray-300 rounded-md text-sm `}>
           <option>Last 7 Days</option>
           <option>Last 30 Days</option>
           <option>Last 90 Days</option>
@@ -190,9 +197,9 @@ const LeavePage = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-lg shadow">
+      <div className={`${darkMode ? "dark-mode border" : "" } bg-white rounded-lg shadow `}>
         <table className="w-full">
-          <thead className="bg-gray-50 border-b">
+          <thead className={`${darkMode ? "table-dark " : "bg-gray-50" }  border-b`}>
             <tr>
               <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
                 <input type="checkbox" className="rounded border-gray-300" />
@@ -209,7 +216,7 @@ const LeavePage = () => {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {entries.map((entry) => (
-              <tr key={entry.id} className="hover:bg-gray-50">
+              <tr key={entry.id} className="">
                 <td className="px-6 py-4">
                   <input type="checkbox" className="rounded border-gray-300" />
                 </td>
@@ -325,14 +332,14 @@ const LeavePage = () => {
 {isModalOpen && (
         <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
+          <div className={`${darkMode ? "dark-mode" : "border-none" } modal-content`}>
+          <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
                 <h5 className="modal-title">Add Leave</h5>
                 <button type="button" className="close" onClick={handleClose}>
                   <span>&times;</span>
                 </button>
               </div>
-              <div className="modal-body">
+              <div className={`${darkMode ? "dark-mode" : null } modal-body`}>
               <AddLeaveForm
           onClose={handleClose}
           initialData={selectedLeave}
@@ -350,8 +357,9 @@ const LeavePage = () => {
 };
 
 // Stat Card Component
-const StatCard = ({ icon, title, value, bgColor }) => (
-  <div className="bg-white rounded-lg shadow p-6">
+const StatCard = ({ icon, title, value, bgColor, darkMode }) => (
+
+  <div className={`${darkMode ? "card-dark" : "" }  bg-white rounded-lg shadow p-6 `}>
     <div className="flex items-center">
       <div className={`${bgColor} p-3 rounded-full mr-4`}>
         {icon}

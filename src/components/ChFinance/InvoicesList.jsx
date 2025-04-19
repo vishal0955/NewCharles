@@ -17,6 +17,7 @@ import {
 
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const statusBadge = {
   Accepted: "badge bg-success",
@@ -53,6 +54,7 @@ const navigate = useNavigate();
   const currentInvoices = invoices.slice(indexOfFirstInvoice, indexOfLastInvoice);
   const totalPages = Math.ceil(invoices.length / entriesPerPage);
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
@@ -94,54 +96,54 @@ const navigate = useNavigate();
 
       <div className="row g-3 mb-4">
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100`}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-primary fs-4 me-3">
                   <FaMoneyBill />
                 </div>
                 <div>
-                  <div className="text-muted small">Total Invoices</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Total Invoices</div>
                   <p className="fs-5 fw-semibold mb-0">23</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100`}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-success fs-4 me-3">
                 <FaCalendarAlt />
                 </div>
                 <div>
-                  <div className="text-muted small">Pending</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Pending</div>
                   <p className="fs-5 fw-semibold mb-0">10</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100`}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-danger fs-4 me-3">
                  
                   <FaCheckCircle />
                 </div>
                 <div>
-                  <div className="text-muted small">Accepted</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Accepted</div>
                   <p className="fs-5 fw-semibold mb-0">6</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100`}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-warning fs-4 me-3">
                  
                   <FaTimesCircle />
                 </div>
                 <div>
-                  <div className="text-muted small">Rejected</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Rejected</div>
                   <p className="fs-5 fw-semibold mb-0">2</p>
                 </div>
               </div>
@@ -150,7 +152,7 @@ const navigate = useNavigate();
         </div>
 
       <div className="table-responsive">
-        <table className="table table-hover align-middle border-0">
+        <table className={`${darkMode ? "table-dark" : null } table table-hover align-middle border-0 `}>
           <thead className="table-light border-0">
             <tr>
               <th className="border-0"><Form.Check type="checkbox" /></th>

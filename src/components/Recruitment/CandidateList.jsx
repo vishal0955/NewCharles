@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -26,6 +27,7 @@ const statusClass = {
 
 const CandidateList = () => {
   const navigate = useNavigate();
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div>
       <div className="container mt-4 " >
@@ -35,7 +37,7 @@ const CandidateList = () => {
        
           <div className="dropdown">
                   <button
-                    className="btn btn-outline-secondary dropdown-toggle"
+                    className={`${darkMode ? "card-dark" : null } btn btn-outline-secondary dropdown-toggle `}
                     type="button"
                     data-bs-toggle="dropdown"
                   >
@@ -61,19 +63,19 @@ const CandidateList = () => {
 
         <div className="d-flex justify-content-between align-items-center my-3 flex-wrap">
           <div className="mb-2">
-           <input type="text" className="form-control d-inline-block w-auto me-2" placeholder="Search by name" />
+           <input type="text" className={`${darkMode ? "card-dark" : null }  form-control d-inline-block w-auto me-2`} placeholder="Search by name " />
          
           </div>
           <div className="mb-2">
            
-            <select className="form-select d-inline-block w-auto me-2">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto me-2 `}>
               <option>Role</option>
               <option>Accountant</option>
               <option>App Developer</option>
               <option>Technician</option>
               <option>Web Developer</option>
             </select>
-            <select className="form-select d-inline-block w-auto me-2">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto me-2 `}>
               <option>Select Status</option>
           
               <option>Scheduled</option>
@@ -81,7 +83,7 @@ const CandidateList = () => {
               <option>Offered</option>
               <option>Hired</option>
             </select>
-            <select className="form-select d-inline-block w-auto">
+            <select className= {`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto `}>
               <option>Sort By: Last 7 Days</option>
               <option>Last 30 Days</option>
               <option>Last 60 Days</option>
@@ -90,8 +92,8 @@ const CandidateList = () => {
         </div>
 
         <div className="table-responsive">
-          <table className="table table-bordered table-hover align-middle text-center w-100">
-            <thead className="table-light">
+          <table className={`${darkMode ? "table-dark" : null } table table-bordered table-hover align-middle text-center w-100`}>
+            <thead className="">
               <tr>
                 <th scope="col"><input type="checkbox" /></th>
                 <th scope="col ">Cand ID</th>

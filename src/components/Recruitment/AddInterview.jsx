@@ -22,7 +22,7 @@ import {
   CheckSquare
 } from 'lucide-react';
 
-const AddInterview = ({ onClose, onSave }) => {
+const AddInterview = ({ onClose, onSave, darkMode }) => {
   // Form state
   const [formData, setFormData] = useState({
     interviewId: '',
@@ -66,8 +66,8 @@ const AddInterview = ({ onClose, onSave }) => {
 
   return (
     <Container fluid className="p-0">
-      <Card className="border-0 shadow-sm">
-        <Card.Header className="bg-white d-flex justify-content-between align-items-center py-3">
+      <Card className={`${darkMode ? "card-dark" : null } border-0 shadow-sm `}>
+        <Card.Header className=" d-flex justify-content-between align-items-center py-3">
           <h5 className="mb-0">Add New Interview</h5>
           <Button variant="link" className="text-dark p-0" onClick={onClose}>
             <X size={20} />
@@ -78,13 +78,14 @@ const AddInterview = ({ onClose, onSave }) => {
             <Row className="mb-4">
               <Col lg={6} className="mb-3 mb-lg-0">
                 <Form.Group>
-                  <Form.Label>Interview ID</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Interview ID</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="bg-light">
                       <CheckSquare size={16} />
                     </InputGroup.Text>
                     <FormControl
                       name="interviewId"
+                      className={`${darkMode ? "card-dark" : null }`}
                       value={formData.interviewId}
                       onChange={handleInputChange}
                       placeholder="Auto-generated if left blank"
@@ -94,12 +95,13 @@ const AddInterview = ({ onClose, onSave }) => {
               </Col>
               <Col lg={6}>
                 <Form.Group>
-                  <Form.Label>Status</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Status</Form.Label>
                   <Form.Select 
                     name="status"
                     value={formData.status}
+                    className={`${darkMode ? "card-dark" : null } form-select-sm`}
                     onChange={handleInputChange}
-                    className="form-select-sm"
+                    
                   >
                     <option value="scheduled">Scheduled</option>
                     <option value="completed">Completed</option>
@@ -113,7 +115,7 @@ const AddInterview = ({ onClose, onSave }) => {
             <Row className="mb-4">
               <Col lg={6} className="mb-3 mb-lg-0">
                 <Form.Group>
-                  <Form.Label>Candidate Name</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Candidate Name</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="bg-light">
                       <User size={16} />
@@ -122,6 +124,7 @@ const AddInterview = ({ onClose, onSave }) => {
                       name="candidate"
                       value={formData.candidate}
                       onChange={handleInputChange}
+                      className={`${darkMode ? "card-dark" : null }`}
                       placeholder="Enter candidate name"
                       required
                     />
@@ -130,7 +133,7 @@ const AddInterview = ({ onClose, onSave }) => {
               </Col>
               <Col lg={6}>
                 <Form.Group>
-                  <Form.Label>Job Position</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Job Position</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="bg-light">
                       <Briefcase size={16} />
@@ -139,6 +142,7 @@ const AddInterview = ({ onClose, onSave }) => {
                       name="job"
                       value={formData.job}
                       onChange={handleInputChange}
+                      className={`${darkMode ? "card-dark" : null }`}
                       placeholder="Enter job position"
                       required
                     />
@@ -150,7 +154,7 @@ const AddInterview = ({ onClose, onSave }) => {
             <Row className="mb-4">
               <Col lg={6} className="mb-3 mb-lg-0">
                 <Form.Group>
-                  <Form.Label>Interviewer</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Interviewer</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="bg-light">
                       <Users size={16} />
@@ -159,6 +163,7 @@ const AddInterview = ({ onClose, onSave }) => {
                       name="interviewer"
                       value={formData.interviewer}
                       onChange={handleInputChange}
+                      className={`${darkMode ? "card-dark" : null }`}
                       placeholder="Enter interviewer name"
                       required
                     />
@@ -167,7 +172,7 @@ const AddInterview = ({ onClose, onSave }) => {
               </Col>
               <Col lg={6}>
                 <Form.Group>
-                  <Form.Label>Interview Type</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Interview Type</Form.Label>
                   <div className="d-flex gap-3">
                     <Form.Check
                       type="radio"
@@ -212,7 +217,7 @@ const AddInterview = ({ onClose, onSave }) => {
             <Row className="mb-4">
               <Col lg={6} className="mb-3 mb-lg-0">
                 <Form.Group>
-                  <Form.Label>Date</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Date</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="bg-light">
                       <Calendar size={16} />
@@ -220,6 +225,7 @@ const AddInterview = ({ onClose, onSave }) => {
                     <FormControl
                       type="date"
                       name="date"
+                      className={`${darkMode ? "card-dark" : null }`}
                       value={formData.date}
                       onChange={handleInputChange}
                       required
@@ -229,7 +235,7 @@ const AddInterview = ({ onClose, onSave }) => {
               </Col>
               <Col lg={6}>
                 <Form.Group>
-                  <Form.Label>Time</Form.Label>
+                  <Form.Label className={`${darkMode ? "text-white" : null } `} >Time</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="bg-light">
                       <Clock size={16} />
@@ -238,6 +244,7 @@ const AddInterview = ({ onClose, onSave }) => {
                       type="time"
                       name="time"
                       value={formData.time}
+                      className={`${darkMode ? "card-dark" : null }`}
                       onChange={handleInputChange}
                       required
                     />
@@ -247,13 +254,14 @@ const AddInterview = ({ onClose, onSave }) => {
             </Row>
             
             <Form.Group className="mb-4">
-              <Form.Label>Notes</Form.Label>
+              <Form.Label className={`${darkMode ? "text-white" : null } `} >Notes</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
                 name="notes"
                 value={formData.notes}
                 onChange={handleInputChange}
+                className={`${darkMode ? "card-dark" : null }`}
                 placeholder="Enter any notes about the interview"
               />
             </Form.Group>

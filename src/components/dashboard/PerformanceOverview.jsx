@@ -87,8 +87,8 @@ export default function PerformanceDashboard() {
             
            
             
-            <div className="dropdown">
-              <button className="btn btn-outline-secondary" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            {/* <div className="dropdown">
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-2" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <Download size={16} className="me-2" />
                 Export
               </button>
@@ -97,7 +97,7 @@ export default function PerformanceDashboard() {
                 <li><button className="dropdown-item">Export as Excel</button></li>
           
               </ul>
-            </div>
+            </div> */}
             
    
           </div>
@@ -350,7 +350,7 @@ export default function PerformanceDashboard() {
             <div className={`${darkMode ? "dark-mode" : "" } card-header `}>
               <ul className="nav nav-tabs card-header-tabs">
                 <li className="nav-item">
-                  <a className={`${darkMode ? "card-dark" : "" } nav-link active `} href="#">Integrated Overview</a>
+                  <a className={`${darkMode ? "dark-mode" : "" } nav-link active `} href="#">Integrated Overview</a>
                 </li>
                 
                </ul>

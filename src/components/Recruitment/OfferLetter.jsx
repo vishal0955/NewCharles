@@ -5,6 +5,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 // import 'bootstrap-icons/font/bootstrap-icons.css';
 import { BsPencilSquare, BsTrash } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
@@ -117,6 +118,7 @@ const jobs = [
 ];
 
 const OfferLetter = () => {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div className="container my-4">
       {/* Header and Filters */}
@@ -152,19 +154,19 @@ const OfferLetter = () => {
 
       <div className="d-flex justify-content-between align-items-center my-3 flex-wrap">
           <div className="mb-2">
-           <input type="text" className="form-control d-inline-block w-auto me-2" placeholder="Search by name" />
+           <input type="text" className= {`${darkMode ? "card-dark" : null } form-control d-inline-block w-auto me-2 `} placeholder="Search by name" />
          
           </div>
           <div className="mb-2">
            
-            <select className="form-select d-inline-block w-auto me-2">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto me-2`}>
               <option>Role</option>
               <option>Accountant</option>
               <option>App Developer</option>
               <option>Technician</option>
               <option>Web Developer</option>
             </select>
-            <select className="form-select d-inline-block w-auto me-2">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto me-2`}>
               <option>Select Status</option>
           
               <option>Accepted</option>
@@ -172,7 +174,7 @@ const OfferLetter = () => {
               <option>Hired</option>
              
             </select>
-            <select className="form-select d-inline-block w-auto">
+            <select className={`${darkMode ? "card-dark" : null } form-select d-inline-block w-auto`}>
               <option>Sort By: Last 7 Days</option>
               <option>Last 30 Days</option>
               <option>Last 60 Days</option>
@@ -182,8 +184,8 @@ const OfferLetter = () => {
 
       {/* Table */}
       <div className="table-responsive">
-        <table className="table table-hover align-middle border-0">
-          <thead className="table-light border-0">
+        <table className= {`${darkMode ? "table-dark border-1" : null } table table-hover align-middle `}>
+          <thead className="table-light ">
             <tr>
               <th className="border-0"><Form.Check type="checkbox" /></th>
               <th className="border-0">Offer ID</th>

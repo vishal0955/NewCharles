@@ -240,6 +240,7 @@ const AppraisalPage = () => {
     <Container
       fluid
       className={`${darkMode ? "bg-dark text-white" : ""} mt-4`}
+      style={{ minHeight: "100vh" }}
     >
       <Row>
         <Col xs={8} className="mb-4 font-bold text-3xl">

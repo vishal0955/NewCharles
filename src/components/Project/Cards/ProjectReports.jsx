@@ -4,6 +4,7 @@ import { DownloadOutlined, PlusOutlined, EditOutlined, EyeOutlined, DeleteOutlin
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const ProjectReports = () => {
@@ -12,6 +13,8 @@ const ProjectReports = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [editingReport, setEditingReport] = useState(null);
   const [form] = Form.useForm();
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   // Mock data - Replace with actual API calls
   useEffect(() => {
@@ -226,6 +229,7 @@ const ProjectReports = () => {
       </div>
 
       <Table
+       className= {`${darkMode ? "dark-mode" : "" } `}
         columns={columns}
         dataSource={reports}
         loading={loading}

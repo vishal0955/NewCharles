@@ -197,9 +197,11 @@ const CreateOffer = () => {
         </div>
         {/* Submit Buttons */}
         <div className="col-12 mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
+           <Link to ="/recruitment/offerletter">
           <button type="button" className="btn btn-secondary me-md-2">
             Cancel
           </button>
+          </Link>
           <button type="button" className="btn btn-primary me-md-2">
             Save as Draft
           </button>

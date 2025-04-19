@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Button, Table, Modal, Form, Pagination } from "react-bootstrap";
 import { FaSearch, FaEdit, FaTrash } from "react-icons/fa"; // Added icons
+import { useSelector } from "react-redux";
 
 const SelfAssessment = () => {
   const [showForm, setShowForm] = useState(false);
@@ -35,6 +36,7 @@ const SelfAssessment = () => {
     setFilter(e.target.value);
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div className="container" style={{height:"100vh"}}>
       <h2 className="mt-4">Self Assessment</h2>
@@ -64,7 +66,7 @@ const SelfAssessment = () => {
         </Button>
       </div>
 
-      <Table striped bordered hover responsive>
+      <Table className={`${darkMode ? "table-dark border" : null }  table table-striped table-bordered `}>
         <thead>
           <tr>
             <th>Employee Name</th>

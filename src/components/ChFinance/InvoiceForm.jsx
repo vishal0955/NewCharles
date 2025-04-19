@@ -12,7 +12,7 @@ const InvoiceForm = () => {
   className="btn btn-primary mb-2"
   onClick={() => {
     console.log("Back clicked");
-    navigate("/finance/invoice"); // Navigate to the invoices page
+    navigate("/finance/invoiceslist"); // Navigate to the invoices page
   }}
 >
   Back
@@ -208,7 +208,7 @@ const InvoiceForm = () => {
         <div className="mt-4 d-flex gap-2">
           <Button variant="primary">Save</Button>
           <Button variant="secondary">Save As Draft</Button>
-          <Button variant="light">Cancel</Button>
+          <Button variant="light" onClick={() => navigate("/finance/invoiceslist")}>Cancel</Button>
         </div>
       </Form>
       </div>

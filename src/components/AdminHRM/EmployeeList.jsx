@@ -259,7 +259,7 @@ const EmployeeList = () => {
           </div>
         </div>
 
-        <div className="quotes-card">
+        <div className={`${darkMode ? "dark-mode border border-1" : "" }  quotes-card `}>
           <div className=" quotes-card-body">
             <div className="quotes-filters row mb-4">
               <div className="col-md-6">
@@ -283,9 +283,9 @@ const EmployeeList = () => {
               </div>
             </div>
             <div className={`${darkMode ? "dark-mode" : "" } overflow-x-auto w-full`}>
-              <table className={`${darkMode ? "dark-mode" : "" } min-w-full text-sm text-left whitespace-nowrap`}>
-                <thead className={`${darkMode ? "dark-mode" : null }`}>
-                  <tr className="bg-gray-50 text-left text-sm font-medium text-gray-600">
+              <table className={`${darkMode ? "table-dark border border-1" : "" } min-w-full text-sm text-left whitespace-nowrap`}>
+                <thead className={`${darkMode ? "" : null }`}>
+                  <tr className=" text-left text-sm font-medium ">
                     <th className="px-4 py-3">Employee</th>
                     <th className="px-4 py-3">Designation</th>
                     <th className="px-4 py-3">Department</th>

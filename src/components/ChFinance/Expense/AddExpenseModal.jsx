@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaXmark } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
   const [formData, setFormData] = useState({
@@ -42,6 +43,9 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+
+  const  darkMode = useSelector((state) => state.theme.isDarkMode);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSave(formData);
@@ -52,7 +56,7 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
   return (
     <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
       <div className="modal-dialog modal-lg">
-        <div className="modal-content">
+        <div className={`${darkMode ? "dark-mode" : null } modal-content `}>
           <div className="modal-header">
             <h5 className="modal-title">
               {editData ? "Edit Expense" : "Add New Expense"}
@@ -68,9 +72,9 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
             <form onSubmit={handleSubmit}>
               <div className="row g-3">
                 <div className="col-md-6">
-                  <label htmlFor="category" className="form-label">Category *</label>
+                  <label htmlFor="category" className={`${darkMode ? "text-white" : null }  form-label `}>Category *</label>
                   <select
-                    className="form-select"
+                    className={`${darkMode ? "card-dark" : null }  form-select `}
                     id="category"
                     name="category"
                     value={formData.category}
@@ -90,13 +94,13 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
                   </select>
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="amount" className="form-label">Amount *</label>
+                  <label htmlFor="amount" className={`${darkMode ? "text-white" : null }  form-label `}>Amount *</label>
                   <div className="input-group">
                     <span className="input-group-text">$</span>
                     <input
                       type="number"
                       step="0.01"
-                      className="form-control"
+                      className={`${darkMode ? "card-dark" : null }  form-control `}
                       id="amount"
                       name="amount"
                       value={formData.amount}
@@ -107,10 +111,10 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
                   </div>
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="date" className="form-label">Date *</label>
+                  <label htmlFor="date" className={`${darkMode ? "text-white" : null }  form-label `}>Date *</label>
                   <input
                     type="date"
-                    className="form-control"
+                    className={`${darkMode ? "card-dark" : null }  form-control `}
                     id="date"
                     name="date"
                     value={formData.date}
@@ -119,10 +123,10 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="vendor" className="form-label">Vendor/Payee *</label>
+                  <label htmlFor="vendor" className={`${darkMode ? "text-white" : null }  form-label `}>Vendor/Payee *</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`${darkMode ? "card-dark" : null }  form-control `}
                     id="vendor"
                     name="vendor"
                     value={formData.vendor}
@@ -132,9 +136,9 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
                   />
                 </div>
                 <div className="col-12">
-                  <label htmlFor="description" className="form-label">Description</label>
+                  <label htmlFor="description" className={`${darkMode ? "text-white" : null }  form-label `}>Description</label>
                   <textarea
-                    className="form-control"
+                    className={`${darkMode ? "card-dark" : null }  form-control `}
                     id="description"
                     name="description"
                     value={formData.description}
@@ -144,9 +148,9 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
                   ></textarea>
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="paymentMethod" className="form-label">Payment Method</label>
+                  <label htmlFor="paymentMethod" className={`${darkMode ? "text-white" : null }  form-label `}>Payment Method</label>
                   <select
-                    className="form-select"
+                    className={`${darkMode ? "card-dark" : null }  form-select `}
                     id="paymentMethod"
                     name="paymentMethod"
                     value={formData.paymentMethod}
@@ -162,9 +166,9 @@ const AddExpenseModal = ({ isOpen, onClose, onSave, editData }) => {
                   </select>
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="status" className="form-label">Status</label>
+                  <label htmlFor="status" className={`${darkMode ? "text-white" : null }  form-label `}>Status</label>
                   <select
-                    className="form-select"
+                    className={`${darkMode ? "card-dark" : null }  form-select `}
                     id="status"
                     name="status"
                     value={formData.status}

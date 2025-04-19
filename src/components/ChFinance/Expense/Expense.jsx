@@ -206,52 +206,52 @@ const ExpenseList = () => {
         {/* Stats Cards Section */}
         <div className="row g-3 mb-4">
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100 `}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-primary fs-4 me-3">
                   <FaMoneyBill />
                 </div>
                 <div>
-                  <div className="text-muted small">Total Expenses</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Total Expenses</div>
                   <p className="fs-5 fw-semibold mb-0">${totalExpenses.toFixed(2)}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100 `}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-success fs-4 me-3">
                   <FaCheckCircle />
                 </div>
                 <div>
-                  <div className="text-muted small">Paid</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Paid</div>
                   <p className="fs-5 fw-semibold mb-0">${paidExpenses.toFixed(2)}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100 `}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-danger fs-4 me-3">
                   <FaTimesCircle />
                 </div>
                 <div>
-                  <div className="text-muted small">Unpaid</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>Unpaid</div>
                   <p className="fs-5 fw-semibold mb-0">${unpaidExpenses.toFixed(2)}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="card shadow-sm h-100">
+            <div className={`${darkMode ? "card-dark" : null } card shadow-sm h-100 `}>
               <div className="card-body d-flex align-items-center">
                 <div className="text-warning fs-4 me-3">
                   <FaCalendarAlt />
                 </div>
                 <div>
-                  <div className="text-muted small">This Month</div>
+                  <div className={`${darkMode ? "text-white" : null }  small `}>This Month</div>
                   <p className="fs-5 fw-semibold mb-0">{expenses.length}</p>
                 </div>
               </div>
@@ -259,7 +259,7 @@ const ExpenseList = () => {
           </div>
         </div>
 
-        <div className="card shadow-sm">
+        <div className={`${darkMode ? "dark-mode border" : null }  card shadow-sm `}>
           <div className="card-body">
             <div className="row mb-4 g-3">
               <div className="col-md-6">
@@ -269,7 +269,7 @@ const ExpenseList = () => {
                   </span>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`${darkMode ? "card-dark" : null }  form-control`}
                     placeholder="Search Expenses..."
                     value={searchTerm}
                     onChange={handleSearchChange}
@@ -278,7 +278,7 @@ const ExpenseList = () => {
               </div>
               <div className="col-md-6 d-flex justify-content-md-end gap-2 flex-wrap">
               <div className="dropdown">
-              <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <button className={`${darkMode ? "card-dark" : null } btn btn-outline-secondary dropdown-toggle `} type="button" data-bs-toggle="dropdown">
                 Status
               </button>
               <ul className="dropdown-menu">
@@ -290,8 +290,8 @@ const ExpenseList = () => {
               </div>
             </div>
 
-            <div className="table-responsive">
-              <table className="table table-hover align-middle">
+            <div className= {`${darkMode ? "dark-mode" : null }  table-responsive `}>
+              <table className={`${darkMode ? "table-dark border" : null } table table-hover align-middle `}>
                 <thead className="table-light">
                   <tr>
                     <th>Expense ID</th>
