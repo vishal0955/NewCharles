@@ -272,7 +272,9 @@
 
 
 // src/pages/EmployeeSalary.jsx
-import React, { useState } from "react";
+
+
+import React, { useState,useRef} from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { FaPlus, FaFileExport } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -318,6 +320,11 @@ export default function EmployeeSalary() {
   const [selected, setSelected] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
   const navigate = useNavigate();
+   const [showDropdown, setShowDropdown] = useState(false);
+   const dropdownRef = useRef(null);
+
+   
+   
 
   /* ───────────────────────── helpers ───────────────────────── */
   const handleAddSalary = () => setShowModal(true);
@@ -362,10 +369,47 @@ export default function EmployeeSalary() {
         </div>
 
         <div className="d-flex flex-wrap gap-2">
-          <button className="btn btn-outline-dark d-flex align-items-center">
+          {/* <button className="btn btn-outline-dark d-flex align-items-center">
             <FaFileExport className="me-2" /> Export
-          </button>
+          </button> 
+           
+            */}
+
           <button
+            className="btn btn-outline-dark d-flex align-items-center"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <FaFileExport className="me-2" />
+            Export
+          </button>
+
+          {showDropdown && (
+            <div
+              className="dropdown-menu show position-absolute mt-5"
+              style={{ minWidth: "2rem" }}
+            >
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  console.log("Export as PDF");
+                  setShowDropdown(false);
+                }}
+              >
+                Export as PDF
+              </button>
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  console.log("Export as Excel");
+                  setShowDropdown(false);
+                }}
+              >
+                Export as Excel
+              </button>
+            </div>
+          )}
+
+           <button
             className="btn btn-dark d-flex align-items-center"
             onClick={handleAddSalary}
           >
@@ -383,12 +427,11 @@ export default function EmployeeSalary() {
               Employee Salary List
             </h2>
             <div className="d-flex  gap-2">
-            
-            <input
-              type="text"
-              className="form-control form-control-sm"
-              placeholder="Search"
-            />
+              <input
+                type="text"
+                className="form-control form-control-sm"
+                placeholder="Search"
+              />
               <select className="form-select form-select-sm">
                 <option>Status</option>
                 <option>Active</option>
@@ -398,21 +441,12 @@ export default function EmployeeSalary() {
                 <option>Sort By : Last 7 Days</option>
                 <option>Last 30 Days</option>
               </select>
-              
             </div>
           </div>
 
           {/* Filters */}
           <div className="d-flex flex-column flex-md-row justify-content-between gap-2 p-3 border-top">
-            {/* <div className="d-flex align-items-center gap-2">
-              <label className="small mb-0">Rows per page</label>
-              <select className="form-select form-select-sm w-auto">
-                <option>10</option>
-                <option>20</option>
-                <option>50</option>
-              </select>
-            </div> */}
-          
+            
           </div>
 
           {/* Table */}
@@ -499,99 +533,110 @@ export default function EmployeeSalary() {
             </table>
           </div> */}
           {/* Wrapper adds horizontal scroll whenever needed */}
-<div className="table-responsive">
-  <table className="table table-hover align-middle mb-0">
-    <thead className="table-light">
-      <tr>
-        <th style={{ width: "90px" }}>Emp ID</th>
-        <th style={{ minWidth: "220px" }}>Name</th>
+          <div className="table-responsive">
+            <table className="table table-hover align-middle mb-0">
+              <thead className="table-light">
+                <tr>
+                  <th style={{ width: "90px" }}>Emp ID</th>
+                  <th style={{ minWidth: "220px" }}>Name</th>
 
-        {/* Hide on xs; show ≥ sm */}
-        <th className="d-none d-sm-table-cell" style={{ minWidth: "240px" }}>
-          Email
-        </th>
-        <th className="d-none d-sm-table-cell" style={{ minWidth: "150px" }}>
-          Phone
-        </th>
-        <th className="d-none d-md-table-cell">Designation</th>
-        <th className="d-none d-md-table-cell">Joining Date</th>
+                  {/* Hide on xs; show ≥ sm */}
+                  <th
+                    className="d-none d-sm-table-cell"
+                    style={{ minWidth: "240px" }}
+                  >
+                    Email
+                  </th>
+                  <th
+                    className="d-none d-sm-table-cell"
+                    style={{ minWidth: "150px" }}
+                  >
+                    Phone
+                  </th>
+                  <th className="d-none d-md-table-cell">Designation</th>
+                  <th className="d-none d-md-table-cell">Joining Date</th>
 
-        <th style={{ width: "110px" }}>Salary</th>
-        <th style={{ width: "120px" }}>Payslip</th>
-        <th style={{ width: "90px" }}>Actions</th>
-      </tr>
-    </thead>
+                  <th style={{ width: "110px" }}>Salary</th>
+                  <th style={{ width: "120px" }}>Payslip</th>
+                  <th style={{ width: "90px" }}>Actions</th>
+                </tr>
+              </thead>
 
-    <tbody>
-      {employees.map((e) => (
-        <tr key={e.id}>
-          <td>{e.id}</td>
+              <tbody>
+                {employees.map((e) => (
+                  <tr key={e.id}>
+                    <td>{e.id}</td>
 
-          {/* NAME column – wraps nicely */}
-          <td>
-            <div className="d-flex align-items-center gap-2">
-              <img
-                src={e.image}
-                alt={e.name}
-                className="rounded-circle"
-                width={40}
-                height={40}
-              />
-              <div className="text-wrap">
-                <div className="fw-medium">{e.name}</div>
-                <small className="text-muted">{e.role}</small>
-              </div>
-            </div>
-          </td>
+                    {/* NAME column – wraps nicely */}
+                    <td>
+                      <div className="d-flex align-items-center gap-2">
+                        <img
+                          src={e.image}
+                          alt={e.name}
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                        />
+                        <div className="text-wrap">
+                          <div className="fw-medium">{e.name}</div>
+                          <small className="text-muted">{e.role}</small>
+                        </div>
+                      </div>
+                    </td>
 
-          {/* Optional columns hidden on small screens */}
-          <td className="d-none d-sm-table-cell text-wrap">{e.email}</td>
-          <td className="d-none d-sm-table-cell">{e.phone}</td>
-          <td className="d-none d-md-table-cell">{e.designation}</td>
-          <td className="d-none d-md-table-cell">{e.joining}</td>
+                    {/* Optional columns hidden on small screens */}
+                    <td className="d-none d-sm-table-cell text-wrap">
+                      {e.email}
+                    </td>
+                    <td className="d-none d-sm-table-cell">{e.phone}</td>
+                    <td className="d-none d-md-table-cell">{e.designation}</td>
+                    <td className="d-none d-md-table-cell">{e.joining}</td>
 
-          <td>${e.salary}</td>
+                    <td>${e.salary}</td>
 
-          <td>
-            <button
-              className="btn btn-sm btn-dark"
-              onClick={() => {
-                localStorage.setItem("payslipData", JSON.stringify(e));
-                navigate(`/payslip/${e.id}`);
-              }}
-            >
-              Slip
-            </button>
-          </td>
+                    <td>
+                      <button
+                        className="btn btn-sm btn-dark"
+                        onClick={() => {
+                          localStorage.setItem(
+                            "payslipData",
+                            JSON.stringify(e)
+                          );
+                          navigate(`/payslip/${e.id}`);
+                        }}
+                      >
+                        Slip
+                      </button>
+                    </td>
 
-          <td>
-            <div className="d-flex gap-2 justify-content-center">
-              <button
-                className="btn btn-link p-0 text-primary"
-                onClick={() => {
-                  setSelected(e);
-                  setIsEdit(true);
-                  setShowModal(true);
-                }}
-              >
-                <FiEdit size={18} />
-              </button>
-              <button
-                className="btn btn-link p-0 text-danger"
-                onClick={() =>
-                  window.confirm(`Delete ${e.name}?`) && deleteEmployee(e.id)
-                }
-              >
-                <FiTrash size={18} />
-              </button>
-            </div>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
+                    <td>
+                      <div className="d-flex gap-2 justify-content-center">
+                        <button
+                          className="btn btn-link p-0 text-primary"
+                          onClick={() => {
+                            setSelected(e);
+                            setIsEdit(true);
+                            setShowModal(true);
+                          }}
+                        >
+                          <FiEdit size={18} />
+                        </button>
+                        <button
+                          className="btn btn-link p-0 text-danger"
+                          onClick={() =>
+                            window.confirm(`Delete ${e.name}?`) &&
+                            deleteEmployee(e.id)
+                          }
+                        >
+                          <FiTrash size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

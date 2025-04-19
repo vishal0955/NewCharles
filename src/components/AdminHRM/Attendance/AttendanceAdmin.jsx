@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux';
 
 const AttendanceAdmin = () => {
   // Sample data for the dashboard
+const [open, setOpen] = useState(false);
   const attendanceSummary = [
     { title: "Present", count: 250, change: "+1.2%", changeType: "increase" },
     { title: "Late Login", count: 45, change: "-3.1%", changeType: "decrease" },
     { title: "Uninformed", count: 15, change: "-1.2%", changeType: "decrease" },
     { title: "Permission", count: 3, change: "+1.1%", changeType: "increase" },
-    { title: "Absent", count: 12, change: "-1.9%", changeType: "decrease" }
+    { title: "Absent", count: 12, change: "-1.9%", changeType: "decrease" },
   ];
 
   const employeeData = [
@@ -22,7 +23,7 @@ const AttendanceAdmin = () => {
       break: "30 Min",
       late: "32 Min",
       productionHours: "8.58 Hrs",
-    }
+    },
   ];
 
   const [dateRange] = useState("03/11/2025 - 03/17/2025");
@@ -33,7 +34,9 @@ const AttendanceAdmin = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className={`${darkMode ? "dark-mode" : null } bg-gray-50 min-h-screen p-4`}>
+    <div
+      className={`${darkMode ? "dark-mode" : null} bg-gray-50 min-h-screen p-4`}
+    >
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div className="flex items-center gap-2 mb-4 md:mb-0">
@@ -63,7 +66,48 @@ const AttendanceAdmin = () => {
               />
             </svg>
           </div>
-          <button className="bg-white border rounded-md px-4 py-2 flex items-center gap-2">
+
+          <div className="relative inline-block text-left">
+            <button
+              className="bg-white border rounded-md px-4 py-2 flex items-center gap-2"
+              onClick={() => setOpen(!open)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              Export
+            </button>
+
+            {open && (
+              <div className="absolute right-0 mt-2 w-28 bg-white border rounded-md shadow-lg z-10">
+                <button
+                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                  onClick={() => console.log("Export PDF")}
+                >
+                  Export as PDF
+                </button>
+                <button
+                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                  onClick={() => console.log("Export Excel")}
+                >
+                  Export as Excel
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* <button className="bg-white border rounded-md px-4 py-2 flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -79,7 +123,7 @@ const AttendanceAdmin = () => {
               />
             </svg>
             Export
-          </button>
+          </button> */}
           {/* <button className="bg-black text-white rounded-md px-4 py-2 flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,15 +147,26 @@ const AttendanceAdmin = () => {
       {/* Attendance Details Section */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-1">Attendance Details Today</h2>
-        <p className="text-gray-500 text-sm mb-4">Data from the 800+ total no of employees</p>
-        
+        <p className="text-gray-500 text-sm mb-4">
+          Data from the 800+ total no of employees
+        </p>
+
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {attendanceSummary.map((item, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-sm border">
+            <div
+              key={index}
+              className="bg-white p-4 rounded-lg shadow-sm border"
+            >
               <div className="flex justify-between items-center mb-2">
                 <span className="text-gray-500">{item.title}</span>
-                <span className={`text-sm ${item.changeType === 'increase' ? 'text-green-500' : 'text-red-500'}`}>
+                <span
+                  className={`text-sm ${
+                    item.changeType === "increase"
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
                   {item.change}
                 </span>
               </div>
@@ -131,45 +186,77 @@ const AttendanceAdmin = () => {
               <option>{dateRange}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4 text-gray-500"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
           </div>
-          
+
           <div className="relative">
             <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
               <option>{department}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4 text-gray-500"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
           </div>
-          
+
           <div className="relative">
             <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
               <option>{status}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4 text-gray-500"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
           </div>
-          
+
           <div className="relative">
             <select className="w-full p-2 border rounded-md appearance-none bg-white pr-8">
               <option>Sort By: {sortBy}</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4 text-gray-500"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
           </div>
-          
+
           <div>
             <input
               type="text"
@@ -207,13 +294,25 @@ const AttendanceAdmin = () => {
                 <td className="py-4 px-4">
                   <div className="flex items-center">
                     <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
-                      <svg className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      <svg
+                        className="h-6 w-6 text-gray-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
                       </svg>
                     </div>
                     <div>
                       <div className="font-medium">{employee.name}</div>
-                      <div className="text-sm text-gray-500">{employee.department}</div>
+                      <div className="text-sm text-gray-500">
+                        {employee.department}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -233,7 +332,12 @@ const AttendanceAdmin = () => {
                 </td>
                 <td className="py-4 px-4">
                   <button className="text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
                       <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                     </svg>
                   </button>
@@ -242,7 +346,7 @@ const AttendanceAdmin = () => {
             ))}
           </tbody>
         </table>
-        
+
         {/* Pagination */}
         <div className="flex flex-col sm:flex-row justify-between items-center p-4 border-t">
           <div className="flex items-center mb-4 sm:mb-0">
@@ -252,15 +356,27 @@ const AttendanceAdmin = () => {
                 <option>{rowsPerPage}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                <svg className="w-4 h-4 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4 text-gray-500"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M19 9l-7 7-7-7"></path>
                 </svg>
               </div>
             </div>
           </div>
           <div className="flex">
-            <button className="px-4 py-2 border rounded-md mr-2 text-sm">Previous</button>
-            <button className="px-4 py-2 border rounded-md text-sm">Next</button>
+            <button className="px-4 py-2 border rounded-md mr-2 text-sm">
+              Previous
+            </button>
+            <button className="px-4 py-2 border rounded-md text-sm">
+              Next
+            </button>
           </div>
         </div>
       </div>
