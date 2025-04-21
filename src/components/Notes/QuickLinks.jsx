@@ -204,7 +204,7 @@ const QuickLinks = () => {
   };
 
   return (
-    <Container fluid className="p-4">
+    <Container fluid className="p-4" style={{ height: '100vh' }}>
       {/* Real-time notification toast */}
       <ToastContainer position="top-end" className="p-3">
         <Toast 

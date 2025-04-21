@@ -1,179 +1,286 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import ContactForm from '../contact/ContactForm';
+import CompanyForm from '../companies/CompanyForm';
 
-const AboutDealsForm = ({ data, onChange }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+const CreateDealModal = ({ isOpen, onClose, onSubmit }) => {
+  const [iscontactModalOpen, setContactModalOpen] = useState(false);
+  const [isCompanyModalOpen, setCompanyModalOpen] = useState(false);
 
-  const handleChange = (field, value) => {
-    if (onChange) {
-      onChange({ ...data, [field]: value });
-    }
+  const handleCloseModal = () => {
+    setContactModalOpen(false);
+    setCompanyModalOpen(false);
   };
 
-  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  const [formData, setFormData] = useState({
+    dealName: '',
+    pipeline: '',
+    dealStage: '',
+    amount: '',
+    closeDate: '',
+    dealOwner: '',
+    dealType: '',
+    priority: '',
+    contact: '',
+    company: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
+
+  if (!isOpen) return null;
 
   return (
-    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white`}>
-      {/* Header */}
-      <div
-        className="flex justify-between items-center p-3 cursor-pointer"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <div className="flex items-center">
-          <svg
-            className={`w-4 h-4 mr-2 transform transition-transform ${
-              isExpanded ? "rotate-0" : "-rotate-90"
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-          <span className="text-sm font-medium">About this deal</span>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className={`${darkMode ? "dark-mode" :" bg-white" } rounded-lg p-6 w-[500px] max-h-[90vh] overflow-y-auto`}>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold">Create Deal</h2>
+          <button onClick={onClose} className="">
+            <span className="text-2xl">×</span>
+          </button>
         </div>
-        <button className="text-blue-600 text-sm">Actions</button>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium ">Deal name*</label>
+            <input
+              type="text"
+              name="dealName"
+              value={formData.dealName}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Pipeline*</label>
+            <select
+              name="pipeline"
+              value={formData.pipeline}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+              required
+            >
+              <option value="">Select pipeline</option>
+              <option value="deals">Deals pipeline</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Deal stage*</label>
+            <select
+              name="dealStage"
+              value={formData.dealStage}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+              required
+            >
+              <option value="">Select stage</option>
+              <option value="appointment">Appointment Scheduled</option>
+              <option value="qualified">Qualified</option>
+              <option value="presentation">Presentation Scheduled</option>
+              <option value="decision">Decision Maker</option>
+              <option value="closed">Closed Won</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Amount</label>
+            <input
+              type="number"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Close date</label>
+            <input
+              type="date"
+              name="closeDate"
+              value={formData.closeDate}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Deal owner</label>
+            <select
+              name="dealOwner"
+              value={formData.dealOwner}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+            >
+              <option value="">Select owner</option>
+              <option value="viktor">Viktor Suzuki</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Deal type</label>
+            <select
+              name="dealType"
+              value={formData.dealType}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+            >
+              <option value="">Select type</option>
+              <option value="new">New Business</option>
+              <option value="existing">Existing Business</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium ">Priority</label>
+            <select
+              name="priority"
+              value={formData.priority}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+            >
+              <option value="">Select priority</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          <div>
+
+            <div className="d-flex  justify-between">
+            <label className="block text-sm font-medium ">Contact</label>
+            <button className="btn btn-primary  py-0 px-1 hover:text-gray-700" onClick={() => setContactModalOpen(true)}>Add new</button>
+            </div>
+            <select
+              type="text"
+              name="contact"
+              value={formData.contact}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+              placeholder="Search"
+            >
+              <option value="">Select contact</option>
+              <option value="viktor">Viktor Suzuki</option> 
+            </select>
+            {/* <div className="mt-1 text-sm  flex items-center">
+              <input type="checkbox" className="mr-2" /> Add missing activity from this contact
+            </div> */}
+          </div>
+
+          <div>
+            <div className="d-flex  justify-between">
+            <label className="block text-sm font-medium ">Company</label>
+            <button className="btn btn-primary  py-0 px-1 hover:text-gray-700 " onClick={() => setCompanyModalOpen(true)}>Add new</button>
+            </div>
+            <select
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className={`${darkMode ? "dark-mode" : null } mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2`}
+              placeholder="Search"
+            >
+              <option value="">Select company</option>
+              <option value="company1">Company 1</option>
+            </select>
+            {/* <div className="mt-1 text-sm  flex items-center">
+              <input type="checkbox" className="mr-2" /> Add missing activity from this company
+            </div> */}
+          </div>
+
+          <div className="flex justify-end space-x-3 mt-6">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inv-filter-button"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="inv-new-button"
+            >
+              Create
+            </button>
+          </div>
+        </form>
       </div>
 
-      {/* Form Content */}
-      {isExpanded && (
-        <div className="p-3 border-t">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs mb-1">Email</label>
-              <input
-                type="email"
-                value={data.email}
-                onChange={(e) => handleChange("email", e.target.value)}
-                className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
-              />
-            </div>
 
-            <div>
-              <label className="block text-xs mb-1">
-                Phone number
-              </label>
-              <input
-                type="tel"
-                value={data.phone}
-                onChange={(e) => handleChange("phone", e.target.value)}
-                className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs mb-1">
-                Company name
-              </label>
-              <input
-                type="text"
-                value={data.company}
-                onChange={(e) => handleChange("company", e.target.value)}
-                className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs mb-1">
-                Lead status
-              </label>
-              <div className="relative">
-                <select
-                  value={data.leadStatus}
-                  onChange={(e) => handleChange("leadStatus", e.target.value)}
-                  className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-2 text-sm border rounded appearance-none focus:outline-none focus:border-blue-500`}
-                >
-                  <option value="">Select status</option>
-                  <option value="new">New</option>
-                  <option value="open">Open</option>
-                  <option value="in-progress">In Progress</option>
-                  <option value="qualified">Qualified</option>
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <svg
-                    className="w-4 h-4 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+      {iscontactModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-md" role="document">
+              <div className={`${darkMode ? "dark-mode" : null } modal-content`}>
+                <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
+                  <h5 className="modal-title">Add New Contact</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className={`${darkMode ? "dark-mode" : null } modal-body`}>
+                  <ContactForm handleclose={handleCloseModal} />
                 </div>
               </div>
-            </div>
-
-            <div>
-              <label className="block text-xs mb-1">
-                Lifecycle stage
-              </label>
-              <div className="relative">
-                <select
-                  value={data.lifecycleStage}
-                  onChange={(e) =>
-                    handleChange("lifecycleStage", e.target.value)
-                  }
-                  className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded appearance-none focus:outline-none focus:border-blue-500`}
-                >
-                  <option value="lead">Lead</option>
-                  <option value="customer">Customer</option>
-                  <option value="opportunity">Opportunity</option>
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <svg
-                    className="w-4 h-4 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs mb-1">
-                Buying Role
-              </label>
-              <input
-                type="text"
-                value={data.buyingRole}
-                onChange={(e) => handleChange("buyingRole", e.target.value)}
-                className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs mb-1">
-                Contact owner
-              </label>
-              <input
-                type="text"
-                value={data.contactOwner}
-                onChange={(e) => handleChange("contactOwner", e.target.value)}
-                className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
-              />
             </div>
           </div>
-        </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
       )}
+
+
+      {/* company Modal; */}
+
+      {isCompanyModalOpen && (
+        
+              <>
+                <div className="modal fade show d-block" role="dialog">
+                  <div className="modal-dialog modal-md" role="document">
+                    <div className={`${darkMode ? "dark-mode" : "bg-white" }  modal-content`}>
+                      <div className="modal-header">
+                        <button
+                          type="button"
+                          className="btn-close"
+                          aria-label="Close"
+                          onClick={handleCloseModal}
+                        />
+                      </div>
+                      <div className="modal-body">
+                        <CompanyForm handleClose={handleCloseModal} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="modal-backdrop fade show"
+                  onClick={handleCloseModal}
+                ></div>
+              </>
+            )}
     </div>
   );
 };
 
-export default AboutDealsForm;
+export default CreateDealModal;

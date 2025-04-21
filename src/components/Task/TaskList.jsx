@@ -43,6 +43,7 @@ const TaskList = () => {
 
   const getPriorityIcon = (priority) => {
     switch (priority) {
+      
       case 'High': return <i className="bi bi-arrow-up priority-high" />;
       case 'Medium': return <i className="bi bi-arrow-right priority-medium" />;
       case 'Low': return <i className="bi bi-arrow-down priority-low" />;

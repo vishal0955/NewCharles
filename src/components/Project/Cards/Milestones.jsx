@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Table, Button, Modal, Form, Input,  Dropdown, Menu, DatePicker, message, Space, Tag, Tooltip } from 'antd';
+import { Select } from 'antd';
+
+
 import { EditOutlined, EyeOutlined, DeleteOutlined, ExportOutlined, PlusOutlined, BellOutlined } from '@ant-design/icons';
 import { CSVLink } from 'react-csv';
 import { Link } from 'react-router-dom';
@@ -7,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 
 const Milestones = () => {
+  const { Option } = Select;
   const darkMode = useSelector((state) => state.theme.isDarkMode);
   const [milestones, setMilestones] = useState([
     {
@@ -234,13 +238,17 @@ const Milestones = () => {
           form={form}
           layout="vertical"
         >
-          <Form.Item
-            name="projectName"
-            label="Project Name"
-            rules={[{ required: true, message: 'Please input the project name!' }]}
-          >
-            <Input />
-          </Form.Item>
+        <Form.Item
+  name="projectName"
+  label="Project Name"
+  rules={[{ required: true, message: 'Please select the project name!' }]}
+>
+  <Select placeholder="Select a project">
+    <Option value="E-Commerce Platform">E-Commerce Platform</Option>
+    <Option value="Mobile App Development">Mobile App Development</Option>
+    <Option value="CRM Upgrade">CRM Upgrade</Option>
+  </Select>
+</Form.Item>
           <Form.Item
             name="title"
             label="Title"
@@ -277,12 +285,16 @@ const Milestones = () => {
             <Input type="number" min={0} max={100} />
           </Form.Item>
           <Form.Item
-            name="assignedTo"
-            label="Assigned To"
-            rules={[{ required: true, message: 'Please input the assignee!' }]}
-          >
-            <Input />
-          </Form.Item>
+  name="assignedTo"
+  label="Assigned To"
+  rules={[{ required: true, message: 'Please select an assignee!' }]}
+>
+  <Select placeholder="Select a team member">
+    <Option value="John Doe">John Doe</Option>
+    <Option value="Jane Smith">Jane Smith</Option>
+    <Option value="Alice Johnson">Alice Johnson</Option>
+  </Select>
+</Form.Item>
         </Form>
       </Modal>
 

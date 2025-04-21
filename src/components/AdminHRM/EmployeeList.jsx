@@ -126,7 +126,7 @@ const EmployeeList = () => {
     console.log(darkMode);
     
   return (
-    <div className={`${darkMode ? "dark-mode" : null }  bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden`}>
+    <div className={`${darkMode ? "dark-mode" : null }  bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden`} style={{ minHeight: "100vh" }}>
       <div className="w-full rounded-lg p-2 ">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
@@ -273,13 +273,58 @@ const EmployeeList = () => {
                   />
                 </div>
               </div>
-              <div className="col-md-6 d-flex justify-content-end gap-3">
-                <button className="inv-filter-button d-flex">
-                  <FaFilter className="mr-2 mt-1" /> Filter
-                </button>
-                <button className="inv-filter-button d-flex">
-                  <FaDownload className="mr-2 mt-1" /> Export
-                </button>
+              <div className="col-md-6 d-flex justify-content-end gap-2">
+                  <div className="dropdown ">
+                    <button
+                      className={`${
+                        darkMode ? "dark-mode" : null
+                      } btn inv-filter-button w-100 d-flex justify-content-between align-items-center`}
+                      data-bs-toggle="dropdown"
+                    >
+                      <span className="text-truncate">Status: All</span>
+                      <i className="bi bi-chevron-down" />
+                    </button>
+                    <ul className="dropdown-menu w-100">
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          All
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Active
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Inactive
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
               </div>
             </div>
             <div className={`${darkMode ? "dark-mode" : "" } overflow-x-auto w-full`}>

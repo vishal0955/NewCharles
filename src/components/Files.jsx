@@ -687,7 +687,7 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
                   <div className="card-body text-center">
                     <div className="fs-2 mb-2">{folder.icon}</div>
                     <h6 className="card-title text-truncate">{folder.name}</h6>
-                    <p className="card-text small text-muted d-none d-md-block">
+                    <p className="card-text small  d-none d-md-block">
                       {folder.count} {folder.count === 1 ? 'item' : 'items'}
                     </p>
                   </div>
@@ -745,10 +745,10 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
                     {file.starred && <FaStar className="text-warning ms-2" size={14} />}
                   </div>
                 </td>
-                <td className="text-muted d-none d-md-table-cell">{file.size}</td>
-                <td className="text-muted d-none d-md-table-cell">{file.type}</td>
-                <td className="text-muted d-none d-md-table-cell">{file.modified}</td>
-                <td className="text-muted d-none d-md-table-cell">
+                <td className=" d-none d-md-table-cell">{file.size}</td>
+                <td className=" d-none d-md-table-cell">{file.type}</td>
+                <td className=" d-none d-md-table-cell">{file.modified}</td>
+                <td className=" d-none d-md-table-cell">
                   {file.folderId ? folders.find(f => f.id === file.folderId)?.name : 'My Drive'}
                 </td>
                 <td className="text-center">
@@ -771,7 +771,7 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
 
       {/* Pagination */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
-        <div className="text-muted small mb-2 mb-md-0">
+        <div className=" small mb-2 mb-md-0">
           Showing 1 to {filteredFiles.length} of {filteredFiles.length} items
         </div>
         <nav>

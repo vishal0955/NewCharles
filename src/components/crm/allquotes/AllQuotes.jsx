@@ -54,19 +54,38 @@ const AllQuotes = () => {
         <div className="quotes-header d-flex justify-content-between align-items-center mb-4">
           <h2 className="quotes-title">All Quotes</h2>
           <div className="quotes-actions d-flex gap-3">
-            <button
-              className={`${
-                darkMode ? "dark-mode" : null
-              } inv-filter-button d-flex align-items-center gap-2`}
-            >
-              <i className="bi bi-upload" /> Import
-            </button>
-            <button
+          <button
               className="inv-new-button quotes-create-btn btn d-flex align-items-center gap-2"
               onClick={handleOpenModal}
             >
               <i className="bi bi-plus-lg" /> Create quote
             </button>
+            <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
+          
+   
+           
           </div>
         </div>
 

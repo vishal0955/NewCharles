@@ -27,6 +27,9 @@ const Task = ({ task, index, columnId, moveTask }) => {
     inputBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
     inputBorder: isDarkMode ? 'border-gray-600' : 'border-gray-300',
     secondaryText: isDarkMode ? 'text-gray-400' : 'text-gray-500',
+    dropdownBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
+    dropdownHover: isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50',
+    dropdownBorder: isDarkMode ? 'border-gray-700' : 'border-gray-200',
   };
 
   const [{ isDragging }, drag] = useDrag({
@@ -136,7 +139,7 @@ const Task = ({ task, index, columnId, moveTask }) => {
 };
 
 // Column component with drop functionality
-const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAddingTask, newTaskText, setNewTaskText, cancelAddTask, handleAddTask, isDarkMode }) => {
+const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAddingTask, newTaskText, setNewTaskText, cancelAddTask, handleAddTask, isDarkMode, newTaskProject, setNewTaskProject, newTaskPriority, setNewTaskPriority, newTaskProgress, setNewTaskProgress, newTaskAssignee, setNewTaskAssignee, newTaskDescription, setNewTaskDescription }) => {
   const ref = useRef(null);
 
   const themeStyles = {
@@ -149,6 +152,9 @@ const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAdd
     inputBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
     inputBorder: isDarkMode ? 'border-gray-600' : 'border-gray-300',
     secondaryText: isDarkMode ? 'text-gray-400' : 'text-gray-500',
+    dropdownBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
+    dropdownHover: isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50',
+    dropdownBorder: isDarkMode ? 'border-gray-700' : 'border-gray-200',
   };
 
   // Column drag functionality
@@ -275,26 +281,85 @@ const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAdd
         {/* Task Adding UI */}
         {isAddingTask[column.id] ? (
           <div className={`${themeStyles.cardBg} p-3 mb-2 rounded shadow`}>
+            {/* Task Title */}
             <input
               type="text"
-              className={`w-full p-2 mb-2 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
+              className={`w-full p-2 mb-3 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
               placeholder="Enter task title..."
               value={newTaskText[column.id] || ''}
               onChange={(e) => setNewTaskText({...newTaskText, [column.id]: e.target.value})}
               autoFocus
             />
+
+            {/* Project Dropdown */}
+            <select
+              className={`w-full p-2 mb-3 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
+              value={newTaskProject[column.id] || 'All Projects'}
+              onChange={(e) => setNewTaskProject({...newTaskProject, [column.id]: e.target.value})}
+            >
+              <option value="All Projects">All Projects</option>
+              <option value="New Projects">New Projects</option>
+              <option value="My Projects">My Projects</option>
+            </select>
+
+            {/* Priority and Progress Row */}
+            <div className="flex gap-3 mb-3">
+              <select
+                className={`flex-1 p-2 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
+                value={newTaskPriority[column.id] || 'Medium'}
+                onChange={(e) => setNewTaskPriority({...newTaskPriority, [column.id]: e.target.value})}
+              >
+                <option value="Low">Low Priority</option>
+                <option value="Medium">Medium Priority</option>
+                <option value="High">High Priority</option>
+              </select>
+
+              <input
+                type="number"
+                min="0"
+                max="100"
+                className={`flex-1 p-2 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
+                placeholder="Progress %"
+                value={newTaskProgress[column.id] || ''}
+                onChange={(e) => setNewTaskProgress({...newTaskProgress, [column.id]: e.target.value})}
+              />
+            </div>
+
+            {/* Assignee */}
+            <select
+              type="text"
+              className={`w-full p-2 mb-3 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
+              placeholder="Assignee"
+              value={newTaskAssignee[column.id] || ''}
+              onChange={(e) => setNewTaskAssignee({...newTaskAssignee, [column.id]: e.target.value})}
+            >
+              <option value="Low">John Doe</option>
+                <option value="Medium">Jane Doe</option>
+                <option value="High">John Anderson</option>
+              </select>
+
+            {/* Description */}
+            <textarea
+              className={`w-full p-2 mb-3 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
+              placeholder="Description..."
+              value={newTaskDescription[column.id] || ''}
+              onChange={(e) => setNewTaskDescription({...newTaskDescription, [column.id]: e.target.value})}
+              rows="3"
+            />
+
+            {/* Action Buttons */}
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => cancelAddTask(column.id)}
-                className={`px-2 py-1 text-xs ${themeStyles.secondaryText}`}
+                className={`px-3 py-1.5 text-sm ${themeStyles.buttonBg} rounded hover:${themeStyles.buttonHover}`}
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleAddTask(column.id)}
-                className="px-2 py-1 text-xs bg-blue-500 text-white rounded"
+                className="px-3 py-1.5 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
               >
-                Add
+                Add Task
               </button>
             </div>
           </div>
@@ -319,11 +384,22 @@ const KanbanBoard = () => {
   // Add task states
   const [newTaskText, setNewTaskText] = useState({});
   const [isAddingTask, setIsAddingTask] = useState({});
+  const [newTaskProject, setNewTaskProject] = useState({});
+  const [newTaskPriority, setNewTaskPriority] = useState({});
+  const [newTaskProgress, setNewTaskProgress] = useState({});
+  const [newTaskAssignee, setNewTaskAssignee] = useState({});
+  const [newTaskDescription, setNewTaskDescription] = useState({});
 
   // Add column state
   const [isAddingColumn, setIsAddingColumn] = useState(false);
   const [newColumnTitle, setNewColumnTitle] = useState('');
   const [newColumnColor, setNewColumnColor] = useState('bg-gray-500');
+
+  // Dropdown states
+  const [groupDropdown, setGroupDropdown] = useState(false);
+  const [filterDropdown, setFilterDropdown] = useState(false);
+  const [sortDropdown, setSortDropdown] = useState(false);
+  const [assigneeDropdown, setAssigneeDropdown] = useState(false);
 
   // Initial board data - use a simplified structure first
   const [columnOrder, setColumnOrder] = useState([
@@ -335,19 +411,46 @@ const KanbanBoard = () => {
       id: 'planning',
       title: 'PLANNING',
       color: 'bg-indigo-500',
-      tasks: []
+      tasks: [
+        {
+          id: '315316',
+          title: '315316 - XYz tech ...',
+          project: 'new Projects',
+          priority: 'High',
+          progress: 1,
+          assignee: 'John doe'
+        }
+      ]
     },
     'in-progress': {
       id: 'in-progress',
       title: 'IN-PROGRESS',
       color: 'bg-yellow-500',
-      tasks: []
+      tasks: [
+        {
+          id: '315315',
+          title: '315315 - XYz tech ...',
+          project: 'my Projects',
+          priority: 'High',
+          progress: 1,
+          assignee: 'John doe'
+        }
+      ]
     },
     'on-hold': {
       id: 'on-hold',
       title: 'ON-HOLD',
       color: 'bg-red-500',
-      tasks: []
+      tasks: [
+        {
+          id: '315316',
+          title: '315314 - XYz tech ...',
+          project: 'new Projects',
+          priority: 'High',
+          progress: 1,
+          assignee: 'John doe'
+        }
+      ]
     },
     'completed': {
       id: 'completed',
@@ -394,10 +497,11 @@ const KanbanBoard = () => {
     const newTask = {
       id: newTaskId,
       title: newTaskText[columnId],
-      project: 'All Projects',
-      priority: 'Medium',
-      progress: 0,
-      assignee: ''
+      project: newTaskProject[columnId] || 'All Projects',
+      priority: newTaskPriority[columnId] || 'Medium',
+      progress: parseInt(newTaskProgress[columnId]) || 0,
+      assignee: newTaskAssignee[columnId] || '',
+      description: newTaskDescription[columnId] || ''
     };
 
     setColumns({
@@ -408,7 +512,13 @@ const KanbanBoard = () => {
       }
     });
 
+    // Reset all form states
     cancelAddTask(columnId);
+    setNewTaskProject({...newTaskProject, [columnId]: ''});
+    setNewTaskPriority({...newTaskPriority, [columnId]: ''});
+    setNewTaskProgress({...newTaskProgress, [columnId]: ''});
+    setNewTaskAssignee({...newTaskAssignee, [columnId]: ''});
+    setNewTaskDescription({...newTaskDescription, [columnId]: ''});
   };
 
   // Start adding a column
@@ -516,6 +626,9 @@ const KanbanBoard = () => {
     inputBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
     inputBorder: isDarkMode ? 'border-gray-600' : 'border-gray-300',
     secondaryText: isDarkMode ? 'text-gray-400' : 'text-gray-500',
+    dropdownBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
+    dropdownHover: isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50',
+    dropdownBorder: isDarkMode ? 'border-gray-700' : 'border-gray-200',
   };
 
   return (
@@ -524,33 +637,122 @@ const KanbanBoard = () => {
         {/* Filter Bar */}
         <div className={`flex items-center p-3 border-b ${themeStyles.navBorder}`}>
           <div className="flex items-center space-x-2">
-            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <span>Group: Status</span>
-            </button>
-            {/* <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <span>Subtasks: Collapse all</span>
-            </button> */}
-            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <Filter className="w-4 h-4 mr-1" />
-              <span>Filter</span>
-            </button>
-            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <SortAsc className="w-4 h-4 mr-1" />
-              <span>Sort</span>
-            </button>
-            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <Users className="w-4 h-4 mr-1" />
-              <span>Me mode</span>
-            </button>
-            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <span>Assignee</span>
-            </button>
-            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
-              <XCircle className="w-4 h-4 mr-1" />
-              <span>Closed</span>
-            </button>
+            {/* Group Dropdown */}
+            {/* <div className="relative">
+              <button 
+                className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}
+                onClick={() => {
+                  setGroupDropdown(!groupDropdown);
+                  setFilterDropdown(false);
+                  setSortDropdown(false);
+                  setAssigneeDropdown(false);
+                }}
+              >
+                <span>Group: Status</span>
+                <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${groupDropdown ? 'rotate-180' : ''}`} />
+              </button>
+              {groupDropdown && (
+                <div className={`absolute top-full left-0 mt-1 w-48 ${themeStyles.dropdownBg} border ${themeStyles.dropdownBorder} rounded-lg shadow-lg z-10`}>
+                  <div className="py-1">
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Status</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Priority</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Assignee</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Project</button>
+                  </div>
+                </div>
+              )}
+            </div> */}
+
+            {/* Filter Dropdown */}
+            <div className="relative">
+              <button 
+                className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}
+                onClick={() => {
+                  setFilterDropdown(!filterDropdown);
+                  setGroupDropdown(false);
+                  setSortDropdown(false);
+                  setAssigneeDropdown(false);
+                }}
+              >
+                <Filter className="w-4 h-4 mr-1" />
+                <span>Priority</span>
+                <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${filterDropdown ? 'rotate-180' : ''}`} />
+              </button>
+              {filterDropdown && (
+                  <div className={`absolute top-full left-0 mt-1 w-48 ${themeStyles.dropdownBg} border ${themeStyles.dropdownBorder} rounded-lg shadow-lg z-10`}>
+                  <div className="py-1">
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>All Priorities</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>High</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Medium</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Low</button>
+
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Sort Dropdown */}
+            <div className="relative">
+              <button 
+                className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}
+                onClick={() => {
+                  setSortDropdown(!sortDropdown);
+                  setGroupDropdown(false);
+                  setFilterDropdown(false);
+                  setAssigneeDropdown(false);
+                }}
+              >
+                <SortAsc className="w-4 h-4 mr-1" />
+                <span>Sort</span>
+                <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${sortDropdown ? 'rotate-180' : ''}`} />
+              </button>
+              {sortDropdown && (
+                <div className={`absolute top-full left-0 mt-1 w-48 ${themeStyles.dropdownBg} border ${themeStyles.dropdownBorder} rounded-lg shadow-lg z-10`}>
+                  <div className="py-1">
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Title A-Z</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Title Z-A</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Priority (High-Low)</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Priority (Low-High)</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Date Created</button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Assignee Dropdown */}
+            <div className="relative">
+              <button 
+                className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}
+                onClick={() => {
+                  setAssigneeDropdown(!assigneeDropdown);
+                  setGroupDropdown(false);
+                  setFilterDropdown(false);
+                  setSortDropdown(false);
+                }}
+              >
+                <Users className="w-4 h-4 mr-1" />
+                <span>Assignee</span>
+                <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${assigneeDropdown ? 'rotate-180' : ''}`} />
+              </button>
+              {assigneeDropdown && (
+                <div className={`absolute top-full left-0 mt-1 w-48 ${themeStyles.dropdownBg} border ${themeStyles.dropdownBorder} rounded-lg shadow-lg z-10`}>
+                  <div className="py-1">
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>All</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover}`}>Unassigned</button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover} flex items-center`}>
+                      <div className="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs mr-2">JD</div>
+                      John Doe
+                    </button>
+                    <button className={`w-full px-4 py-2 text-left text-sm ${themeStyles.dropdownHover} flex items-center`}>
+                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs mr-2">JS</div>
+                      Jane Smith
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-          <div className="flex-1 ml-4">
+          <div className="flex-1 ml-4 justify-content-end">
             <input
               type="text"
               placeholder="Search..."
@@ -558,7 +760,7 @@ const KanbanBoard = () => {
             />
           </div>
           <button className="px-2 py-1">
-            <MoreVertical className="w-5 h-5" />
+            {/* <MoreVertical className="w-5 h-5" /> */}
           </button>
           {/* <button className="px-2 py-1 ml-2" onClick={toggleTheme}>
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -582,6 +784,16 @@ const KanbanBoard = () => {
                 isAddingTask={isAddingTask}
                 newTaskText={newTaskText}
                 setNewTaskText={setNewTaskText}
+                newTaskProject={newTaskProject}
+                setNewTaskProject={setNewTaskProject}
+                newTaskPriority={newTaskPriority}
+                setNewTaskPriority={setNewTaskPriority}
+                newTaskProgress={newTaskProgress}
+                setNewTaskProgress={setNewTaskProgress}
+                newTaskAssignee={newTaskAssignee}
+                setNewTaskAssignee={setNewTaskAssignee}
+                newTaskDescription={newTaskDescription}
+                setNewTaskDescription={setNewTaskDescription}
                 cancelAddTask={cancelAddTask}
                 handleAddTask={handleAddTask}
                 isDarkMode={isDarkMode}

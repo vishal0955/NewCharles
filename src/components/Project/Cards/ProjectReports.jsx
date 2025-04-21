@@ -253,13 +253,17 @@ const ProjectReports = () => {
           form={form}
           layout="vertical"
         >
-          <Form.Item
-            name="projectName"
-            label="Project Name"
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
+       <Form.Item
+  name="projectName"
+  label="Project Name"
+  rules={[{ required: true, message: 'Please select the project name!' }]}
+>
+  <Select placeholder="Select a project">
+    <Option value="E-Commerce Platform">E-Commerce Platform</Option>
+    <Option value="Mobile App Development">Mobile App Development</Option>
+    <Option value="CRM Upgrade">CRM Upgrade</Option>
+  </Select>
+</Form.Item>
           <Form.Item
             name="status"
             label="Status"
@@ -303,7 +307,12 @@ const ProjectReports = () => {
             name="team"
             label="Team Members"
           >
-            <Select mode="tags" style={{ width: '100%' }} />
+         
+            <Select placeholder="Select a team member">
+    <Option value="John Doe">John Doe</Option>
+    <Option value="Jane Smith">Jane Smith</Option>
+    <Option value="Alice Johnson">Alice Johnson</Option>
+  </Select>
           </Form.Item>
         </Form>
       </Modal>
@@ -312,3 +321,4 @@ const ProjectReports = () => {
 };
 
 export default ProjectReports;
+

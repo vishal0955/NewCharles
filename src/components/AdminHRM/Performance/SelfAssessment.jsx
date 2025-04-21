@@ -39,9 +39,15 @@ const SelfAssessment = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div className="container" style={{height:"100vh"}}>
+      <div className="d-flex justify-content-between align-items-center mb-3">
       <h2 className="mt-4">Self Assessment</h2>
-      <div className="d-flex justify-content-between mb-3">
-        <div>
+      <Button className="btn btn-primary mt-4" onClick={() => setShowForm(true)}>
+          Add Self Assessment
+        </Button>
+        </div>
+      <div className="d-flex justify-content-between mb-3 ">
+
+        <div className="">
           <input
             type="text"
             className="form-control"
@@ -50,6 +56,7 @@ const SelfAssessment = () => {
             onChange={handleSearchChange}
           />
         </div>
+        <div className="d-flex align-items-center jusitfy-content-between gap-2 ">
         <div>
           <select
             className="form-control"
@@ -61,9 +68,32 @@ const SelfAssessment = () => {
             <option value="In Progress">In Progress</option>
           </select>
         </div>
-        <Button className="btn btn-primary" onClick={() => setShowForm(true)}>
-          Add Self Assessment
-        </Button>
+
+        <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
+       
+        </div>
       </div>
 
       <Table className={`${darkMode ? "table-dark border" : null }  table table-striped table-bordered `}>

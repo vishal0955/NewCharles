@@ -212,7 +212,7 @@ export default function SharedNotesPage() {
   };
   
   return (
-    <div className="container mt-4 100vh">
+    <div className="container mt-4 " style={{ height: "100vh" }}>
       <div className="row">
         <div className="col-12">
           <div className="d-flex justify-content-between align-items-center mb-4">

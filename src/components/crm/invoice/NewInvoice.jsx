@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import InvoicePaymentSetting from "./InvoicePaymentSetting";
 import { useSelector } from "react-redux";
+import ContactForm from "../contact/ContactForm";
+import CompanyForm from "../companies/CompanyForm";
 
 const NewInvoice = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
+    const [iscontactModalOpen, setContactModalOpen] = useState(false);
+    const [isCompanyModalOpen, setCompanyModalOpen] = useState(false);
+  
+    const handleCloseModal = () => {
+      setContactModalOpen(false);
+      setCompanyModalOpen(false);
+      setIsModalOpen(false);
+    };
   const handleOpenModal = () => {
     setIsModalOpen(true);
     document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
   };
 
-  const handleCloseModal = () => {
+  const handleMainCloseModal = () => {
     setIsModalOpen(false);
     document.body.classList.remove("modal-open"); // Remove modal-open class
   };
@@ -57,12 +67,18 @@ const NewInvoice = () => {
               <div className="col-md-6">
                 <label className="fw-medium">Bill To</label>
                 <div className="input-group">
-                  <input
+                  <select
                     type="text"
                     className={`${darkMode ? "dark-mode" : null } form-control`}
                     placeholder="Add Contact"
-                  />
-                  <button className="btn btn-outline-primary" type="button">
+             
+                  >
+                    <option value="">Select Contact</option>
+                    <option value="contact1">John Doe</option>
+                    <option value="contact2">Jane Smith</option>
+                    <option value="contact3">Bob Johnson</option>
+                  </select>
+                  <button className="btn btn-outline-primary" type="button"        onClick={() => setContactModalOpen(true)}>
                     <i className="bi bi-plus-lg" />
                   </button>
                 </div>
@@ -70,12 +86,17 @@ const NewInvoice = () => {
               <div className="col-md-6">
                 <label className="fw-medium">Company</label>
                 <div className="input-group">
-                  <input
+                  <select
                     type="text"
                     className={`${darkMode ? "dark-mode" : null } form-control`}
                     placeholder="Add Company"
-                  />
-                  <button className="btn btn-outline-primary" type="button">
+                  >
+                    <option value="">Select Company</option>
+                    <option value="company1">xyz company</option>
+                    <option value="company2">abc Company </option>
+                    <option value="company3">Company 3</option>
+                  </select>
+                  <button className="btn btn-outline-primary" type="button" onClick={() => setCompanyModalOpen(true)}>
                     <i className="bi bi-plus-lg" />
                   </button>
                 </div>
@@ -209,6 +230,65 @@ const NewInvoice = () => {
                       ></div> */}
         </>
       )}
+
+
+{iscontactModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-md" role="document">
+              <div className={`${darkMode ? "dark-mode" : null } modal-content`}>
+                <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
+                  <h5 className="modal-title">Add New Contact</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className={`${darkMode ? "dark-mode" : null } modal-body`}>
+                  <ContactForm handleclose={handleCloseModal} />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
+      )}
+
+
+      {/* company Modal; */}
+
+      {isCompanyModalOpen && (
+        
+              <>
+                <div className="modal fade show d-block" role="dialog">
+                  <div className="modal-dialog modal-md" role="document">
+                    <div className={`${darkMode ? "dark-mode" : "bg-white" }  modal-content`}>
+                      <div className="modal-header">
+                        <button
+                          type="button"
+                          className="btn-close"
+                          aria-label="Close"
+                          onClick={handleCloseModal}
+                        />
+                      </div>
+                      <div className="modal-body">
+                        <CompanyForm handleClose={handleCloseModal} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="modal-backdrop fade show"
+                  onClick={handleCloseModal}
+                ></div>
+              </>
+            )}
     </>
   );
 };

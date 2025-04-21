@@ -132,32 +132,29 @@ const LeavePage = () => {
         </div>
      
 
-        <div className="relative">
-          <button
-            className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            <FaFileExport className="mr-2" />
-            Export
-          </button>
+        <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
 
-          {showDropdown && (
-            <div className="absolute mt-2 w-28 bg-white border border-gray-200 rounded-md shadow z-10">
-              <button
-                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                onClick={() => console.log("Export PDF")}
-              >
-                Export as PDF
-              </button>
-              <button
-                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                onClick={() => console.log("Export Excel")}
-              >
-                Export as Excel
-              </button>
-            </div>
-          )}
-        </div>
+    
+          </div>
       </div>
 
       {/* Stats Grid */}

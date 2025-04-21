@@ -1,8 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 const AddTask = ({handleCloseModal}) => {
+  const [isTeamDropdownOpen, setIsTeamDropdownOpen] = useState(false);
+  const [selectedTeamMembers, setSelectedTeamMembers] = useState([]);
+
   const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+  const [teamMembers] = useState([
+    { id: 1, name: 'Team Member 1' },
+    { id: 2, name: 'Team Member 2' },
+    { id: 3, name: 'Team Member 3' },
+    { id: 4, name: 'Team Member 4' },
+    { id: 5, name: 'Team Member 5' },
+    { id: 6, name: 'Team Member 6' },
+    { id: 7, name: 'Team Member 7' },
+    { id: 8, name: 'Team Member 8' },
+    { id: 9, name: 'Team Member 9' },
+    { id: 10, name: 'Team Member 10' },
+  ]);
+
+  const toggleTeamDropdown = () => {
+    setIsTeamDropdownOpen(!isTeamDropdownOpen);
+
+  };
+
+  
+  const handleTeamMemberToggle = (memberId) => {
+    if (selectedTeamMembers.includes(memberId)) {
+      setSelectedTeamMembers(selectedTeamMembers.filter(id => id !== memberId));
+    } else {
+      setSelectedTeamMembers([...selectedTeamMembers, memberId]);
+    }
+  };
+
+  const getSelectedMemberNames = () => {
+    return teamMembers
+      .filter(member => selectedTeamMembers.includes(member.id))
+      .map(member => member.name);
+  };
   return (
     <>
     <div className="container">
@@ -77,16 +113,54 @@ const AddTask = ({handleCloseModal}) => {
         </div>
       </div>
       {/* Assigned To */}
+ 
+
       <div className="mb-4">
-        <label htmlFor="assignedTo" className={`${darkMode ? "dark-mode" : "" }  form-label `}>
-          Assigned To
-        </label>
-        <select className={`${darkMode ? "dark-mode" : "" } form-select `} id="assignedTo">
-          <option>Sarah Chen</option>
-          <option>Michael Johnson</option>
-          <option>Emily Wilson</option>
-        </select>
-      </div>
+                <label className={`${darkMode ? "dark-mode" : "" }  form-label `}>Assigned to</label>
+                <div className="position-relative">
+                  <div 
+                    className={`${darkMode ? "dark-mode" : "" } form-control d-flex flex-wrap align-items-center`}
+                    onClick={toggleTeamDropdown}
+                    style={{ minHeight: '38px', cursor: 'pointer' }}
+                  >
+                    {selectedTeamMembers.length === 0 ? (
+                      <span className="">Select  members</span>
+                    ) : (
+                      getSelectedMemberNames().map((name, index) => (
+                        <span 
+                          key={index} 
+                          className="badge bg-primary me-1 mb-1"
+                        >
+                          {name}
+                        </span>
+                      ))
+                    )}
+                  </div>
+                  
+                  {isTeamDropdownOpen && (
+                    <div className="position-absolute w-100 bg-white border rounded shadow-sm py-1" 
+                         style={{ zIndex: 1000, maxHeight: '200px', overflowY: 'auto' }}
+                    >
+                      {teamMembers.map(member => (
+                        <div 
+                          key={member.id}
+                          className={`${darkMode ? "dark-mode" : "" } px-3 py-2 d-flex align-items-center `}
+                          onClick={() => handleTeamMemberToggle(member.id)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <input 
+                            type="checkbox" 
+                            className={`${darkMode ? "dark-mode" : "" } form-check-input me-2 `}
+                            checked={selectedTeamMembers.includes(member.id)}
+                            readOnly
+                          />
+                          <span>{member.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
       {/* Attachments */}
       <div className="mb-4">
         <label className={`${darkMode ? "dark-mode" : "" }  form-label `}>Attachments</label>
@@ -115,3 +189,6 @@ const AddTask = ({handleCloseModal}) => {
 }
 
 export default AddTask
+
+
+

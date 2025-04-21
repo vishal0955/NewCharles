@@ -259,20 +259,54 @@ const ManagerFeedback = () => {
         <Col md={2}>
           <Form.Select  className= {`${darkMode ? "card-dark" : null }  `}>
             <option>Rating</option>
+            <option>1 - Poor</option>
+            <option>2 - Fair</option>
+            <option>3 - Good</option>
+            <option>4 - Very Good</option>
+            <option>5 - Excellent</option>
+         
           </Form.Select>
         </Col>
         <Col md={2}>
           <Form.Select  className= {`${darkMode ? "card-dark" : null }  `}>
             <option>Status</option>
+            <option>Pending</option>
+            <option>Reviewed</option>
+
           </Form.Select>
         </Col>
         <Col md={2}>
           <Form.Select  className= {`${darkMode ? "card-dark" : null }  `}>
             <option>Date</option>
+            <option>Today</option>
+            <option>Yesterday</option>
+            <option>This Week</option>
           </Form.Select>
         </Col>
         <Col md={2}>
-          
+        <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
         </Col>
       </Row>
 

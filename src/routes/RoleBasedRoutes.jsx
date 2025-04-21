@@ -186,6 +186,7 @@ import InterviewManagementSystem from "../components/Recruitment/AddInterview.js
 import CreateOffer from "../components/Recruitment/CreateOffer.jsx";
 import KPIForm from "../components/AdminHRM/Performance/KPIForm.jsx";
 import PerformanceDashboard from "../components/dashboard/PerformanceOverview.jsx";
+import AddNewProject from "../components/Project/AddNewProject.jsx";
 
 const RoleBasedRoutes = () => {
   return (
@@ -253,6 +254,7 @@ const RoleBasedRoutes = () => {
         {/* Task Routes  */}
         <Route path="/task" element={<TaskDashboard />} />
         
+        <Route path="/task/alltasks" element={<Task />} />
         <Route path="/task/highpriority" element={<Task />} />
 <Route path="/task/mediumpriority" element={<Task />} />
 <Route path="/task/lowpriority" element={<Task />} />
@@ -270,6 +272,7 @@ const RoleBasedRoutes = () => {
         <Route path="/addtask" element={<AddTask />} />
         <Route path="/allproject" element={<AllProject />} />
         <Route path="/projectcard" element={<ProjectCard />} />
+        <Route path="/project/addnewproject" element={<AddNewProject />} />
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
         <Route path="/projectkanban" element={<ProjectKanban />} />
@@ -293,7 +296,7 @@ const RoleBasedRoutes = () => {
 
         {/* new  routes hr */}
         <Route path="/hr/employeelist" element={<EmployeeList />} />
-        <Route path="/hr/attendance" element={<AttendanceAdmin />} />
+        <Route path="/hr/attendancetracker" element={<AttendanceAdmin />} />
         <Route path="/hr/payroll" element={<EmployeeSalary />} />
         <Route path="/hr/payrollitem" element={<PayrollItems />} />
         <Route path="/hr/leavetracker" element={<LeavePage />} />

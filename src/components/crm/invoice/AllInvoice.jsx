@@ -259,6 +259,7 @@ const AllInvoice = () => {
         {/* Header Section */}
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-md-4">
           <h2 className="fw-bold mb-3 mb-md-0">Invoices</h2>
+          <div className="d-flex flex-row justify-content-between align-items-center gap-2">
           <button 
             className="inv-new-button btn btn-primary d-flex align-items-center"
             onClick={handleOpenModal}
@@ -266,6 +267,30 @@ const AllInvoice = () => {
             <i className="bi bi-plus me-2" /> 
             <span className=" d-sm-inline">New Invoice</span>
           </button>
+          <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
+          </div>
         </div>
 
         {/* Stats Section - Responsive Grid */}
@@ -341,10 +366,26 @@ const AllInvoice = () => {
                 </div>
               </div>
               <div className="col-12 col-md-4 d-flex justify-content-end">
-                <button className={`${darkMode ? "dark-mode" : null } inv-filter-button btn btn-outline-secondary d-flex align-items-center`}>
-                  <i className="bi bi-funnel me-2" /> 
-                  <span className="d-none d-sm-inline">Filters</span>
-                </button>
+              <button
+    className="btn btn-outline-secondary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+  Status
+  </button>
+  <ul className="dropdown-menu">
+    <li>
+      <button className="dropdown-item d-flex align-items-center gap-2" >
+Pending
+      </button>
+    </li>
+    <li>
+      <button className="dropdown-item d-flex align-items-center gap-2" onClick={() => console.log("Export clicked")}>
+      Paid
+      </button>
+    </li>
+  </ul>
               </div>
             </div>
 

@@ -71,6 +71,7 @@ const menuItems = [
     icon: <BarChart3 size={16} />,
     subItems: [
       { name: "Dashboard", path: "/task" },
+      { name: "Tasks", path: "/task/alltasks" },
       { name: "High Priority ", path: "/task/highpriority" },
       { name: "Medium Priority ", path: "/task/mediumpriority" },
       { name: "Low Priority ", path: "/task/lowpriority" },
@@ -140,7 +141,7 @@ const menuItems = [
       // { name: "Dashboard", path: "/hr/dashboard" },
       // { name: "My Profile", path: "/hr/myprofile" },
       {name: "Employee List", path: "/hr/employeelist"},
-      { name: " Attendance Tracker", path: "/hr/attendance" },
+      { name: " Attendance Tracker", path: "/hr/attendancetracker" },
       { name: "Leave Tracker", path: "/hr/leavetracker" },
    
       {

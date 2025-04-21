@@ -236,6 +236,12 @@ const navigate = useNavigate();
     setCurrentPage(pageNumber);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+ setTasks ( ...tasks, newTask);
+    setSubmitted(true);
+  };
+
   const handleOpenModal = (task = null) => {
     if (task) {
       setEditId(task.id);
@@ -357,21 +363,22 @@ const navigate = useNavigate();
   </ul>
               {/* <Link to="/ProjectTimelineCalendar"> */}
               <button
-                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                className={`${activeTab === 0 ? "btn btn-secondary" : "btn btn-outline-secondary"}  d-flex align-items-center gap-1`}
                 onClick={() => setActiveTab(0)}>
+                  
                 <i className="bi bi-grid" /> TimeLine
               </button>
               {/* </Link> */}
               {/* <Link to="/projectlist"> */}
               <button
-                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+               className={`${activeTab === 1 ? "btn btn-secondary" : "btn btn-outline-secondary"}  d-flex align-items-center gap-1`}
                 onClick={() => setActiveTab(1)}>
                 <i className="bi bi-list" /> List View
               </button>
               {/* </Link> */}
               {/* <Link to="/kanban"> */}
               <button
-                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              className={`${activeTab === 2 ? "btn btn-secondary" : "btn btn-outline-secondary"}  d-flex align-items-center gap-1`}
                 onClick={() => setActiveTab(2)}>
                 <Kanban /> Board View
               </button>
@@ -381,7 +388,7 @@ const navigate = useNavigate();
             <button
               className="btn btn-primary add-project-btn mt-2 mt-md-0"
               style={{ height: "fit-content" }}
-              onClick={handleOpenModal}>
+              onClick={() => navigate("/project/addnewproject")}>
               <i className="bi bi-plus" /> Add New Project
             </button>
           </div>

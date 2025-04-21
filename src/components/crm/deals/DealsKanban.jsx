@@ -256,12 +256,39 @@ const SalesDashboard = () => {
     <div className="min-h-screen p-6">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Deals</h1>
+        <div className="flex items-center">
+          <div className="flex items-center mr-4 gap-1">
+          <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
         <button 
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded flex items-center"
           onClick={addNewDeal}
         >
           <i className="bi bi-plus mr-2" /> New Deal
         </button>
+      </div>
+        </div>
       </div>
       
       {/* Metrics Cards */}
@@ -323,12 +350,10 @@ const SalesDashboard = () => {
             <div className="w-full md:w-auto">
               <select className={`${darkMode ? "dark-mode" : null } w-full md:w-auto px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}>
                 <option>Main Pipeline</option>
-                <option>Secondary Pipeline</option>
+                <option>Deals Pipeline</option>
               </select>
             </div>
-            <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
-              <i className="bi bi-funnel me-2"></i> Filters
-            </button>
+          
           </div>
         </div>
 

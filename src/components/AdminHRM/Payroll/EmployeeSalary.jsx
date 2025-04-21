@@ -83,7 +83,6 @@ export default function EmployeeSalary() {
   const deleteEmployee = (id) =>
     setEmployees((prev) => prev.filter((e) => e.id !== id));
 
-  /* ───────────────────────── JSX ───────────────────────── */
   return (
     <div className={`${darkMode ? "table-dark" : null } container-fluid py-4  `} style={{height:"100vh"}}>
       {/* Header */}
@@ -93,56 +92,50 @@ export default function EmployeeSalary() {
           <small className="text-muted">HR / Employee Salary</small>
         </div>
 
-        <div className="d-flex flex-wrap gap-2">
+        <div className="d-flex flex-wrap ">
           {/* <button className="btn btn-outline-dark d-flex align-items-center">
             <FaFileExport className="me-2" /> Export
           </button> 
            
+
+          <
             */}
 
-          <button
-            className="btn btn-outline-dark d-flex align-items-center"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            <FaFileExport className="me-2" />
-            Export
-          </button>
-
-          {showDropdown && (
-            <div
-              className="dropdown-menu show position-absolute mt-5"
-              style={{ minWidth: "2rem" }}
-            >
-              <button
-                className="dropdown-item"
-                onClick={() => {
-                  console.log("Export as PDF");
-                  setShowDropdown(false);
-                }}
-              >
-                Export as PDF
-              </button>
-              <button
-                className="dropdown-item"
-                onClick={() => {
-                  console.log("Export as Excel");
-                  setShowDropdown(false);
-                }}
-              >
-                Export as Excel
-              </button>
-            </div>
-          )}
-          <button className="btn btn-outline-secondary d-flex align-items-center ">
-            <FaFileExport className="p-0" /> Export
-          </button>
-          <button
+            <div className="d-flex gap-2">
+            <button
             className="btn inv-new-button d-flex align-items-center"
             onClick={handleAddSalary}
           >
             <FaPlus className="me-2" /> Add Salary
           </button>
+    <div className="dropdown order-sm-1  gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
+    
+         
         </div>
+     
+          </div>
       </div>
 
       {/* Card */}

@@ -192,9 +192,29 @@ const PaymentList = () => {
             <h4 className="mb-0  ">Payment Links</h4>
           </div>
           <div className="d-flex flex-column flex-sm-row gap-3 w-100 w-md-auto justify-content-end">
-            <a href="#" className="btn inv-filter-button">
-              Go to Commerce
-            </a>
+          <div className="dropdown order-sm-1 d-flex gap-1">
+            <button
+              className="inv-filter-button dropdown-toggle "
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+             Export
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a className="dropdown-item" href="#import">
+                  Export as PDF
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#export">
+                  Export as Excel
+                </a>
+              </li>
+            </ul>
+
+    
+          </div>
             <button
               type="button"
               className="btn inv-new-button"
@@ -230,7 +250,10 @@ const PaymentList = () => {
                   </div>
                 </div>
                 <div className="col-6 col-md-2">
-                  <div className="dropdown w-100">
+                 
+                </div>
+                <div className="col-6 col-md-2 text-end">
+                <div className="dropdown w-100">
                     <button
                       className={`${
                         darkMode ? "dark-mode" : null
@@ -258,16 +281,6 @@ const PaymentList = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
-                <div className="col-6 col-md-2 text-end">
-                  <button
-                    className={`${
-                      darkMode ? "dark-mode" : null
-                    } btn inv-filter-button w-100`}
-                  >
-                    <i className="bi bi-funnel me-2" />
-                    <span className="d-none d-md-inline">Filters</span>
-                  </button>
                 </div>
               </div>
             </div>

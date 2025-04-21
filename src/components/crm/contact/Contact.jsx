@@ -223,12 +223,12 @@ const ContactsList = () => {
             <ul className="dropdown-menu">
               <li>
                 <a className="dropdown-item" href="#import">
-                  Import
+                  Export as PDF
                 </a>
               </li>
               <li>
                 <a className="dropdown-item" href="#export">
-                  Export
+                  Export as Excel
                 </a>
               </li>
             </ul>
